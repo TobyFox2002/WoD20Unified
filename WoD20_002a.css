@@ -1,0 +1,616 @@
+/* Global Elements */
+.charsheet {
+  font-size: 13px;
+  line-height: 1.5em;
+  font-weight: 400;
+
+  margin: 0px;
+  padding: 0px;
+}
+@font-face {
+  /* Font from: https://fontlibrary.org/en/font/rufscript */
+  font-family: "RufscriptRegular";
+  src: url("http://openfontlibrary.org/assets/fonts/rufscript/92112519f91e7a5ab80261a017c09b72/f886671cdc88e2725676a457e14e8512/RufscriptRegular.ttf");
+}
+input[type="text"],
+input[type="number"] {
+  width: 90%;
+  padding-left: 0.4em;
+  padding-bottom: 0em;
+
+  font-family: Sans-serif;
+  line-height: 1.5em;
+
+  border: 0px solid #666;
+  border-bottom-width: 1px;
+  border-radius: 3px;
+}
+.sheet-skAttrSz {
+	width: 6vw;
+	height: 3.5vh;
+	
+	font-family: sans-serif;
+	font-size: 1.3vh;
+	
+	border: 1px solid black;
+	border-radius: 6px;
+	
+	margin-top: 1px;
+	margin-left: 7px;
+}
+span.sheet-SkPoolLabel {
+	position: relative;
+	top: -10px;
+	left: 5px;
+}
+.sheet-3dig {width: 2.2em !important; min-width: 2.2em !important; padding-right: 0.30em !important;}
+input.sheet-specialize {width: 4em;}
+/* Hide actual dot/checkbox */
+input.sheet-hd[type="radio"],
+input.sheet-hd[type="checkbox"],
+div.sheet-repeating-container input.sheet-hd[type="radio"],
+div.sheet-repeating-container input.sheet-hd[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width:15px;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: 6px;
+}
+/* Fake Checkbox */
+/* Styles common to fake dot and checkbox */
+input.sheet-noshow { display: none !important;}
+input.sheet-hd[type="radio"] + span::before,
+input.sheet-hd[type="checkbox"] + span::before,
+div.sheet-repeating-container input.sheet-hd[type="radio"] + span::before,
+div.sheet-repeating-container input.sheet-hd[type="checkbox"] + span::before {
+    border: solid 1px #a8a8a8;
+    line-height: 14px;
+    text-align: center;
+	font-style: normal;
+	font-weight: normal;
+    display: inline-block;
+    vertical-align: middle;
+    
+    -moz-box-shadow: 0 0 2px #ccc;
+    -webkit-box-shadow: 0 0 2px #ccc;
+    box-shadow: 0 0 2px #ccc;
+    
+    background: #f6f6f6;
+    background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
+    background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
+    background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
+    background: -o-radial-gradient(#f6f6f6, #dfdfdf);
+    background: radial-gradient(#f6f6f6, #dfdfdf);
+}
+/* Hides Fake Checkbox above 5dots if option not selected. */
+.sheet-610-attr:not(:checked)   ~ input.sheet-show-10d-attr.sheet-hd[type="radio"] + span::before,
+.sheet-610-bgs:not(:checked)    ~ input.sheet-show-10d-bgs.sheet-hd[type="radio"] + span::before,
+.sheet-610-skills:not(:checked) ~ input.sheet-show-10d-skills.sheet-hd[type="radio"] + span::before {
+	display: none;
+}
+.sheet-610-attr:checked ~ .sheet-show-10d-attr.sheet-hd,
+.sheet-610-bgs:checked ~ .sheet-show-10d-bgs.sheet-hd,
+.sheet-610-skills:checked ~ .sheet-show-10d-skills.sheet-hd {
+    display: inline;
+}
+
+/* Styles unique to fake dot (checked or left of checked) */
+input.sheet-hd[type="radio"] + span::before,
+div.sheet-repeating-container input.sheet-hd[type="radio"] + span::before
+ { 
+    content: "•";
+    width: 11px;
+    height: 12px;
+    font-size: 31px;
+    
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/* Styles unique to fake checkbox (unchecked) */
+input.sheet-hd[type="checkbox"] + span::before,
+div.sheet-repeating-container input.sheet-hd[type="checkbox"] + span::before {
+    position:relative;
+    content: "";
+    opacity: .25;
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+    
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+/* Styles unique to fake checkbox (checked) */
+input.sheet-hd.sheet-zero[type="checkbox"]:checked + span::before,
+div.sheet-repeating-container input.sheet-hd.sheet-zero[type="checkbox"]:checked + span::before {
+    content: "✖";
+    color: #a00;
+    
+    -moz-box-shadow: 0 0 2px transparent;
+    -webkit-box-shadow: 0 0 2px transparent;
+    box-shadow: 0 0 2px transparent;
+}
+
+/* Remove dot from all radios _after_ selected one */
+input.sheet-hd[type="radio"]:checked ~ input.sheet-hd[type="radio"] + span::before,
+div.sheet-repeating-container input.sheet-hd[type="radio"]:checked ~ div.sheet-repeating-container input.sheet-hd[type="radio"] + span::before {    
+    content: "";
+}
+
+input.sheet-hd.sheet-used+span::before,
+div.sheet-repeating-container input.sheet-hd.sheet-used+span::before {
+    content: "✖";
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+    
+    -moz-border-radius: 0%;
+    -webkit-border-radius: 0%;
+    border-radius: 0%;
+}
+
+input.sheet-hd.sheet-zero:checked + span::before { opacity: 0;}
+input.sheet-hd.sheet-zero:hover + span::before { opacity: 1;}
+
+input.sheet-hd.sheet-zero + span::before,
+div.sheet-repeating-container input.sheet-hd.sheet-zero + span::before
+ {
+    font-size: 12px;
+    content: "✖";
+    opacity: 0.25;
+}
+label {
+  font-family: RufscriptRegular;
+  line-height: 1.3em;
+  margin-bottom: -0.3em;
+
+  flex: 1;
+}
+/* Config Section Hidden Checkbox Option Items */
+.charsheet .sheet-boldlabel-check:checked + b:not(.sheet-offCase), .charsheet .sheet-condition-exists:checked + label {
+    background-color: #4a6486;
+	width: 200px;
+    color: White;
+    border-radius: 10px;
+}
+.charsheet .sheet-boldlabel-check + b:not(.sheet-offCase), .charsheet .sheet-condition-exists + label, .charsheet .sheet-status-panel  label b {
+/* A delicate balance is required to keep a thin line between the options.  Otherwise it becomes hard to see each unique option element */
+    display: inline-grid;
+	margin: 3px 0;
+    padding: 5px 5px 3px 5px;
+    font-size: 12px;
+	letter-spacing: 1.4px;
+    line-height: 2.3vh;
+}
+
+/* Section Level Elements */
+div.sheet-PreNav {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+div.sheet-sectionHeader {
+  /* Uses H1 style by default, making h1 tag unnessisary */
+  display: block;
+  font: 2em RufscriptRegular;
+
+  margin: 0.67em 0em;
+  padding: 0.3em 0 0em;
+  font-weight: bold;
+  text-align: center;
+
+  border: 1px solid #000000;
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  background: linear-gradient(180deg, LightGrey 60%, white);
+}
+div.sheet-sectHeadCntr {
+  display: block;
+  width: calc(98% - 1em); /* How to make this based on parent width */
+  margin-top: -1.4em;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  background: LightGray;
+}
+div.sheet-sectHeadCntr ul {
+  display: flex;
+  list-style-type: none;
+
+  /* Border removed; border details within container DIV */
+  margin: -5px;
+  padding: 0px;
+  background: transparent;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+}
+li {
+  margin: 0.2em;
+  padding: 0.3em;
+}
+div.sheet-triColumn {
+  display: flex;
+}
+div.sheet-columns {
+  margin: 0px;
+  padding: 0px;
+
+  border: 1px solid black;
+
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+div.sheet-columns ul {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: end;
+  list-style-type: none;
+
+  margin: 0px;
+  padding: 0px;
+  background: transparent;
+}
+div.sheet-columns ul li {
+	/* possibly change font size to 1.5vh */
+  margin: 0.2em;
+  padding: 0.2em;
+  flex: 1;
+  border: 1px solid black;
+}
+li.sheet-dicepool { /* Prevent more than 5 dots per line. */
+	/* max-width: 8em; */
+	min-width: 8em;
+}
+div.sheet-abilBuffs {
+	display: inline-flex;
+}
+li.sheet-ability-label {
+	
+}
+h1.sheet-columnHeader {
+  /* Uses H1 style by default, making h1 tag unnessisary */
+  font-size: 1.5em;
+  font-family: "RufscriptRegular";
+
+  margin: 0em auto 0.2em auto;
+  padding: 0.3em;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: bold;
+  text-align: center;
+
+  border: 1px solid #000000;
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  background: linear-gradient(180deg, LightGrey 60%, white);
+}
+/* Layout Elements */
+label.sheet-smlabel {
+  text-align: center;
+  flex: 1;
+}
+label.sheet-poolLabel {
+	display: inline;
+}
+label.sheet-smlabel span,
+label.sheet-poolLabel span {
+  font-size: 0.7em;
+}
+span[title] {
+  cursor: help;
+}
+/* Width Elements */
+
+/* Button Styles */
+button.sheet-Pictos {
+  /* Section Control Buttons */
+  font-size: 1em;
+  font-family: "Pictos" !important;
+  font-weight: bold;
+
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+}
+/* CSS Button Styles (No SheetWorkers) */
+.sheet-cssbutton, .sheet-showarrow, .sheet-ack-button,
+.sheet-refreshbutton, .sheet-split-column-show, .sheet-lock-show , .sheet-counted {
+	opacity: 0; position: relative; top: 0; left: 13px; cursor: pointer; z-index: 5;
+}
+.sheet-cssbutton,
+.sheet-refreshbutton,
+.sheet-configbutton {
+    margin-right: 15px; /* -1.5rem */
+}
+input.sheet-cssbutton, input.sheet-showarrow, input.sheet-ack-button,
+input.sheet-refreshbutton, input.sheet-split-column-show, input.sheet-lock-show , input.sheet-counted {
+	height: 1.6em;
+}
+.sheet-cssbutton + span::before {
+    display: inline-block;
+    font-size: 1.2em;
+	margin-left: -20px;
+	padding: .1em;
+	font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #808080;
+	background-color: #FFFFFF;
+	color:Black;
+	text-align:center;
+	font-style:normal !important;
+	width: 24px !important;  /* 1.4 rem */
+	height: 24px !important; /* 1.4 rem */
+	box-sizing: border-box;
+}
+.sheet-minimize-show:checked ~ .sheet-lock-show + span::before,
+.sheet-cssbutton:checked + span::before {
+	background-color: #4a6486;
+	color: #DDDDDD;
+}
+.sheet-minimize-show  + span::before,
+.sheet-collapse-show + span::before {
+	font-family: "Pictos" !important;
+	content: '_';
+}
+.sheet-help-show + span:before {
+	font-family: "Pictos" !important;
+	content: "?";
+}
+.sheet-minimize-show:checked + span::before,
+.sheet-collapse-show:checked + span::before {
+	font-family: Arial, Sans-serif !important;
+	content: '☐';
+}
+/* Navigational Buttons and Config Buttons */
+/* Show/Hide Content for the selected navigational Tab */
+.sheet-core,
+.sheet-combat,
+.sheet-abilities,
+.sheet-advantages,
+.sheet-details,
+.sheet-biography,
+.sheet-config {
+	display: none;
+}
+
+.sheet-tabstoggle[value="core"] ~ div.sheet-core,
+.sheet-tabstoggle[value="combat"] ~ div.sheet-combat,
+.sheet-tabstoggle[value="abilities"] ~ div.sheet-abilities,
+.sheet-tabstoggle[value="advantages"] ~ div.sheet-advantages,
+.sheet-tabstoggle[value="biography"] ~ div.sheet-biography,
+.sheet-tabstoggle[value="details"] ~ div.sheet-details,
+.sheet-tabstoggle[value="config"] ~ div.sheet-config {
+	display: block;
+}
+button.sheet-button-tab {
+  background: #4a6486;
+  color: white;
+  height: 1.2em;
+  cursor: pointer;
+
+  padding: 0.6em 0.3em 0.1em 0.3em;
+  white-space: nowrap;
+  border-radius: 7px 7px 0px 0px;
+
+  font-family: Arial;
+  font-weight: bold;
+}
+div.sheet-flexwrap {display: flex;}
+
+/* Adds show/hide functionality */
+div.sheet-race-mage, div.sheet-race-mage-block,
+div.sheet-race-werewolf, div.sheet-race-werewolf-block,
+div.sheet-race-vampire, div.sheet-race-kueijin, div.sheet-race-vampire-block, div.sheet-race-kueijin-block,
+div.sheet-race-changeling, div.sheet-race-shen, div.sheet-race-changeling-block, div.sheet-race-shen-block,
+div.sheet-race-mummy, div.sheet-race-mummy-block,
+div.sheet-race-hunter, div.sheet-race-hunter-block,
+div.sheet-race-bygone, div.sheet-race-bygone-block,
+input.sheet-show-10d-attr.sheet-hd,
+input.sheet-show-10d-bgs.sheet-hd,
+input.sheet-show-10d-skills.sheet-hd {
+  display: none;
+}
+/* show/hide as flex */
+.sheet-race-type-werewolf:checked ~ div.sheet-race-werewolf,
+.sheet-race-type-mage:checked ~ .sheet-race-mage,
+.sheet-race-type-vampire:checked ~ div.sheet-race-vampire,
+.sheet-race-type-kueijin:checked ~ div.sheet-race-kueijin,
+.sheet-race-type-changeling:checked ~ div.sheet-race-changeling,
+.sheet-race-type-shen:checked ~ div.sheet-race-shen,
+.sheet-race-type-mummy:checked ~ div.sheet-race-mummy,
+.sheet-race-type-hunter:checked ~ div.sheet-race-hunter,
+.sheet-race-type-bygone:checked ~ div.sheet-race-bygone {
+    display: flex;
+}
+/* show/hide as block */
+.sheet-race-type-werewolf:checked ~ div.sheet-race-werewolf-block,
+.sheet-race-type-mage:checked ~ .sheet-race-mage-block,
+.sheet-race-type-vampire:checked ~ div.sheet-race-vampire-block,
+.sheet-race-type-kueijin:checked ~ div.sheet-race-kueijin-block,
+.sheet-race-type-changeling:checked ~ div.sheet-race-changeling-block,
+.sheet-race-type-shen:checked ~ div.sheet-race-shen-block,
+.sheet-race-type-mummy:checked ~ div.sheet-race-mummy-block,
+.sheet-race-type-hunter:checked ~ div.sheet-race-hunter-block,
+.sheet-race-type-bygone:checked ~ div.sheet-race-bygone-block {
+    display: block;
+}
+
+/* Show/Hide Sections */
+.sheet-collapse-show:checked ~ .sheet-collapse-details {
+    display: none;
+}
+
+/* Table Formatting */
+.sheet-table {display: table; width: 100%;}
+.sheet-table-name {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    width: 100%;
+}
+
+.sheet-table-row {
+    display: table-row;
+    vertical-align: bottom;
+    width: 100%;    
+}
+
+.sheet-tdcs { /*Table Data Center Small*/
+    display:table-cell;
+    text-align:center;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+.sheet-tdls { /*Table Data left Small*/
+    display:table-cell;
+    text-align:left;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+
+.sheet-table-cell {
+	display: table-cell;
+	vertical-align: middle;
+	text-align:center;
+	padding-left:.125em;
+	padding-right:.125em;
+	padding-bottom:.125em;
+}
+.sheet-tcsl {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: .125em;
+	padding-right: .125em;
+	padding-bottom: .125em;
+	font-size: 85%!important;
+	font-style: italic;
+	font-weight: bold;
+	color: black;
+	text-align: center;
+	
+}
+.sheet-tcsl input {
+	font-style: normal;	
+}
+
+.sheet-header-row {	margin-bottom:.5em;}
+
+.sheet-table-name, .sheet-nontable-name {
+	text-align: center;
+	font-weight: bold;
+	color:White;
+	background-color:Black;
+	width: 100%;
+}
+
+.sheet-table-name {
+	display: table-caption;
+	caption-side:top;
+}
+
+.sheet-nontable-name {
+	display: block;
+}
+
+h2,h3,h4,h5,h6,
+.sheet-table-name,
+.sheet-table-header {
+	font-family: Arial, sans-serif;
+	font-size: 13px; /*BUGGED */
+}
+input.sheet-bigCheck {
+	height: 2em;
+	width: 2em;
+}
+.sheet-table-cell span[title],  .sheet-table-header[title], .sheet-small-label2 span[title] {
+	cursor: help;
+}
+/* Sheet Options Config Table Formatting */
+.sheet-options {
+	width:98% !important; /* Original Width: 98.6% */
+	padding: 2px 0 2px 5px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+	background-color:Gainsboro;
+}
+
+.sheet-options.sheet-table.sheet-named {
+	border-top-left-radius:0;
+	border-top-right-radius:0;
+}
+.sheet-options.sheet-table.sheet-named .sheet-table-name  {
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+.sheet-nontable-repeating .sheet-options span {
+	margin-right:2em;
+	display:inline-block;
+}
+/* Dimensions and alignment shorthand */
+.align-left {text-align: left;}
+.align-right {text-align: right;}
+.align-center {text-align: center;}
+.align-justify {text-align: justify;}
+
+.w20p {width: 20%;}
+.w25p {width: 25%;}
+.w50p {width: 50%;}
+.w93p {width: 93%;}
+
+/* Repeating Section Styles */
+div.sheet-repeating-container {
+	border: 1px solid black;
+	padding: 0px 5px;
+	border-radius: 10px;
+	background-color: #d3d3d3;
+	}
+/* Small Label #2 */
+.sheet-sml2 {
+    display: inline-block;
+	width: 20%; /* Default (pre-override) */
+    margin: 0em;
+	padding: 4px 0px;
+	/* Text style for repeating field labels */
+	text-align: center;
+	font-size: 1em;
+	line-height: 1.7em;
+	letter-spacing: 1.5px;
+}
+div.sheet-repeating-container input	{
+    display: block;
+}
+div.sheet-repeating-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: end;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+}
+div.sheet-repeating-container ul li {
+    margin: 0.2em;
+    padding: 0.2em;
+    flex: 1;
+    border: 1px solid black;
+}
+div.sheet-repeating-container li.sheet-dicepool {
+	min-width: 8em;
+}
