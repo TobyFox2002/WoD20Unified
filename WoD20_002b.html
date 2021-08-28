@@ -328,13 +328,12 @@
 				<li>This is placeholder text for possible future content.</li>
 			</ul>
 		</div>
-
 		<div class="triColumn">
 			<div class="columns">
 				<h1 class="columnHeader">Talents</h1>
 				<div class="border"><!-- Alertness ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
 					<ul>
-						<li>Alertness<button type="roll" name="roll_Alertness-Check" value="[QUERY] title="%{selected|Alertness-Check} Tokenless Roll (No Token Select Required for this Roll)"" ></button></li>
+						<li>Alertness<button type="roll" name="roll_Alertness-Check" value="[QUERY]" title="%{selected|Alertness-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></li>
 						<li class="dicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
 							<input type="radio" class="hd zero" name="attr_Alertness" value="0" checked /><span></span>
 							<input type="radio" class="hd" name="attr_Alertness" value="1" /><span></span>
@@ -349,23 +348,29 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
-					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Alert-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Alert-Item" value="0" /><br><span>Item</span></label>
-						<label class="smlabel"><input type="number" name="attr_Alert-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
-						<label class="smlabel"><input type="number" name="attr_Alert-ShapeShf" value="0" /><br><span>Form</span></label>
+					
+					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
+						<label class="ability-optGroup1" title="Add or Subtract default difficulty">Diff</label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffPerm" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffShapeShf" value="0" /><br><span>Form</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffTotal" value="@{Alert-DiffTemp} + @{Alert-DiffPerm} + @{Alert-DiffBuffs} + @{Alert-DiffMerFl} + @{Alert-DiffShapeShf}" disabled /><br><span>Total</span></label>
 					</div>
-					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Alert-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Alert-Misc2" value="0" /><br><span>Misc 2</span></label>
+					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
+						<label class="ability-optGroup2" title="Add or Subtract from for the number of dice being rolled.">Dice Pool</label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-TempMod" value="0" /><br><span>Temp</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-PermMod" value="0" /><br><span>Perm</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Alertness-Ability}" name="attr_Alertness-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}" selected>PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Alert-Total" value="@{Alertness} + @{Alertness-Ability} + @{Alert-Mag} + @{Alert-Item} + @{Alert-MerFl} + @{Alert-ShapeShf} + @{Alert-Misc1} + @{Alert-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Alert-Buffs" value="0" class="3dig" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="text" name="attr_Alert-Total" value="@{Alertness} + @{Alertness-Ability} + @{Alert-TempMod} + @{Alert-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Alert-Spec" placeholder="Alertness Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Art ~ Mage -->
@@ -385,23 +390,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Art" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Art-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Art-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Art-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Art-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Art-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Art-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Art-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Art-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Athletics-Ability}" name="attr_Art-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel collapse-details"><input type="text" name="attr_Art-Total" value="@{Art} + @{Art-Ability} + @{Art-Mag} + @{Art-Item} + @{Art-MerFl} + @{Art-ShapeShf} + @{Art-Misc1} + @{Art-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel collapse-details"><input type="text" name="attr_Art-Total" value="@{Art} + @{Art-Ability} + @{Art-TempMod} + @{Art-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Art-Spec" placeholder="Art Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Athletics ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -421,23 +428,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Athletics-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Athletics-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Athletics-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Athletics-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Athletics-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Athletics-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Athletics-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Athletics-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Athletics-Ability}" name="attr_Athletics-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Athletics-Total" value="@{Athletics} + @{Athletics-Ability} + @{Athletics-Mag} + @{Athletics-Item} + @{Athletics-MerFl} + @{Athletics-ShapeShf} + @{Athletics-Misc1} + @{Athletics-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Athletics-Total" value="@{Athletics} + @{Athletics-Ability} + @{Athletics-TempMod} + @{Athletics-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Athletics-Spec" placeholder="Athletics Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Awareness ~ Mage | Vampire | Mummy | Hunter | Bygone || Primal-Urge ~ Werewolf || Kenning ~ Changeling || Shentao ~ Shen -->
@@ -457,23 +466,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Awareness" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Awareness-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Awareness-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Awareness-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Awareness-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Awareness-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Awareness-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Awareness-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Awareness-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Awareness-Ability}" name="attr_Awareness-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}" selected>PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Awareness-Total" value="@{Awareness} + @{Awareness-Ability} + @{Awareness-Mag} + @{Awareness-Item} + @{Awareness-MerFl} + @{Awareness-ShapeShf} + @{Awareness-Misc1} + @{Awareness-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Awareness-Total" value="@{Awareness} + @{Awareness-Ability} + @{Awareness-TempMod} + @{Awareness-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Awareness-Spec" placeholder="Awareness Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Brawl ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -493,23 +504,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Brawl" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Brawl-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Brawl-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Brawl-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Brawl-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Brawl-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Brawl-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Brawl-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Brawl-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Brawl-Ability}" name="attr_Brawl-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Brawl-Total" value="@{Brawl} + @{Brawl-Ability} + @{Brawl-Mag} + @{Brawl-Item} + @{Brawl-MerFl} + @{Brawl-ShapeShf} + @{Brawl-Misc1} + @{Brawl-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Brawl-Total" value="@{Brawl} + @{Brawl-Ability} + @{Brawl-TempMod} + @{Brawl-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Brawl-Spec" placeholder="Brawl Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Empathy ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -529,24 +542,26 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Empathy" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Empathy-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Empathy-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Empathy-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Empathy-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Empathy-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Empathy-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Empathy-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Empathy-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Empathy-Ability}" name="attr_Empathy-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Empathy-Total" value="@{Empathy} + @{Empathy-Ability} + @{Empathy-Mag} + @{Empathy-Item} + @{Empathy-MerFl} + @{Empathy-ShapeShf} + @{Empathy-Misc1} + @{Empathy-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Empathy-Total" value="@{Empathy} + @{Empathy-Ability} + @{Empathy-TempMod} + @{Empathy-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
-					<label class="smlabel collapse-details"><input type="text" name="attr_Empathy-Spec" placeholder="Empathy Specialization" /><br><span>Specialization</span></label>
+				
+				<label class="smlabel collapse-details"><input type="text" name="attr_Empathy-Spec" placeholder="Empathy Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Expression ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
 					<ul>
@@ -565,23 +580,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Expression" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Expression-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Expression-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Expression-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Expression-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Expression-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Expression-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Expression-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Expression-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Expression-Ability}" name="attr_Expression-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Expression-Total" value="@{Expression} + @{Expression-Ability} + @{Expression-Mag} + @{Expression-Item} + @{Expression-MerFl} + @{Expression-ShapeShf} + @{Expression-Misc1} + @{Expression-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Expression-Total" value="@{Expression} + @{Expression-Ability} + @{Expression-TempMod} + @{Expression-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Expression-Spec" placeholder="Expression Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Fly ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -601,23 +618,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Flying" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Flying-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Flying-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Flying-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Flying-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Flying-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Flying-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Flying-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Flying-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Flying-Ability}" name="attr_Flying-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Flying-Total" value="@{Flying} + @{Flying-Ability} + @{Flying-Mag} + @{Flying-Item} + @{Flying-MerFl} + @{Flying-ShapeShf} + @{Flying-Misc1} + @{Flying-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Flying-Total" value="@{Flying} + @{Flying-Ability} + @{Flying-TempMod} + @{Flying-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Flying-Spec" placeholder="Flying Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Intimidation ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -637,23 +656,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Intimidation" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Intimidation-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Intimidation-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Intimidation-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Intimidation-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Intimidation-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Intimidation-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Intimidation-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Intimidation-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Intimidation-Ability}" name="attr_Intimidation-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Intimidation-Total" value="@{Intimidation} + @{Intimidation-Ability} + @{Intimidation-Mag} + @{Intimidation-Item} + @{Intimidation-MerFl} + @{Intimidation-ShapeShf} + @{Intimidation-Misc1} + @{Intimidation-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Intimidation-Total" value="@{Intimidation} + @{Intimidation-Ability} + @{Intimidation-TempMod} + @{Intimidation-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Intimidation-Spec" placeholder="Intimidation Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Leadership ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -673,23 +694,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Leadership" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Leadership-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Leadership-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Leadership-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Leadership-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Leadership-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Leadership-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Leadership-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Leadership-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Leadership-Ability}" name="attr_Leadership-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}" selected>CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Leadership-Total" value="@{Leadership} + @{Leadership-Ability} + @{Leadership-Mag} + @{Leadership-Item} + @{Leadership-MerFl} + @{Leadership-ShapeShf} + @{Leadership-Misc1} + @{Leadership-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Leadership-Total" value="@{Leadership} + @{Leadership-Ability} + @{Leadership-TempMod} + @{Leadership-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Leadership-Spec" placeholder="Leadership Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Streetwise ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -709,23 +732,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Streetwise" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Streetwise-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Streetwise-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Streetwise-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Streetwise-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Streetwise-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Streetwise-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Streetwise-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Streetwise-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Streetwise-Ability}" name="attr_Streetwise-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Streetwise-Total" value="@{Streetwise} + @{Streetwise-Ability} + @{Streetwise-Mag} + @{Streetwise-Item} + @{Streetwise-MerFl} + @{Streetwise-ShapeShf} + @{Streetwise-Misc1} + @{Streetwise-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Streetwise-Total" value="@{Streetwise} + @{Streetwise-Ability} + @{Streetwise-TempMod} + @{Streetwise-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Streetwise-Spec" placeholder="Streetwise Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Subterfuge ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -745,23 +770,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Subterfuge" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Subterfuge-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Subterfuge-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Subterfuge-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Subterfuge-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Subterfuge-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Subterfuge-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Subterfuge-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Subterfuge-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Subterfuge-Ability}" name="attr_Subterfuge-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}" selected>MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Subterfuge-Total" value="@{Subterfuge} + @{Subterfuge-Ability} + @{Subterfuge-Mag} + @{Subterfuge-Item} + @{Subterfuge-MerFl} + @{Subterfuge-ShapeShf} + @{Subterfuge-Misc1} + @{Subterfuge-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Subterfuge-Total" value="@{Subterfuge} + @{Subterfuge-Ability} + @{Subterfuge-TempMod} + @{Subterfuge-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Subterfuge-Spec" placeholder="Subterfuge Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 			</div>
@@ -785,24 +812,26 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Acrobatics" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Acrobatics-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Acrobatics-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Acrobatics-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Acrobatics-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Acrobatics-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Acrobatics-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Acrobatics-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Acrobatics-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Acrobatics-Ability}" name="attr_Acrobatics-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Acrobatics-Total" value="@{Acrobatics} + @{Acrobatics-Ability} + @{Acrobatics-Mag} + @{Acrobatics-Item} + @{Acrobatics-MerFl} + @{Acrobatics-ShapeShf} + @{Acrobatics-Misc1} + @{Acrobatics-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Acrobatics-Total" value="@{Acrobatics} + @{Acrobatics-Ability} + @{Acrobatics-TempMod} + @{Acrobatics-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
-					<label class="smlabel collapse-details"><input type="text" name="attr_Acrobatics-Spec" placeholder="Acrobatics Specialization" /><br><span>Specialization</span></label>
+				
+				<label class="smlabel collapse-details"><input type="text" name="attr_Acrobatics-Spec" placeholder="Acrobatics Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- AnimalKen ~ Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
 					<ul>
@@ -821,23 +850,29 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_AnimalKen" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
-					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_AnimalKen-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_AnimalKen-Item" value="0" /><br><span>Item</span></label>
-						<label class="smlabel"><input type="number" name="attr_AnimalKen-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
-						<label class="smlabel"><input type="number" name="attr_AnimalKen-ShapeShf" value="0" /><br><span>Form</span></label>
+					
+					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
+						<label class="ability-optGroup1" title="Add or Subtract default difficulty">Diff</label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffPerm" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffShapeShf" value="0" /><br><span>Form</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffTotal" value="@{AnimalKen-DiffTemp} + @{AnimalKen-DiffPerm} + @{AnimalKen-DiffBuffs} + @{AnimalKen-DiffMerFl} + @{AnimalKen-DiffShapeShf}" disabled /><br><span>Total</span></label>
 					</div>
-					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_AnimalKen-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_AnimalKen-Misc2" value="0" /><br><span>Misc 2</span></label>
-						<label class="smlabel"><select class="skAttrSz" title="@{Crafts-Ability}" name="attr_AnimalKen-Ability">
+					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
+						<label class="ability-optGroup2" title="Add or Subtract from for the number of dice being rolled.">Dice Pool</label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-TempMod" value="0" /><br><span>Temp</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-PermMod" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><select class="skAttrSz" title="@{AnimalKen-Ability}" name="attr_AnimalKen-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
-							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
+							<option value="@{Per-Total}" selected>PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_AnimalKen-Total" value="@{AnimalKen} + @{AnimalKen-Ability} + @{AnimalKen-Mag} + @{AnimalKen-Item} + @{AnimalKen-MerFl} + @{AnimalKen-ShapeShf} + @{AnimalKen-Misc1} + @{AnimalKen-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_AnimalKen-Buffs" value="0" class="3dig" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="text" name="attr_AnimalKen-Total" value="@{AnimalKen} + @{AnimalKen-Ability} + @{AnimalKen-TempMod} + @{AnimalKen-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_AnimalKen-Spec" placeholder="Animal Ken Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Crafts ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -857,23 +892,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Crafts" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Crafts-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Crafts-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Crafts-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Crafts-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Crafts-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Crafts-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Crafts-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Crafts-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Crafts-Ability}" name="attr_Crafts-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Crafts-Total" value="@{Crafts} + @{Crafts-Ability} + @{Crafts-Mag} + @{Crafts-Item} + @{Crafts-MerFl} + @{Crafts-ShapeShf} + @{Crafts-Misc1} + @{Crafts-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Crafts-Total" value="@{Crafts} + @{Crafts-Ability} + @{Crafts-TempMod} + @{Crafts-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Crafts-Spec" placeholder="Crafts Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Drive ~ Mage | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -893,23 +930,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Drive" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Drive-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Drive-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Drive-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Drive-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Drive-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Drive-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Drive-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Drive-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Drive-Ability}" name="attr_Drive-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Drive-Total" value="@{Drive} + @{Drive-Ability} + @{Drive-Mag} + @{Drive-Item} + @{Drive-MerFl} + @{Drive-ShapeShf} + @{Drive-Misc1} + @{Drive-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Drive-Total" value="@{Drive} + @{Drive-Ability} + @{Drive-TempMod} + @{Drive-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Drive-Spec" placeholder="Drive Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_bygone-show" class="race-type-bygone" hidden />
@@ -930,23 +969,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Elusion" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Elusion-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Elusion-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Elusion-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Elusion-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Elusion-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Elusion-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Elusion-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Elusion-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Elusion-Ability}" name="attr_Elusion-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Elusion-Total" value="@{Elusion} + @{Elusion-Ability} + @{Elusion-Mag} + @{Elusion-Item} + @{Elusion-MerFl} + @{Elusion-ShapeShf} + @{Elusion-Misc1} + @{Elusion-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Elusion-Total" value="@{Elusion} + @{Elusion-Ability} + @{Elusion-TempMod} + @{Elusion-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Elusion-Spec" placeholder="Elusion Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Etiquette ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -966,23 +1007,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Etiquette" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Etiquette-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Etiquette-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Etiquette-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Etiquette-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Etiquette-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Etiquette-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Etiquette-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Etiquette-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Etiquette-Ability}" name="attr_Etiquette-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Etiquette-Total" value="@{Etiquette} + @{Etiquette-Ability} + @{Etiquette-Mag} + @{Etiquette-Item} + @{Etiquette-MerFl} + @{Etiquette-ShapeShf} + @{Etiquette-Misc1} + @{Etiquette-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Etiquette-Total" value="@{Etiquette} + @{Etiquette-Ability} + @{Etiquette-TempMod} + @{Etiquette-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Etiquette-Spec" placeholder="Etiquette Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Firearms ~ Mage | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -1002,23 +1045,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Firearms" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Firearms-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Firearms-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Firearms-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Firearms-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Firearms-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Firearms-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Firearms-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Firearms-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Firearms-Ability}" name="attr_Firearms-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Firearms-Total" value="@{Firearms} + @{Firearms-Ability} + @{Firearms-Mag} + @{Firearms-Item} + @{Firearms-MerFl} + @{Firearms-ShapeShf} + @{Firearms-Misc1} + @{Firearms-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Firearms-Total" value="@{Firearms} + @{Firearms-Ability} + @{Firearms-TempMod} + @{Firearms-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Firearms-Spec" placeholder="Firearms Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Larceny ~ Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -1038,23 +1083,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Larceny" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Larceny-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Larceny-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Larceny-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Larceny-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Larceny-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Larceny-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Larceny-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Larceny-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Larceny-Ability}" name="attr_Larceny-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Larceny-Total" value="@{Larceny} + @{Larceny-Ability} + @{Larceny-Mag} + @{Larceny-Item} + @{Larceny-MerFl} + @{Larceny-ShapeShf} + @{Larceny-Misc1} + @{Larceny-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Larceny-Total" value="@{Larceny} + @{Larceny-Ability} + @{Larceny-TempMod} + @{Larceny-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Larceny-Spec" placeholder="Larceny Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Martial Arts ~ Mage -->
@@ -1074,23 +1121,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_MartialArts" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_MartialArts-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_MartialArts-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_MartialArts-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_MartialArts-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_MartialArts-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_MartialArts-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_MartialArts-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_MartialArts-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{MartialArts-Ability}" name="attr_MartialArts-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_MartialArts-Total" value="@{MartialArts} + @{MartialArts-Ability} + @{MartialArts-Mag} + @{MartialArts-Item} + @{MartialArts-MerFl} + @{MartialArts-ShapeShf} + @{MartialArts-Misc1} + @{MartialArts-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_MartialArts-Total" value="@{MartialArts} + @{MartialArts-Ability} + @{MartialArts-TempMod} + @{MartialArts-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_MartialArts-Spec" placeholder="Martial Arts Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Meditation ~ Mage -->
@@ -1110,23 +1159,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Meditation" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Meditation-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Meditation-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Meditation-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Meditation-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Meditation-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Meditation-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Meditation-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Meditation-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Meditation-Ability}" name="attr_Meditation-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Meditation-Total" value="@{Meditation} + @{Meditation-Ability} + @{Meditation-Mag} + @{Meditation-Item} + @{Meditation-MerFl} + @{Meditation-ShapeShf} + @{Meditation-Misc1} + @{Meditation-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Meditation-Total" value="@{Meditation} + @{Meditation-Ability} + @{Meditation-TempMod} + @{Meditation-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Meditation-Spec" placeholder="Meditation Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Melee ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -1146,23 +1197,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Melee" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Melee-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Melee-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Melee-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Melee-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Melee-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Melee-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Melee-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Melee-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Melee-Ability}" name="attr_Melee-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Melee-Total" value="@{Melee} + @{Melee-Ability} + @{Melee-Mag} + @{Melee-Item} + @{Melee-MerFl} + @{Melee-ShapeShf} + @{Melee-Misc1} + @{Melee-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Melee-Total" value="@{Melee} + @{Melee-Ability} + @{Melee-TempMod} + @{Melee-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Melee-Spec" placeholder="Melee Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Performance ~ Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -1182,23 +1235,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Performance" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Performance-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Performance-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Performance-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Performance-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Performance-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Performance-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Performance-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Performance-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Performance-Ability}" name="attr_Performance-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}" selected>CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Performance-Total" value="@{Performance} + @{Performance-Ability} + @{Performance-Mag} + @{Performance-Item} + @{Performance-MerFl} + @{Performance-ShapeShf} + @{Performance-Misc1} + @{Performance-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Performance-Total" value="@{Performance} + @{Performance-Ability} + @{Performance-TempMod} + @{Performance-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Performance-Spec" placeholder="Performance Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Ride ~ Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -1218,23 +1273,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Ride" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Ride-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Ride-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Ride-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Ride-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Ride-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Ride-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Ride-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Ride-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Ride-Ability}" name="attr_Ride-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Ride-Total" value="@{Ride} + @{Ride-Ability} + @{Ride-Mag} + @{Ride-Item} + @{Ride-MerFl} + @{Ride-ShapeShf} + @{Ride-Misc1} + @{Ride-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Ride-Total" value="@{Ride} + @{Ride-Ability} + @{Ride-Mag} + @{Ride-TempMod} + @{Ride-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Ride-Spec" placeholder="Ride Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Research ~ Mage -->
@@ -1254,23 +1311,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Research" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Research-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Research-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Research-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Research-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Research-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Research-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Research-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Research-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Research-Ability}" name="attr_Research-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Research-Total" value="@{Research} + @{Research-Ability} + @{Research-Mag} + @{Research-Item} + @{Research-MerFl} + @{Research-ShapeShf} + @{Research-Misc1} + @{Research-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Research-Total" value="@{Research} + @{Research-Ability} + @{Research-TempMod} + @{Research-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Research-Spec" placeholder="Research Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Stealth ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -1290,23 +1349,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Stealth" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Stealth-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Stealth-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Stealth-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Stealth-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Stealth-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Stealth-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Stealth-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Stealth-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Stealth-Ability}" name="attr_Stealth-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}" selected>DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Stealth-Total" value="@{Stealth} + @{Stealth-Ability} + @{Stealth-Mag} + @{Stealth-Item} + @{Stealth-MerFl} + @{Stealth-ShapeShf} + @{Stealth-Misc1} + @{Stealth-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Stealth-Total" value="@{Stealth} + @{Stealth-Ability} + @{Stealth-TempMod} + @{Stealth-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Stealth-Spec" placeholder="Stealth Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Survival ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -1326,23 +1387,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Survival" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Survival-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Survival-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Survival-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Survival-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Survival-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Survival-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Survival-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Survival-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Survival-Ability}" name="attr_Survival-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}" selected>WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Survival-Total" value="@{Survival} + @{Survival-Ability} + @{Survival-Mag} + @{Survival-Item} + @{Survival-MerFl} + @{Survival-ShapeShf} + @{Survival-Misc1} + @{Survival-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Survival-Total" value="@{Survival} + @{Survival-Ability} + @{Survival-TempMod} + @{Survival-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Survival-Spec" placeholder="Survival Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_bygone-show" class="race-type-bygone" hidden />
@@ -1363,23 +1426,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_WildHunting" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_WildHunting-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_WildHunting-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_WildHunting-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_WildHunting-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_WildHunting-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_WildHunting-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_WildHunting-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_WildHunting-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{WildHunting-Ability}" name="attr_WildHunting-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_WildHunting-Total" value="@{WildHunting} + @{WildHunting-Ability} + @{WildHunting-Mag} + @{WildHunting-Item} + @{WildHunting-MerFl} + @{WildHunting-ShapeShf} + @{WildHunting-Misc1} + @{WildHunting-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_WildHunting-Total" value="@{WildHunting} + @{WildHunting-Ability} + @{WildHunting-TempMod} + @{WildHunting-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_WildHunting-Spec" placeholder="Wild Hunting Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Technology ~ Mage -->
@@ -1399,23 +1464,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Technology" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Technology-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Technology-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Technology-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Technology-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Technology-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Technology-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Technology-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Technology-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Technology-Ability}" name="attr_Technology-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Technology-Total" value="@{Technology} + @{Technology-Ability} + @{Technology-Mag} + @{Technology-Item} + @{Technology-MerFl} + @{Technology-ShapeShf} + @{Technology-Misc1} + @{Technology-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Technology-Total" value="@{Technology} + @{Technology-Ability} + @{Technology-TempMod} + @{Technology-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Technology-Spec" placeholder="Technology Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 			</div>
@@ -1438,23 +1505,29 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Academics" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
-					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Academics-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Academics-Item" value="0" /><br><span>Item</span></label>
-						<label class="smlabel"><input type="number" name="attr_Academics-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
-						<label class="smlabel"><input type="number" name="attr_Academics-ShapeShf" value="0" /><br><span>Form</span></label>
+					
+					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
+						<label class="ability-optGroup1" title="Add or Subtract default difficulty">Diff</label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffPerm" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffShapeShf" value="0" /><br><span>Form</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffTotal" value="@{attr_Academics-DiffTemp} + @{Academics-DiffPerm} + @{Academics-DiffBuffs} + @{Academics-DiffMerFl} + @{Academics-DiffShapeShf}" disabled /><br><span>Total</span></label>
 					</div>
-					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Academics-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Academics-Misc2" value="0" /><br><span>Misc 2</span></label>
+					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
+						<label class="ability-optGroup2" title="Add or Subtract from for the number of dice being rolled.">Dice Pool</label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-TempMod" value="0" /><br><span>Temp</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-PermMod" value="0" /><br><span>Perm</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Academics-Ability}" name="attr_Academics-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
-							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
+							<option value="@{Per-Total}" selected>PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Academics-Total" value="@{Academics} + @{Academics-Ability} + @{Academics-Mag} + @{Academics-Item} + @{Academics-MerFl} + @{Academics-ShapeShf} + @{Academics-Misc1} + @{Academics-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Alert-Buffs" value="0" class="3dig" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="text" name="attr_Alert-Total" value="@{Academics} + @{Academics-Ability} + @{Academics-TempMod} + @{Academics-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Academics-Spec" placeholder="Academics Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_bygone-show" class="race-type-bygone" hidden />
@@ -1475,23 +1548,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_AnimSpeech" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_AnimSpeech-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_AnimSpeech-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_AnimSpeech-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_AnimSpeech-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_AnimSpeech-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_AnimSpeech-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_AnimSpeech-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_AnimSpeech-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{AnimSpeech-Ability}" name="attr_AnimSpeech-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_AnimSpeech-Total" value="@{AnimSpeech} + @{AnimSpeech-Ability} + @{AnimSpeech-Mag} + @{AnimSpeech-Item} + @{AnimSpeech-MerFl} + @{AnimSpeech-ShapeShf} + @{AnimSpeech-Misc1} + @{AnimSpeech-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_AnimSpeech-Total" value="@{AnimSpeech} + @{AnimSpeech-Ability} + @{AnimSpeech-TempMod} + @{AnimSpeech-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_AnimSpeech-Spec" placeholder="Animal Speech Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_bygone-show" class="race-type-bygone" hidden />
@@ -1512,23 +1587,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_BeastLore" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_BeastLore-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_BeastLore-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_BeastLore-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_BeastLore-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_BeastLore-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_BeastLore-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_BeastLore-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_BeastLore-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{BeastLore-Ability}" name="attr_BeastLore-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_BeastLore-Total" value="@{BeastLore} + @{BeastLore-Ability} + @{BeastLore-Mag} + @{BeastLore-Item} + @{BeastLore-MerFl} + @{BeastLore-ShapeShf} + @{BeastLore-Misc1} + @{BeastLore-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_BeastLore-Total" value="@{BeastLore} + @{BeastLore-Ability} + @{BeastLore-TempMod} + @{BeastLore-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_BeastLore-Spec" placeholder="Beast Lore Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Computers ~ Mage | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -1548,23 +1625,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Computers" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Computers-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Computers-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Computers-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Computers-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Computers-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Computers-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Computers-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Computers-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Computers-Ability}" name="attr_Computers-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Computers-Total" value="@{Computers} + @{Computers-Ability} + @{Computers-Mag} + @{Computers-Item} + @{Computers-MerFl} + @{Computers-ShapeShf} + @{Computers-Misc1} + @{Computers-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Computers-Total" value="@{Computers} + @{Computers-Ability} + @{Computers-TempMod} + @{Computers-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Computers-Spec" placeholder="Computers Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Cosmology ~ Mage -->
@@ -1584,23 +1663,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Cosmology" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Cosmology-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Cosmology-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Cosmology-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Cosmology-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Cosmology-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Cosmology-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Cosmology-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Cosmology-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Cosmology-Ability}" name="attr_Cosmology-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Cosmology-Total" value="@{Cosmology} + @{Cosmology-Ability} + @{Cosmology-Mag} + @{Cosmology-Item} + @{Cosmology-MerFl} + @{Cosmology-ShapeShf} + @{Cosmology-Misc1} + @{Cosmology-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Cosmology-Total" value="@{Cosmology} + @{Cosmology-Ability} + @{Cosmology-TempMod} + @{Cosmology-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Cosmology-Spec" placeholder="Cosmology Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_bygone-show" class="race-type-bygone" hidden />
@@ -1621,23 +1702,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Culture" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Culture-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Culture-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Culture-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Culture-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Culture-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Culture-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Culture-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Culture-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Culture-Ability}" name="attr_Culture-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Culture-Total" value="@{Culture} + @{Culture-Ability} + @{Culture-Mag} + @{Culture-Item} + @{Culture-MerFl} + @{Culture-ShapeShf} + @{Culture-Misc1} + @{Culture-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Culture-Total" value="@{Culture} + @{Culture-Ability} + @{Culture-TempMod} + @{Culture-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Culture-Spec" placeholder="Culture Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Enigmas ~ Mage | Werewolf -->
@@ -1657,23 +1740,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Enigmas" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Enigmas-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Enigmas-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Enigmas-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Enigmas-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Enigmas-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Enigmas-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Enigmas-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Enigmas-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Enigmas-Ability}" name="attr_Enigmas-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Enigmas-Total" value="@{Enigmas} + @{Enigmas-Ability} + @{Enigmas-Mag} + @{Enigmas-Item} + @{Enigmas-MerFl} + @{Enigmas-ShapeShf} + @{Enigmas-Misc1} + @{Enigmas-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Enigmas-Total" value="@{Enigmas} + @{Enigmas-Ability} + @{Enigmas-TempMod} + @{Enigmas-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Enigmas-Spec" placeholder="Enigmas Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Esoterica ~ Mage -->
@@ -1693,23 +1778,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Esoterica" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Esoterica-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Esoterica-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Esoterica-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Esoterica-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Esoterica-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Esoterica-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Esoterica-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Esoterica-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Esoterica-Ability}" name="attr_Esoterica-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Esoterica-Total" value="@{Esoterica} + @{Esoterica-Ability} + @{Esoterica-Mag} + @{Esoterica-Item} + @{Esoterica-MerFl} + @{Esoterica-ShapeShf} + @{Esoterica-Misc1} + @{Esoterica-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Esoterica-Total" value="@{Esoterica} + @{Esoterica-Ability} + @{Esoterica-TempMod} + @{Esoterica-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Esoterica-Spec" placeholder="Esoterica Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden />
@@ -1730,23 +1817,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_HearthWis" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_HearthWis-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_HearthWis-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_HearthWis-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_HearthWis-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_HearthWis-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_HearthWis-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number"	name="attr_HearthWis-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_HearthWis-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{HearthWis-Ability}" name="attr_HearthWis-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_HearthWis-Total" value="@{HearthWis} + @{HearthWis-Ability} + @{HearthWis-Mag} + @{HearthWis-Item} + @{HearthWis-MerFl} + @{HearthWis-ShapeShf} + @{HearthWis-Misc1} + @{HearthWis-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_HearthWis-Total" value="@{HearthWis} + @{HearthWis-Ability} + @{HearthWis-TempMod} + @{HearthWis-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_HearthWis-Spec" placeholder="Hearth Wisdom Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Finance ~ Vampire | Mummy | Hunter -->
@@ -1766,23 +1855,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Finance" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Finance-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Finance-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Finance-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Finance-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Finance-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Finance-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Finance-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Finance-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Finance-Ability}" name="attr_Finance-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Finance-Total" value="@{Finance} + @{Finance-Ability} + @{Finance-Mag} + @{Finance-Item} + @{Finance-MerFl} + @{Finance-ShapeShf} + @{Finance-Misc1} + @{Finance-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Finance-Total" value="@{Finance} + @{Finance-Ability} + @{Finance-TempMod} + @{Finance-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Finance-Spec" placeholder="Finance Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_changeling20-show" class="race-type-changeling" hidden />
@@ -1803,23 +1894,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Gremayre" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Gremayre-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Gremayre-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Gremayre-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Gremayre-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Gremayre-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Gremayre-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Gremayre-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Gremayre-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Gremayre-Ability}" name="attr_Gremayre-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Gremayre-Total" value="@{Gremayre} + @{Gremayre-Ability} + @{Gremayre-Mag} + @{Gremayre-Item} + @{Gremayre-MerFl} + @{Gremayre-ShapeShf} + @{Gremayre-Misc1} + @{Gremayre-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Gremayre-Total" value="@{Gremayre} + @{Gremayre-Ability} + @{Gremayre-TempMod} + @{Gremayre-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Gremayre-Spec" placeholder="Gremayre Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Investigation ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -1839,23 +1932,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Investigation" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Investigation-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Investigation-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Investigation-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Investigation-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Investigation-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Investigation-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Investigation-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Investigation-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Investigation-Ability}" name="attr_Investigation-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}" selected>WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Investigation-Total" value="@{Investigation} + @{Investigation-Ability} + @{Investigation-Mag} + @{Investigation-Item} + @{Investigation-MerFl} + @{Investigation-ShapeShf} + @{Investigation-Misc1} + @{Investigation-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Investigation-Total" value="@{Investigation} + @{Investigation-Ability} + @{Investigation-TempMod} + @{Investigation-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Investigation-Spec" placeholder="Investigation Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Law ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -1875,23 +1970,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Law" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Law-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Law-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Law-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Law-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Law-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Law-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Law-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Law-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Law-Ability}" name="attr_Law-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Law-Total" value="@{Law} + @{Law-Ability} + @{Law-Mag} + @{Law-Item} + @{Law-MerFl} + @{Law-ShapeShf} + @{Law-Misc1} + @{Law-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Law-Total" value="@{Law} + @{Law-Ability} + @{Law-TempMod} + @{Law-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Law-Spec" placeholder="Law Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Medicine ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -1911,23 +2008,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Medicine" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Medicine-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Medicine-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Medicine-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Medicine-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Medicine-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Medicine-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Medicine-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Medicine-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Medicine-Ability}" name="attr_Medicine-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Medicine-Total" value="@{Medicine} + @{Medicine-Ability} + @{Medicine-Mag} + @{Medicine-Item} + @{Medicine-MerFl} + @{Medicine-ShapeShf} + @{Medicine-Misc1} + @{Medicine-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Medicine-Total" value="@{Medicine} + @{Medicine-Ability} + @{Medicine-TempMod} + @{Medicine-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Medicine-Spec" placeholder="Medicine Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_bygone-show" class="race-type-bygone" hidden />
@@ -1948,23 +2047,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Metaphysics" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Metaphysics-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Metaphysics-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Metaphysics-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Metaphysics-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Metaphysics-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Metaphysics-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Metaphysics-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Metaphysics-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Metaphysics-Ability}" name="attr_Metaphysics-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Metaphysics-Total" value="@{Metaphysics} + @{Metaphysics-Ability} + @{Metaphysics-Mag} + @{Metaphysics-Item} + @{Metaphysics-MerFl} + @{Metaphysics-ShapeShf} + @{Metaphysics-Misc1} + @{Metaphysics-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Metaphysics-Total" value="@{Metaphysics} + @{Metaphysics-Ability} + @{Metaphysics-TempMod} + @{Metaphysics-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Metaphysics-Spec" placeholder="Metaphysics Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Occult ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -1984,23 +2085,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Occult" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Occult-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Occult-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Occult-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Occult-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Occult-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Occult-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Occult-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Occult-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Occult-Ability}" name="attr_Occult-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Occult-Total" value="@{Occult} + @{Occult-Ability} + @{Occult-Mag} + @{Occult-Item} + @{Occult-MerFl} + @{Occult-ShapeShf} + @{Occult-Misc1} + @{Occult-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Occult-Total" value="@{Occult} + @{Occult-Ability} + @{Occult-TempMod} + @{Occult-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Occult-Spec" placeholder="Occult Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Rituals ~ Werewolf -->
@@ -2020,23 +2123,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Rituals" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Rituals-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Rituals-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Rituals-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Rituals-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Rituals-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Rituals-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Rituals-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Rituals-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Rituals-Ability}" name="attr_Rituals-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Rituals-Total" value="@{Rituals} + @{Rituals-Ability} + @{Rituals-Mag} + @{Rituals-Item} + @{Rituals-MerFl} + @{Rituals-ShapeShf} + @{Rituals-Misc1} + @{Rituals-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Rituals-Total" value="@{Rituals} + @{Rituals-Ability} + @{Rituals-TempMod} + @{Rituals-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Rituals-Spec" placeholder="Rituals Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Politics ~ Mage | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -2056,23 +2161,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Politics" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Politics-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Politics-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Politics-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Politics-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Politics-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Politics-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Politics-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Politics-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Politics-Ability}" name="attr_Politics-Ability">
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Politics-Total" value="@{Politics} + @{Politics-Ability} + @{Politics-Mag} + @{Politics-Item} + @{Politics-MerFl} + @{Politics-ShapeShf} + @{Politics-Misc1} + @{Politics-Misc2}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Politics-Total" value="@{Politics} + @{Politics-Ability} + @{Politics-TempMod} + @{Politics-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Politics-Spec" placeholder="Politics Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden />
@@ -2093,23 +2200,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Seneschal" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden />
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Seneschal-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Seneschal-Item" value="0" /><br><span>Item</span></label>
+					
 						<label class="smlabel"><input type="number" name="attr_Seneschal-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Seneschal-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Seneschal-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Seneschal-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Seneschal-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Seneschal-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Seneschal-Ability}" name="attr_Seneschal-Ability" />
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Seneschal-Total" value="@{Seneschal} + @{Seneschal-Ability} + @{Seneschal-Mag} + @{Seneschal-Item} + @{Seneschal-MerFl} + @{Seneschal-ShapeShf} + @{Seneschal-Misc1} + @{Seneschal-Misc2}" class="3dig" disabled /><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Seneschal-Total" value="@{Seneschal} + @{Seneschal-Ability} + @{Seneschal-TempMod} + @{Seneschal-PermMod}" class="3dig" disabled /><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Seneschal-Spec" placeholder="Seneschal Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				<div class="border"><!-- Science ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter -->
@@ -2129,23 +2238,25 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Science" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
+					
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Science-Mag" value="0" /><br><span>Magic</span></label>
-						<label class="smlabel"><input type="number" name="attr_Science-Item" value="0" /><br><span>Item</span></label>
+						
 						<label class="smlabel"><input type="number" name="attr_Science-MerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" name="attr_Science-ShapeShf" value="0" /><br><span>Form</span></label>
 					</div>
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><input type="number" name="attr_Science-Misc1" value="0" /><br><span>Misc 1</span></label>
-						<label class="smlabel"><input type="number" name="attr_Science-Misc2" value="0" /><br><span>Misc 2</span></label>
+					
+						<label class="smlabel"><input type="number" name="attr_Science-TempMod" value="0" /><br><span>Temp Mod</span></label>
+						<label class="smlabel"><input type="number" name="attr_Science-PermMod" value="0" /><br><span>Perm Mod</span></label>
 						<label class="smlabel"><select class="skAttrSz" name="attr_Science-Ability" title="@{Science-Ability}" />
 							<option value="0">• None</option>
 							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Science-Total" value="@{Science} + @{Science-Ability} + @{Science-Mag} + @{Science-Item} + @{Science-MerFl} + @{Science-ShapeShf} + @{Science-Misc1} + @{Science-Misc2}" class="3dig" disabled /><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Science-Total" value="@{Science} + @{Science-Ability} + @{Science-TempMod} + @{Science-PermMod}" class="3dig" disabled /><br><span>Total</span></label><br>
 					</div>
+					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Science-Spec" placeholder="Science Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
 				
@@ -2153,31 +2264,51 @@
 			</div>
 		</div><br><br>
 		<div class="repeating-container">
-			<fieldset class="repeating_abilities repstyle-abilites">
-				<label class="sml2">
-					<input type="text" class="" name="attr_reptext" title="@{repeating_abiliies_$X_reptext">
-					<span>text</span>
-				</label>
-				<label class="sml2">
-					<input type="text" class="" name="attr_reptext" title="@{repeating_abiliies_$X_reptext">
-					<span>text</span>
-				</label>
+			<fieldset class="repeating_abilities repstyle-abilites">			
 				<ul>
-					<li>Science<button type="roll" name="roll_Science-Check" value="[QUERY]" title="%{selected|Science-Check} Tokenless Roll (No Token Select Required for this Roll)" /></button></li>
-					<li class="dicepool">
-						<input type="radio" class="hd zero" name="attr_Science" value="0" checked /><span></span>
-						<input type="radio" class="hd" name="attr_Science" value="1" /><span></span>
-						<input type="radio" class="hd" name="attr_Science" value="2" /><span></span>
-						<input type="radio" class="hd" name="attr_Science" value="3" /><span></span>
-						<input type="radio" class="hd" name="attr_Science" value="4" /><span></span>
-						<input type="radio" class="hd" name="attr_Science" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="hd show-10d-skills" name="attr_Science" value="6" /><span></span>
-						<input type="radio" class="hd show-10d-skills" name="attr_Science" value="7" /><span></span>
-						<input type="radio" class="hd show-10d-skills" name="attr_Science" value="8" /><span></span>
-						<input type="radio" class="hd show-10d-skills" name="attr_Science" value="9" /><span></span>
-						<input type="radio" class="hd show-10d-skills" name="attr_Science" value="10" /><span></span></li>
-					</ul>
-
+					<li>
+						<button type="roll" class="rep-rbtn" name="roll_selRoll" value="[QUERY]" title="%{selected|repeating_abilities_$X_selRoll} Selected Token Roll (Token Select Required for this Roll)" /></button>
+					</li>
+					<li>
+						<input type="text" class="" style="width: 11em;" name="attr_abilityName" title="@{repeating_abiliies_$X_abilityName"><br><span class="SkPoolLabel">Skill/Talent/Knowlege</span>		
+					</li>
+					<li class="dicepool" style="min-width: 8em; max-width: 8em;">
+						<input type="radio" class="hd zero" name="attr_abilityPool" value="0" checked /><span></span>
+						<input type="radio" class="hd" name="attr_abilityPool" value="1" /><span></span>
+						<input type="radio" class="hd" name="attr_abilityPool" value="2" /><span></span>
+						<input type="radio" class="hd" name="attr_abilityPool" value="3" /><span></span>
+						<input type="radio" class="hd" name="attr_abilityPool" value="4" /><span></span>
+						<input type="radio" class="hd" name="attr_abilityPool" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" class="hd show-10d-skills" name="attr_abilityPool" value="6" /><span></span>
+						<input type="radio" class="hd show-10d-skills" name="attr_abilityPool" value="7" /><span></span>
+						<input type="radio" class="hd show-10d-skills" name="attr_abilityPool" value="8" /><span></span>
+						<input type="radio" class="hd show-10d-skills" name="attr_abilityPool" value="9" /><span></span>
+						<input type="radio" class="hd show-10d-skills" name="attr_abilityPool" value="10" /><span></span>
+					</li>
+					<li>
+						<select class="rep-skAttrSz" name="attr_abilAttr" title="@{repeating_abilities_$X_abilAttr}" />
+							<option value="0">• None</option>
+							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
+							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
+							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}" selected>INT</option><option value="@{Wit-Total}">WIT</option>
+						</select><br><span class="SkPoolLabel" title="Default attribute used by rolls.  This can be modified at time of roll if the &quot;Prompt for roll-time Attribute&quot; option is on the configuration tab.">Attribute</span>
+					</li>
+					<li>
+						<input type="number" class="" name="attr_abilMagBon" title="@{repeating_abiliies_$X_abilTempMod"><br><span class="SkPoolLabel">Temp Mod</span>
+					</li>
+					<li>
+						<input type="number" class="" name="attr_abilItmBon" title="@{repeating_abiliies_$X_abilPermMod"><br><span class="SkPoolLabel">Perm Mod</span>
+					</li>
+					<li>
+						<input type="number" class="" name="attr_abilMerit"  title="@{repeating_abiliies_$X_abilMeritF"><br><span class="SkPoolLabel">Merit/Flaw</span>
+					</li>
+					<li>
+						<input type="number" class="" name="attr_abilForm"  title="@{repeating_abiliies_$X_abilForm" disabled><br><span class="SkPoolLabel" title="Used by were-creatures and shen.">Form</span>
+					</li>
+					<li>
+						<input type="number" class="" name="attr_abilTotalPool"  title="@{repeating_abiliies_$X_abilTotalPool" disabled><br><span class="SkPoolLabel" title="This is the calculated total number of dice to be rolled.">Total</span>
+					</li>
+				</ul>
 			</fieldset>
 		</div>
 	</div> <!-- End of Core Section -->
