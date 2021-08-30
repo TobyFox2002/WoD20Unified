@@ -348,17 +348,17 @@
 							<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="10" /><span></span></li>
 					</ul>
 					<input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden>
-					
+					<input type="hidden" name="collapse-flag-abilBuffs" value="0">
+					<button type="action" class="collapse-button" name="act_collapse-abil-DiffMod" >Difficulty Modifier</button>
 					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
-						<label class="ability-optGroup1" title="Add or Subtract default difficulty">Diff</label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffPerm" value="0" /><br><span>Perm</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffShapeShf" value="0" /><br><span>Form</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
-						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffTotal" value="@{Alert-DiffTemp} + @{Alert-DiffPerm} + @{Alert-DiffBuffs} + @{Alert-DiffMerFl} + @{Alert-DiffShapeShf}" disabled /><br><span>Total</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-DiffTotal" value="@{Alert-DiffPerm} + @{Alert-DiffBuffs} + @{Alert-DiffMerFl} + @{Alert-DiffShapeShf}" disabled /><br><span>Total</span></label>
 					</div>
+					<button type="action" class="collapse-button" name="act_collapse-abil-DicePool" >Dice Pool</button>
 					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
-						<label class="ability-optGroup2" title="Add or Subtract from for the number of dice being rolled.">Dice Pool</label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-TempMod" value="0" /><br><span>Temp</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Alert-PermMod" value="0" /><br><span>Perm</span></label>
 						<label class="smlabel"><select class="skAttrSz" title="@{Alertness-Ability}" name="attr_Alertness-Ability">
@@ -857,7 +857,7 @@
 						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffShapeShf" value="0" /><br><span>Form</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
-						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffTotal" value="@{AnimalKen-DiffTemp} + @{AnimalKen-DiffPerm} + @{AnimalKen-DiffBuffs} + @{AnimalKen-DiffMerFl} + @{AnimalKen-DiffShapeShf}" disabled /><br><span>Total</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_AnimalKen-DiffTotal" value="@{AnimalKen-DiffPerm} + @{AnimalKen-DiffBuffs} + @{AnimalKen-DiffMerFl} + @{AnimalKen-DiffShapeShf}" disabled /><br><span>Total</span></label>
 					</div>
 					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
 						<label class="ability-optGroup2" title="Add or Subtract from for the number of dice being rolled.">Dice Pool</label>
@@ -1289,7 +1289,7 @@
 							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
 							<option value="@{Per-Total}">PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
-						<label class="smlabel"><input type="text" name="attr_Ride-Total" value="@{Ride} + @{Ride-Ability} + @{Ride-Mag} + @{Ride-TempMod} + @{Ride-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
+						<label class="smlabel"><input type="text" name="attr_Ride-Total" value="@{Ride} + @{Ride-Ability} + @{Ride-TempMod} + @{Ride-PermMod}" class="3dig" disabled><br><span>Total</span></label><br>
 					</div>
 					
 					<label class="smlabel collapse-details"><input type="text" name="attr_Ride-Spec" placeholder="Ride Specialization" /><br><span>Specialization</span></label>
@@ -1512,7 +1512,7 @@
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffShapeShf" value="0" /><br><span>Form</span></label>
 						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
-						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffTotal" value="@{attr_Academics-DiffTemp} + @{Academics-DiffPerm} + @{Academics-DiffBuffs} + @{Academics-DiffMerFl} + @{Academics-DiffShapeShf}" disabled /><br><span>Total</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Academics-DiffTotal" value="@{Academics-DiffPerm} + @{Academics-DiffBuffs} + @{Academics-DiffMerFl} + @{Academics-DiffShapeShf}" disabled /><br><span>Total</span></label>
 					</div>
 					<div class="abilBuffs collapse-details" style="border: 1px dotted black; padding: .3em;">
 						<label class="ability-optGroup2" title="Add or Subtract from for the number of dice being rolled.">Dice Pool</label>
@@ -2382,4 +2382,20 @@
 		   });
 		  });
 		 });
+		 
+		 on('clicked:collapse-abilBuffs', (ev) => {
+			let section = (ev.triggerName.match(/collapse-(.*)/) || [])[1];
+			console.info(`Collapse event triggered on section: "${section}"`, ev);
+			toggleAttr(`collapse-flag-${section}`, true);
+		});
+
+		// Helper function to toggle 1 and 0. Uses lazy == compare, which some people don't like. You can parseInt if you wish
+		const toggleAttr = (target, log=false) => {
+			target = (Array.isArray(target)) ? target : [target];
+			getAttrs(target, (val) => {
+				if (log) console.log(`Toggle Helper: ${target} initial value: "${val[target]}"`);
+				let outVal = (!val[target] || val[target] == 0) ? 1 : 0;
+				setAttrs({[target]: outVal});
+				if (log) console.log(`Toggle Helper: ${target} switched to "${outVal}"`);
+			});
 	</script>

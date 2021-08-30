@@ -7,15 +7,15 @@
   margin: 0px;
   padding: 0px;
 }
-/* Reset all roll buttons to use the D6 dice instead of the D20 Dice */
-/* The font is called "dicefontd6" and it is unique to r20 for their layout */
+/* Reset all roll buttons to use the D10 dice instead of the D20 Dice */
+/* The font is called "dicefontd10" and it is unique to r20 for their layout */
 /* The default font family is called "dicefontd20" which has the icon shape of a 20-sided dice */
 /* See https://wiki.roll20.net/CSS#Icon_Fonts for more details */
 
 button[type="roll"]:before {
-	font-family: "dicefontd6" !important;
+	font-family: "dicefontd10" !important;
 	font-size: 1.7em;
-	content: "l" !important;
+	content: "k" !important;
 }
 @font-face {
   /* Font from: https://fontlibrary.org/en/font/rufscript */
@@ -663,4 +663,19 @@ div.sheet-repeating-container li.sheet-dicepool {
     border: 1px solid black;
     border-radius: 6px;
     margin: 0px;
+}
+.sheet-collapse-button {
+	width: 93%;
+	border-radius: 30px;
+	font-family: "RufscriptRegular";
+	height: 1em;
+	font-size: .7em;
+	padding-bottom: .6em;
+}
+.sheet-collapse-details {
+    display:none;
+}
+
+input[type="hidden"][name*="collapse-flag"][value="1"] ~ .sheet-collapse-details {
+    display:block;
 }
