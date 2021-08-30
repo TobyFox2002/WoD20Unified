@@ -672,10 +672,6 @@ div.sheet-repeating-container li.sheet-dicepool {
 	font-size: .7em;
 	padding-bottom: .6em;
 }
-.sheet-collapse-details {
-    display:none;
-}
-
-input[type="hidden"][name*="collapse-flag"][value="1"] ~ .sheet-collapse-details {
-    display:block;
+input[name*="collapse-flag"][value="0"] + .sheet-collapse-details {
+    display: none;
 }
