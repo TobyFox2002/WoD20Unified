@@ -17,6 +17,11 @@ button[type="roll"]:before {
 	font-size: 1.7em;
 	content: "k" !important;
 }
+button.sheet-quickroll:before {/* Overides the icon so text can be displayed within instead */
+    content: "" !important;
+	font-size:0.75em;
+    display: none;
+}
 @font-face {
   /* Font from: https://fontlibrary.org/en/font/rufscript */
   font-family: "RufscriptRegular";
@@ -91,12 +96,14 @@ div.sheet-repeating-container input.sheet-hd[type="checkbox"] + span::before {
 /* Hides Fake Checkbox above 5dots if option not selected. */
 .sheet-610-attr:not(:checked)   ~ input.sheet-show-10d-attr.sheet-hd[type="radio"] + span::before,
 .sheet-610-bgs:not(:checked)    ~ input.sheet-show-10d-bgs.sheet-hd[type="radio"] + span::before,
-.sheet-610-skills:not(:checked) ~ input.sheet-show-10d-skills.sheet-hd[type="radio"] + span::before {
+.sheet-610-skills:not(:checked) ~ input.sheet-show-10d-skills.sheet-hd[type="radio"] + span::before,
+.sheet-610-spheres:not(:checked) ~ input.sheet-show-10d-spheres.sheet-hd[type="radio"] + span::before {
 	display: none;
 }
 .sheet-610-attr:checked ~ .sheet-show-10d-attr.sheet-hd,
 .sheet-610-bgs:checked ~ .sheet-show-10d-bgs.sheet-hd,
-.sheet-610-skills:checked ~ .sheet-show-10d-skills.sheet-hd {
+.sheet-610-skills:checked ~ .sheet-show-10d-skills.sheet-hd,
+.sheet-610-spheres:checked ~ .sheet-show-10d-spheres.sheet-hd {
     display: inline;
 }
 
@@ -112,6 +119,18 @@ div.sheet-repeating-container input.sheet-hd[type="radio"] + span::before
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+}
+input.sheet-square[type="radio"] + span::before,
+div.sheet-repeating-container input.sheet-square[type="radio"] + span::before {
+	font-family: "Pictos" !important;
+    content: "6"; /* Media Button: Stop (a giant square) */
+    width: 11px;
+    height: 12px;
+    font-size: 13px;
+	
+	-moz-border-radius: 0% !important;
+	-webkit-border-radius: 0% !important;
+	border-radius: 0% !important;
 }
 
 /* Styles unique to fake checkbox (unchecked) */
@@ -257,8 +276,7 @@ div.sheet-sectHeadCntr ul {
   align-items: center;
 }
 li {
-  margin: 0.2em;
-  padding: 0.3em;
+  margin: .5em 0em .5em 0em;
 }
 
 div.sheet-triColumn {
@@ -292,12 +310,24 @@ div.sheet-columns ul li {
   flex: 1;
   border: 1px solid black;
 }
+.sheet-border { /* Bounding Box for tri-colom elements. */
+	border: 1px solid black;
+	border-bottom: 7px solid black !important;
+	border-radius: 10px;
+}
 li.sheet-dicepool { /* Prevent more than 5 dots per line. */
-	/* max-width: 8em; */
+	max-width: 8em;
 	min-width: 8em;
+}
+li.sheet-aretepool {
+	min-width: 8em;
+	max-width: 16em !important;
+	margin: .4em 2em .4em 2em !important;
 }
 div.sheet-abilBuffs {
 	display: inline-flex;
+	border: 1px dotted black;
+	padding: .3em;
 }
 li.sheet-ability-label {
 	
@@ -347,6 +377,18 @@ button.sheet-Pictos {
   border-radius: 5px;
   background-color: white;
   text-align: center;
+}
+/* CSS Buttons (SheetWorkers) */
+.sheet-swbutton {
+	height: 1em !important;
+	width: 1em !important;
+	padding: .4em;
+	
+	font-family: "Pictos" !important;
+	font-size: 1.3em;
+	
+	border: 1px solid black;
+	border-radius: 5px;
 }
 /* CSS Button Styles (No SheetWorkers) */
 .sheet-cssbutton, .sheet-showarrow, .sheet-ack-button,
@@ -430,6 +472,17 @@ button.sheet-button-tab {
 
   font-family: Arial;
   font-weight: bold;
+}
+.sheet-collapse-button {
+	width: 93%;
+	border-radius: 30px;
+	font-family: "RufscriptRegular";
+	height: 1em;
+	font-size: .7em;
+	padding-bottom: .6em;
+}
+input[name*="collapse-flag"][value="0"] + .sheet-collapse-details {
+    display: none;
 }
 div.sheet-flexwrap {display: flex;}
 
@@ -600,12 +653,21 @@ input.sheet-bigCheck {
 .w93p {width: 93%;}
 
 /* Repeating Section Styles */
-div.sheet-repeating-container {
-	border: 1px solid black;
+.charsheet .repcontainer .repitem {
 	padding: 0px 5px;
 	border-radius: 10px;
+	margin: 1px 5px;
+	min-width: 20em; /* Prevents contents from clippling through borders */
 	background-color: #d3d3d3;
-	}
+	border: 1px solid black;
+}
+div.sheet-repeating-container {
+	/* border: 1px solid black;     Hidden because it was incorrectly coded
+	padding: 0px 5px;
+	border-radius: 10px;
+	background-color: #d3d3d3; */
+	min-width: 20em !important; /* REQUIRED! Without this the rep-container border and background could be compressed more than the fields contained within.  Making it unreadable. */
+}
 /* Small Label #2 */
 .sheet-sml2 {
     display: inline-flex;
@@ -644,8 +706,25 @@ div.sheet-repeating-container ul li {
     flex: 1;
     border: 1px solid black;
 }
+
 div.sheet-repeating-container li.sheet-dicepool {
-	min-width: 8em;
+	min-width: 18em;
+}
+div.sheet-repeating-container .sheet-collapse-button {
+	width: 93%; /* Interacts with margin-left to create the illusion of centering */
+	border-radius: 30px;
+	font-family: "RufscriptRegular";
+	height: 1em;
+	font-size: .7em;
+	padding-bottom: .6em;
+	margin-left: 2%; /* Interacts with the width to create the illusion of centering */
+}
+div.sheet-repeating-container div.sheet-abilBuffs {
+	display: inline-flex;
+	border: 1px dotted black;
+	padding: .3em;
+	margin-left: 1%;
+	width: 97.4%;
 }
 .sheet-inflex {display: inline-flex;}
 .sheet-SkPoolLabel {
@@ -663,15 +742,4 @@ div.sheet-repeating-container li.sheet-dicepool {
     border: 1px solid black;
     border-radius: 6px;
     margin: 0px;
-}
-.sheet-collapse-button {
-	width: 93%;
-	border-radius: 30px;
-	font-family: "RufscriptRegular";
-	height: 1em;
-	font-size: .7em;
-	padding-bottom: .6em;
-}
-input[name*="collapse-flag"][value="0"] + .sheet-collapse-details {
-    display: none;
 }
