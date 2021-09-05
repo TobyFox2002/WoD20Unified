@@ -1,11 +1,10 @@
 /* Global Elements */
 .charsheet {
-  font-size: 13px;
-  line-height: 1.5em;
-  font-weight: 400;
-
-  margin: 0px;
-  padding: 0px;
+	font-size: 13px;
+	line-height: 1.5em;
+	font-weight: 400;
+	margin: 0px;
+	padding: 0px;
 }
 /* Reset all roll buttons to use the D10 dice instead of the D20 Dice */
 /* The font is called "dicefontd10" and it is unique to r20 for their layout */
@@ -18,27 +17,31 @@ button[type="roll"]:before {
 	content: "k" !important;
 }
 button.sheet-quickroll:before {/* Overides the icon so text can be displayed within instead */
-    content: "" !important;
+	content: "" !important;
 	font-size:0.75em;
     display: none;
 }
 @font-face {
-  /* Font from: https://fontlibrary.org/en/font/rufscript */
-  font-family: "RufscriptRegular";
-  src: url("http://openfontlibrary.org/assets/fonts/rufscript/92112519f91e7a5ab80261a017c09b72/f886671cdc88e2725676a457e14e8512/RufscriptRegular.ttf");
+	/* Font from: https://fontlibrary.org/en/font/rufscript */
+	font-family: "RufscriptRegular";
+	src: url("http://openfontlibrary.org/assets/fonts/rufscript/92112519f91e7a5ab80261a017c09b72/f886671cdc88e2725676a457e14e8512/RufscriptRegular.ttf");
 }
 input[type="text"],
 input[type="number"] {
-  width: 90%;
-  padding-left: 0.4em;
-  padding-bottom: 0em;
+	width: 90%;
+	padding-left: 0.4em;
+	padding-bottom: 0em;
+	margin-bottom: 0px;
+  
+	font-family: Sans-serif;
+	line-height: 1.5em;
 
-  font-family: Sans-serif;
-  line-height: 1.5em;
-
-  border: 0px solid #666;
-  border-bottom-width: 1px;
-  border-radius: 3px;
+	border: 0px solid #666;
+	border-bottom-width: 1px;
+	border-radius: 3px;
+}
+textarea, select, .sheet-uneditable-input {
+	margin-bottom: 0px; /* Override default margin */
 }
 .sheet-skAttrSz {
 	width: 7em;
@@ -51,9 +54,23 @@ input[type="number"] {
 	border-radius: 6px;
 	margin-bottom: -1px;
 }
+.sheet-optionsDropdown {
+	height: 50%;
+	width: 95%;
+	
+	font-size: .7em;
+	line-height: .9em;
+	
+	border: 1px solid black;
+	border-radius: 0px;
+	
+	box-sizing: content-box;
+	padding-bottom: .5em;
+}
 
 .sheet-3dig {width: 2.2em !important; min-width: 2.2em !important; padding-right: 0.30em !important;}
 .sheet-2dig {width: 3em !important; min-width: 2.95em !important; padding: 0em;}
+.sheet-textEnd {text-align: end; !important;}
 input.sheet-specialize {width: 4em;}
 /* Hide actual dot/checkbox */
 input.sheet-hd[type="radio"],
@@ -194,8 +211,6 @@ label {
   font-family: RufscriptRegular;
   line-height: 1.3em;
   margin-bottom: -0.3em;
-
-  flex: 1;
 }
 label.sheet-ability-optGroup1 {
 	text-align: center;
@@ -296,7 +311,6 @@ div.sheet-columns {
 div.sheet-columns ul {
   display: flex;
   flex-wrap: wrap;
-  text-align: end;
   list-style-type: none;
 
   margin: 0px;
@@ -310,7 +324,7 @@ div.sheet-columns ul li {
   flex: 1;
   border: 1px solid black;
 }
-.sheet-border { /* Bounding Box for tri-colom elements. */
+.sheet-border { /* Bounding Box for tri-column elements. */
 	border: 1px solid black;
 	border-bottom: 7px solid black !important;
 	border-radius: 10px;
@@ -320,17 +334,26 @@ li.sheet-dicepool { /* Prevent more than 5 dots per line. */
 	min-width: 8em;
 }
 li.sheet-aretepool {
-	min-width: 8em;
+	min-width: 16em;
 	max-width: 16em !important;
-	margin: .4em 2em .4em 2em !important;
+	margin: .2em .5em -0.2em .5em !important;
 }
 div.sheet-abilBuffs {
-	display: inline-flex;
+	display: flex;
 	border: 1px dotted black;
-	padding: .3em;
 }
-li.sheet-ability-label {
+.sheet-hasLabelBelow {
+	border-bottom: 0px !important;
+}
+.sheet-labelForAbove {
+	border-top: 0px !important;
+	margin: -9px 3px 2px 2px !important;
+	padding: 0px !important;
 	
+	font-family: "RufscriptRegular";
+	font-size: .9em;
+	text-align: center;
+	letter-spacing: 1px;	
 }
 h1.sheet-columnHeader {
   /* Uses H1 style by default, making h1 tag unnessisary */
@@ -353,7 +376,6 @@ h1.sheet-columnHeader {
 /* Layout Elements */
 label.sheet-smlabel {
   text-align: center;
-  flex: 1;
 }
 label.sheet-poolLabel {
 	display: inline;
@@ -478,8 +500,8 @@ button.sheet-button-tab {
 	border-radius: 30px;
 	font-family: "RufscriptRegular";
 	height: 1em;
-	font-size: .7em;
-	padding-bottom: .6em;
+	font-size: .9em;
+	padding-bottom: .2em;
 }
 input[name*="collapse-flag"][value="0"] + .sheet-collapse-details {
     display: none;
@@ -720,7 +742,7 @@ div.sheet-repeating-container .sheet-collapse-button {
 	margin-left: 2%; /* Interacts with the width to create the illusion of centering */
 }
 div.sheet-repeating-container div.sheet-abilBuffs {
-	display: inline-flex;
+	display: flex;
 	border: 1px dotted black;
 	padding: .3em;
 	margin-left: 1%;
@@ -742,4 +764,119 @@ div.sheet-repeating-container div.sheet-abilBuffs {
     border: 1px solid black;
     border-radius: 6px;
     margin: 0px;
+}
+/* Togglable Health Levels Code */
+/* -----Health boxes----- */
+table.sheet-damagetrack td {
+    margin-bottom: 5px;
+}
+div.sheet-healthbox {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+input.sheet-healthbox {
+    margin: 0 0 0 0;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 1;
+}
+
+span.sheet-healthbox {
+    margin:  0 0 0 0;
+    display: none;
+}
+
+input.sheet-blackdot { 
+    z-index: 2; 
+}
+
+input.sheet-blackdot:checked + input.sheet-whitedot,
+input.sheet-whitedot:checked + input.sheet-bashingdot,
+input.sheet-bashingdot:checked + input.sheet-lethaldot,
+input.sheet-lethaldot:checked + input.sheet-aggravateddot { 
+    z-index: 3; 
+}
+
+input.sheet-blackdot:checked ~ span.sheet-blackdot,
+input.sheet-whitedot:checked ~ span.sheet-whitedot,
+input.sheet-bashingdot:checked ~ span.sheet-bashingdot, 
+input.sheet-lethaldot:checked ~ span.sheet-lethaldot,
+input.sheet-aggravateddot:checked ~ span.sheet-aggravateddot { 
+    display: inline-block; 
+}
+
+.sheet-blackdot { /* Height and width reduced by 1px from the healthbox, this is required otherwise it will act strange. */
+    width: 19px;
+    height: 19px;
+    background: black;
+    background-size: 100%;
+    /*  border-radius: 50%; */
+}
+
+.sheet-whitedot {
+    width: 15px;
+    height: 15px;
+    background: white;
+    background-size: 100%;
+    /*  border-radius: 50%; */
+    border:2px solid black;
+}
+
+.sheet-bashingdot {
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    background-size: 100%;
+    /*  border-radius: 50%; */
+    border:2px solid black;
+    color:black;
+}
+
+.sheet-bashingdot:before {
+    font-family: "Candal", fantasy;
+    content:"/";
+    font-weight: 900;
+    font-size: 23px;
+	/* line-height: 0px; */
+    margin-right: 4px;
+}
+
+.sheet-lethaldot {
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    background-size: 100%;
+    /*  border-radius: 50%; */
+    border:2px solid black;
+    color:black;
+}
+.sheet-lethaldot:before {
+    font-family: "Candal", fantasy;
+    content:"X";
+    font-weight: 900;
+    font-size: 23px;
+	/* line-height: 0px; */
+    margin-left:0px;
+}
+
+.sheet-aggravateddot {
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    background-size: 100%;
+    /*  border-radius: 50%; */
+    border:2px solid black;
+}
+.sheet-aggravateddot:before {
+    font-family: "Candal", fantasy;
+    content:"X";
+    font-weight: 900;
+    font-size: 23px;
+	/* line-height: 0px; */
+    color:red;
 }
