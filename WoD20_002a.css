@@ -40,6 +40,19 @@ input[type="number"] {
 	border-bottom-width: 1px;
 	border-radius: 3px;
 }
+/* The dotted line for lists to simulate notepad paper or a text area */
+label.sheet-dottedlabel {margin-bottom: -1.3em;} /* used to counter the default label element margin */
+input[type="text"].sheet-dottedline:focus, input[type="number"].sheet-dottedline:focus {
+	outline: none;
+	line-height: 1em;
+}
+input[type="text"].sheet-dottedline, input[type="number"].sheet-dottedline {
+	border: none;
+	border-bottom: 2px dotted #c9c9c9;
+	width: 220px;
+	margin: 1px;
+	line-height: 0px;
+}
 textarea, select, .sheet-uneditable-input {
 	margin-bottom: 0px; /* Override default margin */
 }
@@ -329,10 +342,10 @@ div.sheet-columns ul li {
 	border-bottom: 7px solid black !important;
 	border-radius: 10px;
 }
-li.sheet-dicepool { /* Prevent more than 5 dots per line. */
-	max-width: 8em;
-	min-width: 8em;
-}
+li.sheet-dicepool { /* Prevent more than 5 dots per line.                       */
+	max-width: 8em; /* 8em is the minimum for chromium browsers.  Firefox requires 9em or it displays poorly. I cannot find a workaround.  */
+	min-width: 8em; /* */
+}                   /* Unfortunately this causes issues as the min/max with is very specific with this element */
 li.sheet-aretepool {
 	min-width: 16em;
 	max-width: 16em !important;

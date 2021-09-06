@@ -2598,7 +2598,7 @@
 					</div>
 				<input type="hidden" name="attr_collapse-flag-ability-advanced" value="1">
 					<div class="abilBuffs collapse-details">
-						<label class="smlabel"><textarea name="attr_notes" class="sheet-desc" title="@{repeating_abilities_$X_notes}"></textarea><br><span title="Allows text to be added for any user notes on the secondary ability.  This will be displayed when the ability is rolled.">Notes</span></label>
+						<label class="smlabel"><textarea class="sheet-desc" name="attr_notes" title="@{repeating_abilities_$X_notes}"></textarea><br><span title="Allows text to be added for any user notes on the secondary ability.  This will be displayed when the ability is rolled.">Notes</span></label>
 					</div>
 				</div><!-- End of Skill -->
 			</fieldset>
@@ -3054,6 +3054,22 @@ Advantages
 			</div>
 			
 			<div class="columns">
+<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden /><!-- Hide GIFT button if not a WEREWOLF or KINFOLK -->
+	<div class="race-werewolf-block">
+			<button type="action" class="collapse-button" name="act_collapse-advantage-giftOne">Gifts</button>
+			<input type="hidden" name="attr_collapse-flag-advantage-giftOne" value="1">
+				<div class="border collapse-details"><!-- Gifts ~~ Priority XX -->
+					<ul>
+						<li><label class="dottedlabel">00. <input type="text" class="dottedline" name="attr_Gift_00" value=""/></label><br>
+							<label class="dottedlabel">01. <input type="text" class="dottedline" name="attr_Gift_01" value=""/></label><br>
+							<label class="dottedlabel">02. <input type="text" class="dottedline" name="attr_Gift_02" value=""/></label><br>
+							<label class="dottedlabel">03. <input type="text" class="dottedline" name="attr_Gift_03" value=""/></label><br>
+							<label class="dottedlabel">04. <input type="text" class="dottedline" name="attr_Gift_04" value=""/></label><br>
+							<label class="dottedlabel">05. <input type="text" class="dottedline" name="attr_Gift_05" value=""/></label><br>
+						</li>
+					</ul>
+				</div><!-- End of Gifts -->
+	</div>
 <input type="checkbox" name="attr_mage20-show" class="race-type-mage" hidden /><!-- Hide ARETE button if not a MAGE -->
 	<div class="race-mage-block">
 					<button type="action" class="collapse-button" name="act_collapse-advantage-arete">Arete</button>
@@ -3172,8 +3188,24 @@ Advantages
 					</ul>
 				</div><!-- End of Willpower -->
 			</div>
-			<div class="columns"><!-- Health ~ ALL ~ Priority 4 -->
-				<button type="action" class="collapse-button" name="act_collapse-advantage-health">Health</button>
+			<div class="columns">
+<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden /><!-- Hide GIFT button if not a WEREWOLF or KINFOLK -->
+	<div class="race-werewolf-block">
+					<button type="action" class="collapse-button" name="act_collapse-advantage-giftOne">Gifts</button>
+			<input type="hidden" name="attr_collapse-flag-advantage-giftOne" value="1">
+				<div class="border collapse-details"><!-- Gifts ~~ Priority XX -->
+					<ul>
+						<li><label class="dottedlabel">06. <input type="text" class="dottedline" name="attr_Gift_06" value=""/></label><br>
+							<label class="dottedlabel">07. <input type="text" class="dottedline" name="attr_Gift_07" value=""/></label><br>
+							<label class="dottedlabel">08. <input type="text" class="dottedline" name="attr_Gift_08" value=""/></label><br>
+							<label class="dottedlabel">09. <input type="text" class="dottedline" name="attr_Gift_09" value=""/></label><br>
+							<label class="dottedlabel">10. <input type="text" class="dottedline" name="attr_Gift_10" value=""/></label><br>
+							<label class="dottedlabel">11. <input type="text" class="dottedline" name="attr_Gift_11" value=""/></label><br>
+						</li>
+					</ul>
+				</div><!-- End of Gifts -->
+	</div>
+				<button type="action" class="collapse-button" name="act_collapse-advantage-health">Health</button><!-- Health ~ ALL ~ Priority 4 -->
 				<input type="hidden" name="attr_collapse-flag-advantage-health" value="1">
 				<label class="smlabel collapse-details">
 					<select class="optionsDropdown" name="attr_show-extraHealth" title="Use this dropdown to select how many additional levels of health to display.">
@@ -3402,7 +3434,7 @@ Advantages
 		toggleAttr(`collapse-flag-${section}`, true);
 	});
 	/* Show/Hide buttons for the advantages section */
-	const advantages = ['backgrounds', 'rage', 'gnosis', 'arete', 'willpower', 'health'];
+	const advantages = ['backgrounds', 'rage', 'gnosis', 'giftOne', 'giftTwo', 'arete', 'willpower', 'health'];
 	 let advantageButtonEvents = advantages.map(advantage => `clicked:collapse-advantage-${advantage} clicked:collapse-advantage-${advantage}`);
 	 
 	 on(advantageButtonEvents.join(' '), (ev) => {
