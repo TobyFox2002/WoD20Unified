@@ -97,21 +97,44 @@
 		<div class="triColumn">
 			<div class="columns">
 				<h1 class="columnHeader">Physical</h1>
-				<ul>
+				<!-- <ul>
 					<li class="textEnd">Strength</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Strength" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Strength" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Strength" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Strength" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Strength" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Strength" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+						<input type="radio" class="hd zero" name="attr_Strength" value="0" /><span></span>
+						<input type="radio" class="hd"      name="attr_Strength" value="1" checked /><span></span>
+						<input type="radio" class="hd"      name="attr_Strength" value="2" /><span></span>
+						<input type="radio" class="hd"      name="attr_Strength" value="3" /><span></span>
+						<input type="radio" class="hd"      name="attr_Strength" value="4" /><span></span>
+						<input type="radio" class="hd"      name="attr_Strength" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<!--<input type="radio" class="show-10d-attr hd" name="attr_Strength" value="0" /><span></span>
 						<input type="radio" class="show-10d-attr hd" name="attr_Strength" value="6" /><span></span>
 						<input type="radio" class="show-10d-attr hd" name="attr_Strength" value="7" /><span></span>
 						<input type="radio" class="show-10d-attr hd" name="attr_Strength" value="8" /><span></span>
 						<input type="radio" class="show-10d-attr hd" name="attr_Strength" value="9" /><span></span>
 						<input type="radio" class="show-10d-attr hd" name="attr_Strength" value="10" /><span></span></li>
-				</ul>
+				</ul> -->
+				<div class="grid">
+					<div class="gRollLabel">Strength</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Strength" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Strength" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Strength" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Strength" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Strength" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Strength" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Strength" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Strength" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Strength" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Strength" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Strength" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Str-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Str-Mag"  value="0" /><br><span>Magic</span></label>
@@ -119,23 +142,30 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Str-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Str-Total" value="[[ @{Strength} + @{Str-Mag} + @{Str-MerFl} + @{Str-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Str-Spec" placeholder="Strength Specialization" /><br><span>Specialization</span></label>
-				<ul>
-					<li class="textEnd">Dexterity</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Dexterity" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Dexterity" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Dexterity" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Dexterity" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Dexterity" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Dexterity" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Dexterity" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Dexterity" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Dexterity" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Dexterity" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Dexterity" value="10" /><span></span></li>
+				
+				<div class="grid">
+					<div class="gRollLabel">Dexterity</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Dexterity" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Dexterity" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Dexterity" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Dexterity" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Dexterity" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Dexterity" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Dexterity" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Dexterity" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Dexterity" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Dexterity" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Dexterity" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Dex-Spec" placeholder="Specialization" /></div>
+				</div>
 
-				</ul>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Dex-Mag"  value="0" /><br><span>Magic</span></label>
@@ -143,23 +173,28 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Dex-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Dex-Total" value="[[ @{Dexterity} + @{Dex-Mag} + @{Dex-MerFl} + @{Dex-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Dex-Spec" placeholder="Dexterity Specialization" /><br><span>Specialization</span></label>
-				<ul>
-					<li class="textEnd">Stamina</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Stamina" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Stamina" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Stamina" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Stamina" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Stamina" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Stamina" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Stamina" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Stamina" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Stamina" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Stamina" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Stamina" value="10" /><span></span></li>
-
-				</ul>
+				<div class="grid">
+					<div class="gRollLabel">Stamina</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Stamina" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Stamina" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Stamina" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Stamina" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Stamina" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Stamina" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Stamina" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Stamina" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Stamina" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Stamina" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Stamina" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Sta-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Sta-Mag"  value="0" /><br><span>Magic</span></label>
@@ -167,26 +202,31 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Sta-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Sta-Total" value="[[ @{Stamina} + @{Sta-Mag} + @{Sta-MerFl} + @{Sta-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Sta-Spec" placeholder="Dexterity Specialization" /><br><span>Specialization</span></label>
 			</div>
 			<div class="columns">
 				<h1 class="columnHeader">Social</h1>
-				<ul>
-					<li class="textEnd">Charisma</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Charisma" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Charisma" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Charisma" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Charisma" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Charisma" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Charisma" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Charisma" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Charisma" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Charisma" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Charisma" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Charisma" value="10" /><span></span></li>
-
-				</ul>
+				<div class="grid">
+					<div class="gRollLabel">Charisma</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Charisma" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Charisma" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Charisma" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Charisma" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Charisma" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Charisma" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Charisma" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Charisma" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Charisma" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Charisma" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Charisma" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Cha-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Cha-Mag"  value="0" /><br><span>Magic</span></label>
@@ -194,23 +234,28 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Cha-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Cha-Total" value="[[ @{Charisma} + @{Cha-Mag} + @{Cha-MerFl} + @{Cha-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Cha-Spec" placeholder="Charisma Specialization" /><br><span>Specialization</span></label>
-				<ul>
-					<li class="textEnd">Manipulation</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero" name="attr_Manipulation" value="0" /><span></span>
-						<input type="radio" class="hd"      name="attr_Manipulation" value="1" checked /><span></span>
-						<input type="radio" class="hd"      name="attr_Manipulation" value="2" /><span></span>
-						<input type="radio" class="hd"      name="attr_Manipulation" value="3" /><span></span>
-						<input type="radio" class="hd"      name="attr_Manipulation" value="4" /><span></span>
-						<input type="radio" class="hd"      name="attr_Manipulation" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Manipulation" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Manipulation" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Manipulation" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Manipulation" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Manipulation" value="10" /><span></span></li>
-
-				</ul>
+				<div class="grid">
+					<div class="gRollLabel">Manipulation</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Manipulation" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Manipulation" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Manipulation" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Manipulation" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Manipulation" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Manipulation" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Manipulation" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Manipulation" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Manipulation" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Manipulation" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Manipulation" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Man-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Man-Mag"  value="0" /><br><span>Magic</span></label>
@@ -218,23 +263,28 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Man-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Man-Total" value="[[ @{Manipulation} + @{Man-Mag} + @{Man-MerFl} + @{Man-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Man-Spec" placeholder="Manipulation Specialization" /><br><span>Specialization</span></label>
-				<ul>
-					<li class="textEnd">Appearance</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Appearance" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Appearance" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Appearance" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Appearance" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Appearance" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Appearance" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Appearance" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Appearance" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Appearance" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Appearance" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Appearance" value="10" /><span></span></li>
-
-				</ul>
+				<div class="grid">
+					<div class="gRollLabel">Appearance</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Appearance" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Appearance" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Appearance" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Appearance" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Appearance" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Appearance" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Appearance" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Appearance" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Appearance" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Appearance" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Appearance" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_App-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_App-Mag"  value="0" /><br><span>Magic</span></label>
@@ -242,26 +292,31 @@
 					<label class="smlabel"><input type="number" class="" name="attr_App-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_App-Total" value="[[ @{Appearance} + @{App-Mag} + @{App-MerFl} + @{App-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_App-Spec" placeholder="Appearance Specialization" /><br><span>Specialization</span></label>
 			</div>
 			<div class="columns">
 				<h1 class="columnHeader">Mental</h1>
-				<ul>
-					<li class="textEnd">Perception</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Perception" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Perception" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Perception" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Perception" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Perception" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Perception" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Perception" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Perception" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Perception" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Perception" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Perception" value="10" /><span></span></li>
-
-				</ul>
+				<div class="grid">
+					<div class="gRollLabel">Perception</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Perception" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Perception" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Perception" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Perception" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Perception" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Perception" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Perception" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Perception" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Perception" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Perception" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Perception" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Per-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Per-Mag"  value="0" /><br><span>Magic</span></label>
@@ -269,22 +324,28 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Per-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Per-Total" value="[[ @{Perception} + @{Per-Mag} + @{Per-MerFl} + @{Per-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Per-Spec" placeholder="Perception Specialization" /><br><span>Specialization</span></label>
-				<ul>
-					<li class="textEnd">Intelligence</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Intelligence" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Intelligence" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Intelligence" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Intelligence" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Intelligence" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Intelligence" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Intelligence" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Intelligence" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Intelligence" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Intelligence" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Intelligence" value="10" /><span></span></li>
-				</ul>
+				<div class="grid">
+					<div class="gRollLabel">Intelligence</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Intelligence" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Intelligence" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Intelligence" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Intelligence" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Intelligence" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Intelligence" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Intelligence" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Intelligence" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Intelligence" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Intelligence" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Intelligence" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Int-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Int-Mag"  value="0" /><br><span>Magic</span></label>
@@ -292,22 +353,28 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Int-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Int-Total" value="[[ @{Intelligence} + @{Int-Mag} + @{Int-MerFl} + @{Int-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Int-Spec" placeholder="Intelligence Specialization" /><br><span>Specialization</span></label>
-				<ul>
-					<li class="textEnd">Wits</li>
-					<li class="dicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
-						<input type="radio" class="hd zero"   name="attr_Wits" value="0" /><span></span>
-						<input type="radio" class="hd"     name="attr_Wits" value="1" checked /><span></span>
-						<input type="radio" class="hd"     name="attr_Wits" value="2" /><span></span>
-						<input type="radio" class="hd"     name="attr_Wits" value="3" /><span></span>
-						<input type="radio" class="hd"     name="attr_Wits" value="4" /><span></span>
-						<input type="radio" class="hd"     name="attr_Wits" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" class="show-10d-attr hd" name="attr_Wits" value="6" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Wits" value="7" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Wits" value="8" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Wits" value="9" /><span></span>
-						<input type="radio" class="show-10d-attr hd" name="attr_Wits" value="10" /><span></span></li>
-				</ul>
+				<div class="grid">
+					<div class="gRollLabel">Wits</div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
+								<input type="radio" class="hd zero"         name="attr_Wits" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_Wits" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_Wits" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_Wits" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_Wits" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_Wits" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value="" /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Wits" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Wits" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Wits" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Wits" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-attr" name="attr_Wits" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Wits-Spec" placeholder="Specialization" /></div>
+				</div>
 				<input type="checkbox" class="collapse-show" name="attr_attr-min-show" value="1" hidden />
 				<div class="abilBuffs collapse-details">
 					<label class="smlabel"><input type="number" class="" name="attr_Wit-Mag"  value="0" /><br><span>Magic</span></label>
@@ -315,7 +382,6 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Wit-ShapeShf" value="0" /><br><span>Form</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_Wit-Total" value="[[ @{Wits} + @{Wit-Mag} + @{Wit-MerFl} + @{Wit-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
-				<label class="smlabel collapse-details"><input type="text" name="attr_Wit-Spec" placeholder="Wits Specialization" /><br><span>Specialization</span></label>
 			</div>
 		</div>
 		<hr>
@@ -331,23 +397,31 @@
 		<div class="triColumn">
 			<div class="columns">
 				<h1 class="columnHeader">Talents</h1>
-				<div class="border"><!-- Alertness ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
-					<ul>
-						<li class="textEnd">Alertness<button type="roll" name="roll_Alertness-Check" value="[QUERY]" title="%{selected|Alertness-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></li>
-						<li class="dicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
-							<input type="radio" class="hd zero" name="attr_Alertness" value="0" checked /><span></span>
-							<input type="radio" class="hd" name="attr_Alertness" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_Alertness" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_Alertness" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_Alertness" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_Alertness" value="5"  /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="10" /><span></span></li>
-					</ul>
+				<div class="border grid"><!-- Alertness ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
+					<div class="gRollLabel">Alertness<button type="roll" name="roll_Alertness-Check" value="[QUERY]" title="%{selected|Alertness-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
+								<input type="radio" class="hd zero"            name="attr_Alertness" value="0" checked /><span></span>
+								<input type="radio" class="hd"                 name="attr_Alertness" value="1" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Alertness" value="2" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Alertness" value="3" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Alertness" value="4" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Alertness" value="5" /><span></span>
+								<input type="radio" class="hd"                 name="attr_" value="" /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Alertness" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Alertness-Spec" placeholder="Specialization" /></div>
+				</div>
+
 					<!-- <input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden> -->
+				<div class="border">
 					<button type="action" class="collapse-button" name="act_collapse-Alertness-diffmods" >Difficulty Modifier</button>
 					<input type="hidden" name="attr_collapse-flag-Alertness-diffmods" value="1">
 					<div class="abilBuffs collapse-details">
@@ -371,26 +445,32 @@
 						<label class="smlabel"><input type="text" class="3dig" name="attr_Alertness-Buffs" value="0" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
 						<label class="smlabel"><input type="text" class="3dig" name="attr_Alertness-Total" value="@{Alertness} + @{Alertness-Attribute} + @{Alertness-TempMod} + @{Alertness-PermMod}" disabled><br><span>Total</span></label><br>
 					</div>
-					
-					<label class="smlabel collapse-details"><input type="text" name="attr_Alert-Spec" placeholder="Alertness Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
-				<div class="border"><!-- Art ~ Mage -->
-					<ul>
-						<li class="textEnd">Art<button type="roll" name="roll_Art-Check" value="[QUERY]" title="%{selected|Art-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></li>
-						<li class="dicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills" hidden />
-							<input type="radio" class="hd zero" name="attr_Art" value="0" class="hd zero" checked /><span></span>
-							<input type="radio" class="hd" name="attr_Art" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_Art" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_Art" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_Art" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_Art" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-skills" name="attr_Art" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Art" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Art" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Art" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Art" value="10" /><span></span></li>
-					</ul>
+				<div class="border grid"><!-- Art ~ Mage -->
+					<div class="gRollLabel">Art<button type="roll" name="roll_Art-Check" value="[QUERY]" title="%{selected|Art-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
+								<input type="radio" class="hd zero"            name="attr_Art" value="0" checked /><span></span>
+								<input type="radio" class="hd"                 name="attr_Art" value="1" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Art" value="2" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Art" value="3" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Art" value="4" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Art" value="5" /><span></span>
+								<input type="radio" class="hd"                 name="attr_" value="" /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Art" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Art" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Art" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Art" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Art" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="roll_Art-Spec" placeholder="Specialization" /></div>
+				</div>
+
 					<!-- <input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden> -->
+					<div class="border">
 					<button type="action" class="collapse-button" name="act_collapse-Art-diffmods" >Difficulty Modifier</button>
 					<input type="hidden" name="attr_collapse-flag-Art-diffmods" value="1">
 					<div class="abilBuffs collapse-details">
@@ -414,26 +494,32 @@
 						<label class="smlabel"><input type="text" class="3dig" name="attr_Art-Buffs" value="0" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
 						<label class="smlabel"><input type="text" class="3dig" name="attr_Art-Total" value="@{Art} + @{Art-Attribute} + @{Art-TempMod} + @{Art-PermMod}" disabled><br><span>Total</span></label><br>
 					</div>
-					
-					<label class="smlabel collapse-details"><input type="text" name="attr_Art-Spec" placeholder="Art Specialization" /><br><span>Specialization</span></label>
 				</div><!-- End of Skill -->
-				<div class="border"><!-- Athletics ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
-					<ul>
-						<li class="textEnd">Athletics<button type="roll" name="roll_Athletics-Check" value="[QUERY]" title="%{selected|Athletics-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></li>
-						<li class="dicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills" hidden />
-							<input type="radio" class="hd zero" name="attr_Athletics" value="0" checked /><span></span>
-							<input type="radio" class="hd" name="attr_Athletics" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_Athletics" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_Athletics" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_Athletics" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_Athletics" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="10" /><span></span></li>
-					</ul>
+				<div class="border grid"><!-- Athletics ~ Mage | Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
+					<div class="gRollLabel">Athletics<button type="roll" name="roll_Athletics-Check" value="[QUERY]" title="%{selected|Athletics-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
+								<input type="radio" class="hd zero"            name="attr_Athletics" value="0" checked /><span></span>
+								<input type="radio" class="hd"                 name="attr_Athletics" value="1" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Athletics" value="2" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Athletics" value="3" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Athletics" value="4" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Athletics" value="5" /><span></span>
+								<input type="radio" class="hd"                 name="attr_" value="" /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Athletics" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Athletics-Spec" placeholder="Specialization" /></div>
+				</div>
+
 					<!-- <input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden> -->
+					<div class="border">
 					<button type="action" class="collapse-button" name="act_collapse-Athletics-diffmods" >Difficulty Modifier</button>
 					<input type="hidden" name="attr_collapse-flag-Athletics-diffmods" value="1">
 					<div class="abilBuffs collapse-details">
@@ -2465,6 +2551,7 @@
 							<input type="radio" class="hd" name="attr_Science" value="3" /><span></span>
 							<input type="radio" class="hd" name="attr_Science" value="4" /><span></span>
 							<input type="radio" class="hd" name="attr_Science" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 							<input type="radio" class="hd show-10d-skills" name="attr_Science" value="6" /><span></span>
 							<input type="radio" class="hd show-10d-skills" name="attr_Science" value="7" /><span></span>
 							<input type="radio" class="hd show-10d-skills" name="attr_Science" value="8" /><span></span>
@@ -2962,96 +3049,251 @@ Advantages
 		<div class="triColumn">
 			<div class="columns"><button type="action" class="collapse-button" name="act_collapse-advantage-backgrounds">Backgrounds</button>
 			<input type="hidden" name="attr_collapse-flag-advantage-backgrounds" value="1">
-				<div class="border collapse-details"><!-- Backgrounds ~~ All ~~ Priority 1 -->
-					<ul>
-						<li><input type="text" name="attr_background-0-name" placeholder="Background" /></li>
-						<li class="dicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
-							<input type="radio" class="hd zero" name="attr_background-0" value="0" checked /><span></span>
-							<input type="radio" class="hd" name="attr_background-0" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_background-0" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_background-0" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_background-0" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_background-0" value="5"  /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="10" /><span></span></li>
-					</ul>
-				</div><!-- End of Background Zero -->
+				<div class="border collapse-details grid"><!-- END OF TEST BACKGROUND -->
+					<div class="span-col-2"><input type="text" name="attr_background-0-name" placeholder="Test Background" /></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
+								<input type="radio" class="hd zero"         name="attr_background-" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_background-" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="span-col-2">Item 3</div>
+				</div> <!-- END OF TEST BACKGROUND -->
 				<input type="hidden" name="attr_collapse-flag-advantage-backgrounds" value="1">
-				<div class="border collapse-details">
-					<ul>
-						<li><input type="text" name="attr_background-1-name" placeholder="Background" /></li>
-						<li class="dicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
-							<input type="radio" class="hd zero" name="attr_background-1" value="0" checked /><span></span>
-							<input type="radio" class="hd" name="attr_background-1" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_background-1" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_background-1" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_background-1" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_background-1" value="5"  /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="10" /><span></span></li>
-					</ul>
-				</div><!-- End of Background One -->
+				<div class="border collapse-details grid"><!-- Background ZERO-->
+					<div class="span-col-2"><input type="text" name="attr_background-0-name" placeholder="Test Background" /></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
+								<input type="radio" class="hd zero"         name="attr_background-0" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_background-0" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-0" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-0" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-0" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-0" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="span-col-2">Item 3</div>
+				</div> <!-- END Background Zero -->
 				<input type="hidden" name="attr_collapse-flag-advantage-backgrounds" value="1">
-				<div class="border collapse-details">
-					<ul>
-						<li><input type="text" name="attr_background-2-name" placeholder="Background" /></li>
-						<li class="dicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
-							<input type="radio" class="hd zero" name="attr_background-2" value="0" checked /><span></span>
-							<input type="radio" class="hd" name="attr_background-2" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_background-2" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_background-2" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_background-2" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_background-2" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="10" /><span></span></li>
-					</ul>
-				</div><!-- End of Background Two -->
+				<div class="border collapse-details grid"><!-- BACKGROUND ONE-->
+					<div class="span-col-2"><input type="text" name="attr_background-1-name" placeholder="Test Background" /></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
+								<input type="radio" class="hd zero"         name="attr_background-1" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_background-1" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-1" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-1" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-1" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-1" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="span-col-2">Item 3</div>
+				</div> <!-- END OF BACKGROUND One -->
 				<input type="hidden" name="attr_collapse-flag-advantage-backgrounds" value="1">
-				<div class="border collapse-details">
-					<ul>
-						<li><input type="text" name="attr_background-3-name" placeholder="Background" /></li>
-						<li class="dicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
-							<input type="radio" class="hd zero" name="attr_background-3" value="0" checked /><span></span>
-							<input type="radio" class="hd" name="attr_background-3" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_background-3" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_background-3" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_background-3" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_background-3" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="10" /><span></span></li>
-					</ul>
-				</div><!-- End of Background Three -->
+				<div class="border collapse-details grid"><!-- BACKGROUND TWO -->
+					<div class="span-col-2"><input type="text" name="attr_background-2-name" placeholder="Test Background" /></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
+								<input type="radio" class="hd zero"         name="attr_background-2" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_background-2" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-2" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-2" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-2" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-2" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="span-col-2">Item 3</div>
+				</div> <!-- END OF BACKGROUND TWO -->
 				<input type="hidden" name="attr_collapse-flag-advantage-backgrounds" value="1">
-				<div class="border collapse-details">
+				<div class="border collapse-details grid"><!-- BACKGROUND THREE-->
+					<div class="span-col-2"><input type="text" name="attr_background-3-name" placeholder="Test Background" /></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
+								<input type="radio" class="hd zero"         name="attr_background-3" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_background-3" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-3" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-3" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-3" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-3" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="span-col-2">Item 3</div>
+				</div> <!-- END OF BACKGROUND THREE -->
+				<input type="hidden" name="attr_collapse-flag-advantage-backgrounds" value="1">
+				<div class="border collapse-details grid"><!-- BACKGROUND FOUR -->
+					<div class="span-col-2"><input type="text" name="attr_background-4-name" placeholder="Test Background" /></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
+								<input type="radio" class="hd zero"         name="attr_background-4" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_background-4" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-4" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-4" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-4" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_background-4" value="5" /><span></span>
+								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-4 value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="span-col-2">Item 3</div>
+				</div> <!-- END OF BACKGROUND FOUR -->
+<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden /><!-- Hide ARETE button if not a MAGE -->
+	<div class="race-werewolf-block">
+					<button type="action" class="collapse-button" name="act_collapse-advantage-renown">Renown</button>
+			<input type="hidden" name="attr_collapse-flag-advantage-renown" value="1">
+				<div class="border collapse-details"><!-- Renown ~ Werewolf  ~~ Priority XX -->
+					<h3 class="subHeader">Renown One</h3>
 					<ul>
-						<li><input type="text" name="attr_background-4-name" placeholder="Background" /></li>
-						<li class="dicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs"  hidden />
-							<input type="radio" class="hd zero" name="attr_background-4" value="0" checked /><span></span>
-							<input type="radio" class="hd" name="attr_background-4" value="1" /><span></span>
-							<input type="radio" class="hd" name="attr_background-4" value="2" /><span></span>
-							<input type="radio" class="hd" name="attr_background-4" value="3" /><span></span>
-							<input type="radio" class="hd" name="attr_background-4" value="4" /><span></span>
-							<input type="radio" class="hd" name="attr_background-4" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="6" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="7" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="8" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="9" /><span></span>
-							<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="10" /><span></span></li>
+						<li class="aretepool" style="border-bottom: none;">
+							<input type="radio" class="hd zero" name="attr_RenownZero" value="0" checked /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="1" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="2" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="3" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="4" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="hd"      name="attr_RenownZero" value="6" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="7" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="8" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="9" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownZero" value="10" /><span></span></li>
 					</ul>
-				</div><!-- End of Background Four -->
+					<ul>
+						<li class="aretepool" style="border-top: none;">
+							<input type="radio" class="hd square zero" name="attr_RenownZero" value="0" checked /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="1" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="2" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="3" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="4" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="6" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="7" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="8" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="9" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownZero" value="10" /><span></span></li>
+					</ul>
+					<h3 class="subHeader">Renown Two</h3>
+					<ul>
+						<li class="aretepool" style="border-bottom: none;">
+							<input type="radio" class="hd zero" name="attr_RenownOne" value="0" checked /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="1" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="2" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="3" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="4" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="hd"      name="attr_RenownOne" value="6" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="7" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="8" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="9" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownOne" value="10" /><span></span></li>
+					</ul>
+					<ul>
+						<li class="aretepool" style="border-top: none;">
+							<input type="radio" class="hd square zero" name="attr_RenownOne_" value="0" checked /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="1" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="2" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="3" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="4" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="6" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="7" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="8" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="9" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownOne_" value="10" /><span></span></li>
+					</ul>
+					<h3 class="subHeader">Renown Three</h3>
+					<ul>
+						<li class="aretepool" style="border-bottom: none;">
+							<input type="radio" class="hd zero" name="attr_RenownThree" value="0" checked /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="1" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="2" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="3" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="4" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="hd"      name="attr_RenownThree" value="6" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="7" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="8" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="9" /><span></span>
+							<input type="radio" class="hd"      name="attr_RenownThree" value="10" /><span></span></li>
+					</ul>
+					<ul>
+						<li class="aretepool" style="border-top: none;">
+							<input type="radio" class="hd square zero" name="attr_RenownThree_" value="0" checked /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="1" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="2" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="3" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="4" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="6" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="7" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="8" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="9" /><span></span>
+							<input type="radio" class="hd square"      name="attr_RenownThree_" value="10" /><span></span></li>
+					</ul>
+				</div>
+				<input type="hidden" name="attr_collapse-flag-advantage-renown" value="1">
+				<label class="smlabel collapse-details">
+					<select class="optionsDropdown" name="attr_werewolfRank" title="Use this dropdown to select an individual's rank within a Tribe.">
+						<option value="0">Ronin</option>
+						<option value="1" selected>• One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+						<option value="4">Four</option>
+						<option value="5">Five</option>
+						<option value="6">Legendary</option>
+					</select><br><span class="SkPoolLabel">Rank</span>
+				</label><!-- End of Renown -->
+	</div>
 			</div>
+
 			
 			<div class="columns">
 <input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden /><!-- Hide GIFT button if not a WEREWOLF or KINFOLK -->
@@ -3434,7 +3676,7 @@ Advantages
 		toggleAttr(`collapse-flag-${section}`, true);
 	});
 	/* Show/Hide buttons for the advantages section */
-	const advantages = ['backgrounds', 'rage', 'gnosis', 'giftOne', 'giftTwo', 'arete', 'willpower', 'health'];
+	const advantages = ['backgrounds', 'renown', 'rage', 'gnosis', 'giftOne', 'giftTwo', 'arete', 'willpower', 'health'];
 	 let advantageButtonEvents = advantages.map(advantage => `clicked:collapse-advantage-${advantage} clicked:collapse-advantage-${advantage}`);
 	 
 	 on(advantageButtonEvents.join(' '), (ev) => {

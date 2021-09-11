@@ -90,12 +90,26 @@ input.sheet-hd[type="radio"],
 input.sheet-hd[type="checkbox"],
 div.sheet-repeating-container input.sheet-hd[type="radio"],
 div.sheet-repeating-container input.sheet-hd[type="checkbox"] {
-    position: absolute;
+    /*position: absolute;
     opacity: 0;
     width: 15px;
     cursor: pointer;
     z-index: 1;
-    margin-top: 6px;
+    margin-top: 6px; Old Code... A Dead-End.*/
+
+    opacity: 0;
+    width: 10px;
+    height: 14px;
+    position: relative;
+    top: 5px;
+    left: 4px;
+    margin-right: -8px;
+    cursor: pointer;
+    z-index: 1;
+}
+div.sheet-griddicepool input.sheet-hd[type="radio"],
+div.sheet-griddicepool input.sheet-hd[type="checkbox"] {
+	position: unset !important;
 }
 /* Fake Checkbox */
 /* Styles common to fake dot and checkbox */
@@ -332,22 +346,39 @@ div.sheet-columns ul {
 }
 div.sheet-columns ul li {
 	/* possibly change font size to 1.5vh */
-  margin: 0.2em;
-  padding: 0.2em;
   flex: 1;
   border: 1px solid black;
 }
 .sheet-border { /* Bounding Box for tri-column elements. */
 	border: 1px solid black;
-	border-bottom: 7px solid black !important;
-	border-radius: 10px;
+	border-bottom: 2px solid black !important;
+	border-radius: 5px;
 }
 li.sheet-dicepool { /* Prevent more than 5 dots per line.                       */
 	max-width: 8em; /* 8em is the minimum for chromium browsers.  Firefox requires 9em or it displays poorly. I cannot find a workaround.  */
 	min-width: 8em; /* */
 }                   /* Unfortunately this causes issues as the min/max with is very specific with this element */
+/* Dice section redone as grid */
+li.sheet-griddicepool {
+    display: grid;
+	border: 0px;
+    grid-template-columns: repeat(12,auto);
+    grid-template-rows: repeat(2,auto);
+    gap: 0px; /*gap between columns and rows*/
+}
+
+.sheet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3px;
+}
+.sheet-gRollLabel {grid-column: span 2 / auto; border: 1px solid black;}
+.sheet-gRollSpec {grid-column: span 2 / auto; border: 1px solid black;}
+
+.sheet-span-row-2{grid-row: span 2 / auto; border: 1px solid black;}
+/* ********************************** End of Grid Code */
 li.sheet-aretepool {
-	min-width: 16em;
+	min-width: 17em;
 	max-width: 16em !important;
 	margin: .2em .5em -0.2em .5em !important;
 }
@@ -385,6 +416,15 @@ h1.sheet-columnHeader {
   -webkit-border-radius: 1em;
   -moz-border-radius: 1em;
   background: linear-gradient(180deg, LightGrey 60%, white);
+}
+h3.sheet-subHeader {
+	display: block;
+	font-size: 1.17em;
+	margin-top: 0em;
+	margin-bottom: -0.7em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
 }
 /* Layout Elements */
 label.sheet-smlabel {
@@ -849,7 +889,7 @@ input.sheet-aggravateddot:checked ~ span.sheet-aggravateddot {
     border:2px solid black;
     color:black;
 }
-
+.sheet-blankdot {opacity: 0;}	/* Blank Dot Style is used as a spacer for 10-dot showhide sections on full-width displays */
 .sheet-bashingdot:before {
     font-family: "Candal", fantasy;
     content:"/";
