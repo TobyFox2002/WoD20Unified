@@ -176,7 +176,21 @@ div.sheet-repeating-container input.sheet-square[type="radio"] + span::before {
 	-webkit-border-radius: 0% !important;
 	border-radius: 0% !important;
 }
-
+.sheet-H1renownLabel {
+    display: block;
+    font: 1em RufscriptRegular;
+    letter-spacing: .1em;
+    width: 95%;
+    height: 1.5em !important;
+    margin: 1% 2% 5% auto;
+    padding: 6px 0 0 0;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #000000;
+}
+.sheet-H1renownLabel::placeholder {
+	color: gray;
+}
 /* Styles unique to fake checkbox (unchecked) */
 input.sheet-hd[type="checkbox"] + span::before,
 div.sheet-repeating-container input.sheet-hd[type="checkbox"] + span::before {
@@ -351,8 +365,9 @@ div.sheet-columns ul li {
 }
 .sheet-border { /* Bounding Box for tri-column elements. */
 	border: 1px solid black;
-	border-bottom: 2px solid black !important;
-	border-radius: 5px;
+	border-bottom: 4px solid black !important;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px
 }
 li.sheet-dicepool { /* Prevent more than 5 dots per line.                       */
 	max-width: 8em; /* 8em is the minimum for chromium browsers.  Firefox requires 9em or it displays poorly. I cannot find a workaround.  */
@@ -371,6 +386,13 @@ li.sheet-griddicepool {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3px;
+	border-top: 3px red solid;
+}
+.sheet-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 3px;
+	border-top: 3px red solid;
 }
 .sheet-gRollLabel {grid-column: span 2 / auto; border: 1px solid black;}
 .sheet-gRollSpec {grid-column: span 2 / auto; border: 1px solid black;}
@@ -378,9 +400,11 @@ li.sheet-griddicepool {
 .sheet-span-row-2{grid-row: span 2 / auto; border: 1px solid black;}
 /* ********************************** End of Grid Code */
 li.sheet-aretepool {
+	width: 50%;
+	margin: 0 auto;
 	min-width: 17em;
 	max-width: 16em !important;
-	margin: .2em .5em -0.2em .5em !important;
+	/* margin: .2em .5em -0.2em .5em !important; */
 }
 div.sheet-abilBuffs {
 	display: flex;
@@ -562,13 +586,13 @@ input[name*="collapse-flag"][value="0"] + .sheet-collapse-details {
 div.sheet-flexwrap {display: flex;}
 
 /* Adds show/hide functionality */
-div.sheet-race-mage, div.sheet-race-mage-block,
-div.sheet-race-werewolf, div.sheet-race-werewolf-block,
-div.sheet-race-vampire, div.sheet-race-kueijin, div.sheet-race-vampire-block, div.sheet-race-kueijin-block,
-div.sheet-race-changeling, div.sheet-race-shen, div.sheet-race-changeling-block, div.sheet-race-shen-block,
-div.sheet-race-mummy, div.sheet-race-mummy-block,
-div.sheet-race-hunter, div.sheet-race-hunter-block,
-div.sheet-race-bygone, div.sheet-race-bygone-block,
+div.sheet-race-mage, div.sheet-race-mage-block, div.sheet-race-mage-grid,
+div.sheet-race-werewolf, div.sheet-race-werewolf-block, div.sheet-race-werewolf-grid,
+div.sheet-race-vampire, div.sheet-race-kueijin, div.sheet-race-vampire-block, div.sheet-race-kueijin-block, div.sheet-race-vampire-grid, div.sheet-race-kueijin-grid,
+div.sheet-race-changeling, div.sheet-race-shen, div.sheet-race-changeling-block, div.sheet-race-shen-block, div.sheet-race-changeling-grid, div.sheet-race-shen-grid,
+div.sheet-race-mummy, div.sheet-race-mummy-block, div.sheet-race-mummy-grid,
+div.sheet-race-hunter, div.sheet-race-hunter-block, div.sheet-race-hunter-grid,
+div.sheet-race-bygone, div.sheet-race-bygone-block, div.sheet-race-bygone-grid,
 input.sheet-show-10d-attr.sheet-hd,
 input.sheet-show-10d-bgs.sheet-hd,
 input.sheet-show-10d-skills.sheet-hd {
@@ -597,6 +621,22 @@ input.sheet-show-10d-skills.sheet-hd {
 .sheet-race-type-hunter:checked ~ div.sheet-race-hunter-block,
 .sheet-race-type-bygone:checked ~ div.sheet-race-bygone-block {
     display: block;
+}
+
+/* show/hide as grid */
+.sheet-race-type-werewolf:checked ~ div.sheet-race-werewolf-grid,
+.sheet-race-type-mage:checked ~ .sheet-race-mage-grid,
+.sheet-race-type-vampire:checked ~ div.sheet-race-vampire-grid,
+.sheet-race-type-kueijin:checked ~ div.sheet-race-kueijin-grid,
+.sheet-race-type-changeling:checked ~ div.sheet-race-changeling-grid,
+.sheet-race-type-shen:checked ~ div.sheet-race-shen-grid,
+.sheet-race-type-mummy:checked ~ div.sheet-race-mummy-grid,
+.sheet-race-type-hunter:checked ~ div.sheet-race-hunter-grid,
+.sheet-race-type-bygone:checked ~ div.sheet-race-bygone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3px;
+	border-top: 3px red solid;
 }
 
 /* Show/Hide Sections */
