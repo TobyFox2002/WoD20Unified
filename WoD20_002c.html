@@ -1,10 +1,53 @@
 <div class="container">
-	<div class="PreNav">
-		<label style="flex: 0.01;" /><img src="https://www.worldofdarkness.com/packs/media/images/wod-logo-small-ddfad5e9.png" style="max-height: 60px;" alt="World of Darkness 20th Anniversary Edition Character Sheet" /></label>
-		<label class="smlabel"><input type="text" name="attr_character_name" title="@{character_name}"  placeholder="Character Name" /><br><span>Character</span></label>
-		<label class="smlabel"><input type="text" name="attr_player_name"  title="@{player_name}"  placeholder="Player Name" /><br><span>Player</span></label>
-		<label class="smlabel"><input type="text" name="attr_chronicle_name" title="@{chronicle_Name}"  placeholder="Chronicle Name" /><br><span>Chronicle</span></label>
-	</div><!-- END OF PRENAV AREA -->
+	
+<div class="PreNav">
+	<div class="tn-Logo"><img src="https://www.worldofdarkness.com/packs/media/images/wod-logo-small-ddfad5e9.png" style="max-height: 60px;" alt="World of Darkness 20th Anniversary Edition Character Sheet" /></div>
+	 <div class="tn-splat-selector">
+		<div class="majTemplate">
+			<label class="smlabel">
+				<select class="cfg-select" name="attr_cfg-majTemplate" title="Select which character sheet type you are using.">
+					<option value="0">• Select One</option>
+					<option value="0">Mage</option>
+					<option value="0">Werewolf</option>
+					<option value="0">Vampire</option>
+					<option value="0">Changeling</option>
+					<option value="0">Hunter</option>
+					<option value="0">Mummy</option>
+					<option value="0">Shen 2ed</option>
+					<option value="0">Shen 20th</option>
+					<option value="0">Bygone</option>		
+				</select><br><span class="SkPoolLabel">Major Template</span>
+			</label>
+		</div>
+		<div class="minTemplate">
+			<label class="smlabel">
+				<select class="cfg-select" name="attr_cfg-minTemplate" title="Select sub-rules for your character sheet to use.">
+					<option value="0">• Select One</option>
+					<option value="0">Kinfolk</option>
+					<option value="0">Kinane</option>
+					<option value="0">Ghoul</option>
+					<option value="0">Mummy</option>
+					<option value="0">Possessed</option>
+					<option value="0">Sorcerer</option>
+				</select><br><span class="SkPoolLabel">Minor Template</span>
+			</label>
+		</div>
+	 </div>
+	 
+	<div class="tn-player">		   <label class="smlabel"><input type="text" name="attr_player_name"    title="@{player_name}"     placeholder="Player Name"    /><br><span>Player</span></label></div>
+	<div class="tn-character">	   <label class="smlabel"><input type="text" name="attr_character_name" title="@{character_name}"  placeholder="Character Name" /><br><span>Character</span></div>
+	<div class="tn-chronicle-name"><label class="smlabel"><input type="text" name="attr_chronicle_name" title="@{chronicle_name}"  placeholder="Chronicle Name" /><br><span>Chronicle</span></label></div>
+	<div class="tn-config">
+		<input class="collapse-show cssbutton" type="checkbox"  name="attr_sheet-minmax"    value="1" title="Collapse all collapsable sections on entire sheet. (Not Yet Implimented)"/><span></span>
+		<input class="noexpand cssbutton"      type="checkbox"  name="attr_sheet-noexpand"  value="1" title="Notify select person when changes are made to the character sheet." /><span></span>
+		<input class="help-show cssbutton"     type="checkbox"  name="attr_sheet-newplayer" value="1" title="Enable Expanded tooltips for new players. (Not Yet Implimented)."/><span></span>
+		<input class="reset cssbutton"         type="checkbox"  name="attr_sheet-reset"     value="1" title="Clear all fields, delete all data.  Reset shet to a blank state.  !!WARNING!! This operation CANNOT be UNDONE! (Not Yet Implimented)"/><span></span>
+		<input class="notify cssbutton"        type="checkbox"  name="attr_sheet-notify"    value="1" title="Notify select person when changes are made to the character sheet. (Not Yet Implimented)."/><span></span>
+		<input class="rollonly cssbutton"      type="checkbox"  name="attr_sheet-rollonly"  value="1" title="Show only essential roll buttons (for use on mobile devices) (Not Yet Implimented)"/><span></span>
+		<input class="fancy cssbutton"         type="checkbox"  name="attr_sheet-fancy"     value="1" title="Enable fancy styles (not yet implemented)"/><span></span>
+	</div>
+</div>
+
 	<div class="topNav">
 		<button class="button-tab" type="action" name="act_core">Attributes &amp; Abilities</button>
 		<button class="button-tab" type="action" name="act_advantages">Advantages</button>
@@ -114,7 +157,7 @@
 						<input type="radio" class="show-10d-attr hd" name="attr_Strength" value="10" /><span></span></li>
 				</ul> -->
 				<div class="grid">
-					<div class="gRollLabel">Strength</div>
+					<div class="gRollLabel">Strength <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Wood, Yang)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -144,7 +187,7 @@
 				</div>
 				
 				<div class="grid">
-					<div class="gRollLabel">Dexterity</div>
+					<div class="gRollLabel">Dexterity <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Metal, Yang)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -174,7 +217,7 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Dex-Total" value="[[ @{Dexterity} + @{Dex-Mag} + @{Dex-MerFl} + @{Dex-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
 				<div class="grid">
-					<div class="gRollLabel">Stamina</div>
+					<div class="gRollLabel">Stamina <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Water, Yin)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -206,7 +249,7 @@
 			<div class="columns">
 				<h1 class="columnHeader">Social</h1>
 				<div class="grid">
-					<div class="gRollLabel">Charisma</div>
+					<div class="gRollLabel">Charisma <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Fire, Yin)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -235,7 +278,7 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Cha-Total" value="[[ @{Charisma} + @{Cha-Mag} + @{Cha-MerFl} + @{Cha-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
 				<div class="grid">
-					<div class="gRollLabel">Manipulation</div>
+					<div class="gRollLabel">Manipulation <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Water, Yang)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -264,7 +307,7 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Man-Total" value="[[ @{Manipulation} + @{Man-Mag} + @{Man-MerFl} + @{Man-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
 				<div class="grid">
-					<div class="gRollLabel">Appearance</div>
+					<div class="gRollLabel">Appearance <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Wood, Yin)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -296,7 +339,7 @@
 			<div class="columns">
 				<h1 class="columnHeader">Mental</h1>
 				<div class="grid">
-					<div class="gRollLabel">Perception</div>
+					<div class="gRollLabel">Perception <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Metal, Yin)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -325,7 +368,7 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Per-Total" value="[[ @{Perception} + @{Per-Mag} + @{Per-MerFl} + @{Per-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
 				<div class="grid">
-					<div class="gRollLabel">Intelligence</div>
+					<div class="gRollLabel">Intelligence <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Earth)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -354,7 +397,7 @@
 					<label class="smlabel"><input type="number" class="" name="attr_Int-Total" value="[[ @{Intelligence} + @{Int-Mag} + @{Int-MerFl} + @{Int-ShapeShf} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
 				<div class="grid">
-					<div class="gRollLabel">Wits</div>
+					<div class="gRollLabel">Wits <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Fire, Yang)</span></div>
 					<div class="span-row-2">
 						<ul>
 							<li class="griddicepool"><input type="checkbox" class="610-attr" name="attr_show-10d-attr" hidden />
@@ -1186,6 +1229,58 @@
 						<label class="smlabel"><input type="text" class="3dig" name="attr_Drive-Total" value="@{Drive} + @{Drive-Attribute} + @{Drive-TempMod} + @{Drive-PermMod}" disabled><br><span>Total</span></label><br>
 					</div>
 				</div><!-- End of Skill -->
+				<input type="checkbox" name="attr_mage20-show" class="race-type-mage" hidden />
+				<div class="border race-mage-grid"><!-- Do ~ Mage -->
+					<div class="gRollLabel">Do<button type="roll" name="roll_Do-Check" value="[QUERY]" title="%{selected|Do-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
+								<input type="radio" class="hd zero"            name="attr_Do" value="0" checked /><span></span>
+								<input type="radio" class="hd"                 name="attr_Do" value="1" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Do" value="2" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Do" value="3" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Do" value="4" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Do" value="5" /><span></span>
+								<input type="radio" class="hd"                 name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Do" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Do" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Do" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Do" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Do" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Do-Spec" placeholder="Specialization" /></div>
+				</div>
+
+				<!-- <input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden> -->
+				
+				<input type="checkbox" name="attr_mage20-show" class="race-type-mage" hidden />
+				<div class="border race-mage-block">
+					<button type="action" class="collapse-button" name="act_collapse-Do-diffmods" >Difficulty Modifier</button>
+					<input type="hidden" name="attr_collapse-flag-Do-diffmods" value="1">
+					<div class="abilBuffs collapse-details">
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Do-DiffPerm" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Do-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Do-DiffShapeShf" value="0" /><br><span>Form</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Do-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Do-DiffTotal" value="@{Do-DiffPerm} + @{Do-DiffBuffs} + @{Do-DiffMerFl} + @{Do-DiffShapeShf}" disabled /><br><span>Total</span></label>
+					</div>
+					<button type="action" class="collapse-button" name="act_collapse-Do-dicepool" >Dice Pool</button>
+					<input type="hidden" name="attr_collapse-flag-Do-dicepool" value="1">
+					<div class="abilBuffs collapse-details">
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Do-TempMod" value="0" /><br><span>Temp</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Do-PermMod" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><select class="skAttrSz" name="attr_Do-Attribute" title="@{Do-Attribute}">
+							<option value="0">• None</option>
+							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
+							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
+							<option value="@{Per-Total}" selected>PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
+						</select><br><span class="SkPoolLabel">Attribute</span></label>
+						<label class="smlabel"><input type="text" class="3dig" name="attr_Do-Buffs" value="0" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="text" class="3dig" name="attr_Do-Total" value="@{Do} + @{Do-Attribute} + @{Do-TempMod} + @{Do-PermMod}" disabled><br><span>Total</span></label><br>
+					</div>
+				</div><!-- End of Skill -->
 				<input type="checkbox" name="attr_bygone-show" class="race-type-bygone" hidden />
 				<div class="border race-bygone-grid"><!-- Elusion ~ Bygone -->
 					<div class="gRollLabel">Elusion<button type="roll" name="roll_Elusion-Check" value="[QUERY]" title="%{selected|Elusion-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></div>
@@ -1333,6 +1428,110 @@
 						</select><br><span class="SkPoolLabel">Attribute</span></label>
 						<label class="smlabel"><input type="text" class="3dig" name="attr_Firearms-Buffs" value="0" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
 						<label class="smlabel"><input type="text" class="3dig" name="attr_Firearms-Total" value="@{Firearms} + @{Firearms-Attribute} + @{Firearms-TempMod} + @{Firearms-PermMod}" disabled><br><span>Total</span></label><br>
+					</div>
+				</div><!-- End of Skill -->
+				<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden />
+				<div class="border race-werewolf-grid"><!-- Kalindo ~ Werewolf -->
+					<div class="gRollLabel">Kalindo<button type="roll" name="roll_Kalindo-Check" value="[QUERY]" title="%{selected|Kalindo-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
+								<input type="radio" class="hd zero"            name="attr_Kalindo" value="0" checked /><span></span>
+								<input type="radio" class="hd"                 name="attr_Kalindo" value="1" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Kalindo" value="2" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Kalindo" value="3" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Kalindo" value="4" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Kalindo" value="5" /><span></span>
+								<input type="radio" class="hd"                 name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Kalindo" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Kalindo" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Kalindo" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Kalindo" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Kalindo" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Kalindo-Spec" placeholder="Specialization" /></div>
+				</div>
+
+				<!-- <input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden> -->
+				
+				<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden />
+				<div class="border race-werewolf-block">
+					<button type="action" class="collapse-button" name="act_collapse-Kalindo-diffmods" >Difficulty Modifier</button>
+					<input type="hidden" name="attr_collapse-flag-Kalindo-diffmods" value="1">
+					<div class="abilBuffs collapse-details">
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Kalindo-DiffPerm" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Kalindo-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Kalindo-DiffShapeShf" value="0" /><br><span>Form</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Kalindo-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Kalindo-DiffTotal" value="@{Kalindo-DiffPerm} + @{Kalindo-DiffBuffs} + @{Kalindo-DiffMerFl} + @{Kalindo-DiffShapeShf}" disabled /><br><span>Total</span></label>
+					</div>
+					<button type="action" class="collapse-button" name="act_collapse-Kalindo-dicepool" >Dice Pool</button>
+					<input type="hidden" name="attr_collapse-flag-Kalindo-dicepool" value="1">
+					<div class="abilBuffs collapse-details">
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Kalindo-TempMod" value="0" /><br><span>Temp</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Kalindo-PermMod" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><select class="skAttrSz" name="attr_Kalindo-Attribute" title="@{Kalindo-Attribute}">
+							<option value="0">• None</option>
+							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
+							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
+							<option value="@{Per-Total}" selected>PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
+						</select><br><span class="SkPoolLabel">Attribute</span></label>
+						<label class="smlabel"><input type="text" class="3dig" name="attr_Kalindo-Buffs" value="0" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="text" class="3dig" name="attr_Kalindo-Total" value="@{Kalindo} + @{Kalindo-Attribute} + @{Kalindo-TempMod} + @{Kalindo-PermMod}" disabled><br><span>Total</span></label><br>
+					</div>
+				</div><!-- End of Skill -->
+				<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden />
+				<div class="border race-werewolf-grid"><!-- Klaviviskar ~ Werewolf -->
+					<div class="gRollLabel">Klaviviskar<button type="roll" name="roll_Klaviviskar-Check" value="[QUERY]" title="%{selected|Klaviviskar-Check} Tokenless Roll (No Token Select Required for this Roll)" ></button></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-skills" name="attr_show-10d-skills"  hidden />
+								<input type="radio" class="hd zero"            name="attr_Klaviviskar" value="0" checked /><span></span>
+								<input type="radio" class="hd"                 name="attr_Klaviviskar" value="1" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Klaviviskar" value="2" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Klaviviskar" value="3" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Klaviviskar" value="4" /><span></span>
+								<input type="radio" class="hd"                 name="attr_Klaviviskar" value="5" /><span></span>
+								<input type="radio" class="hd"                 name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Klaviviskar" value="6" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Klaviviskar" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Klaviviskar" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Klaviviskar" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-skills" name="attr_Klaviviskar" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+					<div class="gRollSpec"><input type="text" name="attr_Klaviviskar-Spec" placeholder="Specialization" /></div>
+				</div>
+
+				<!-- <input type="checkbox" name="attr_abil-min-show" class="collapse-show" value="1" hidden> -->
+				
+				<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden />
+				<div class="border race-werewolf-block">
+					<button type="action" class="collapse-button" name="act_collapse-Klaviviskar-diffmods" >Difficulty Modifier</button>
+					<input type="hidden" name="attr_collapse-flag-Klaviviskar-diffmods" value="1">
+					<div class="abilBuffs collapse-details">
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Klaviviskar-DiffPerm" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Klaviviskar-DiffMerFl" value="0" /><br><span>Merit/Flaw</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Klaviviskar-DiffShapeShf" value="0" /><br><span>Form</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Klaviviskar-DiffBuffs" value="0" disabled /><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Klaviviskar-DiffTotal" value="@{Klaviviskar-DiffPerm} + @{Klaviviskar-DiffBuffs} + @{Klaviviskar-DiffMerFl} + @{Klaviviskar-DiffShapeShf}" disabled /><br><span>Total</span></label>
+					</div>
+					<button type="action" class="collapse-button" name="act_collapse-Klaviviskar-dicepool" >Dice Pool</button>
+					<input type="hidden" name="attr_collapse-flag-Klaviviskar-dicepool" value="1">
+					<div class="abilBuffs collapse-details">
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Klaviviskar-TempMod" value="0" /><br><span>Temp</span></label>
+						<label class="smlabel"><input type="number" class="2dig" name="attr_Klaviviskar-PermMod" value="0" /><br><span>Perm</span></label>
+						<label class="smlabel"><select class="skAttrSz" name="attr_Klaviviskar-Attribute" title="@{Klaviviskar-Attribute}">
+							<option value="0">• None</option>
+							<option value="@{Str-Total}">STR</option><option value="@{Dex-Total}">DEX</option><option value="@{Stm-Total}">STM</option>
+							<option value="@{Cha-Total}">CHA</option><option value="@{Man-Total}">MAN</option><option value="@{App-Total}">APP</option>
+							<option value="@{Per-Total}" selected>PER</option><option value="@{Int-Total}">INT</option><option value="@{Wit-Total}">WIT</option>
+						</select><br><span class="SkPoolLabel">Attribute</span></label>
+						<label class="smlabel"><input type="text" class="3dig" name="attr_Klaviviskar-Buffs" value="0" disabled><br><span title="Reserved for Future Use.">Buffs</span></label>
+						<label class="smlabel"><input type="text" class="3dig" name="attr_Klaviviskar-Total" value="@{Klaviviskar} + @{Klaviviskar-Attribute} + @{Klaviviskar-TempMod} + @{Klaviviskar-PermMod}" disabled><br><span>Total</span></label><br>
 					</div>
 				</div><!-- End of Skill -->
 				<div class="border grid"><!-- Larceny ~ Werewolf | Vampire | Changeling | Shen | Mummy | Hunter | Bygone -->
@@ -2989,8 +3188,7 @@
 	</div> <!-- End of Core Section -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ADVANTAGES SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <div class="advantages">
-Advantages
-
+<div class="sectionHeader">Advantages</div>
 <input type="checkbox" name="attr_mage20-show" class="race-type-mage" hidden /><!-- Hide ARETE button if not a MAGE -->
 	<div class="race-mage-block">
 		<div class="sectionHeader">Spheres</div>
@@ -3007,14 +3205,14 @@ Advantages
 					<div class="gRollLabel">Correspondence</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres" hidden />
 								<input type="radio" class="hd zero"             name="attr_Correspondence" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Correspondence" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Correspondence" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Correspondence" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Correspondence" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Correspondence" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Correspondence" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Correspondence" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Correspondence" value="8" /><span></span>
@@ -3029,14 +3227,14 @@ Advantages
 					<div class="gRollLabel">Entropy</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Entropy" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Entropy" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Entropy" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Entropy" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Entropy" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Entropy" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Entropy" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Entropy" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Entropy" value="8" /><span></span>
@@ -3051,14 +3249,14 @@ Advantages
 					<div class="gRollLabel">Forces</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Forces" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Forces" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Forces" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Forces" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Forces" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Forces" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Forces" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Forces" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Forces" value="8" /><span></span>
@@ -3075,14 +3273,14 @@ Advantages
 					<div class="gRollLabel">Life</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Life" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Life" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Life" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Life" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Life" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Life" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Life" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Life" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Life" value="8" /><span></span>
@@ -3097,14 +3295,14 @@ Advantages
 					<div class="gRollLabel">Matter</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Matter" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Matter" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Matter" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Matter" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Matter" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Matter" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Matter" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Matter" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Matter" value="8" /><span></span>
@@ -3119,14 +3317,14 @@ Advantages
 					<div class="gRollLabel">Mind</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Mind" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Mind" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Mind" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Mind" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Mind" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Mind" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Mind" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Mind" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Mind" value="8" /><span></span>
@@ -3143,14 +3341,14 @@ Advantages
 					<div class="gRollLabel">Prime</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Prime" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Prime" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Prime" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Prime" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Prime" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Prime" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Prime" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Prime" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Prime" value="8" /><span></span>
@@ -3165,14 +3363,14 @@ Advantages
 					<div class="gRollLabel">Spirit</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Spirit" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Spirit" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Spirit" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Spirit" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Spirit" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Spirit" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Spirit" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Spirit" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Spirit" value="8" /><span></span>
@@ -3187,14 +3385,14 @@ Advantages
 					<div class="gRollLabel">Time</div>
 					<div class="span-row-2">
 						<ul>
-							<li class="griddicepool"><input type="checkbox" class="610-shperes" name="attr_show-10d-spheres"  hidden />
+							<li class="griddicepool"><input type="checkbox" class="610-spheres" name="attr_show-10d-spheres"  hidden />
 								<input type="radio" class="hd zero"             name="attr_Time" value="0" checked /><span></span>
 								<input type="radio" class="hd"                  name="attr_Time" value="1" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Time" value="2" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Time" value="3" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Time" value="4" /><span></span>
 								<input type="radio" class="hd"                  name="attr_Time" value="5" /><span></span>
-								<input type="radio" class="hd"                  name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-spheres" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Time" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Time" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-spheres" name="attr_Time" value="8" /><span></span>
@@ -3207,9 +3405,7 @@ Advantages
 				</div><!-- End of Sphere -->
 			</div>
 		</div>
-
-		
-	</div>
+	</div><!-- End of Mage Only Block -->
 		<br><br>
 <!-- ~~~~~ Seperated 3-column advantages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="sectHeadCntr">
@@ -3233,7 +3429,7 @@ Advantages
 								<input type="radio" class="hd"              name="attr_background-0" value="3" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-0" value="4" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-0" value="5" /><span></span>
-								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-0" value="8" /><span></span>
@@ -3255,7 +3451,7 @@ Advantages
 								<input type="radio" class="hd"              name="attr_background-1" value="3" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-1" value="4" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-1" value="5" /><span></span>
-								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-1" value="8" /><span></span>
@@ -3277,7 +3473,7 @@ Advantages
 								<input type="radio" class="hd"              name="attr_background-2" value="3" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-2" value="4" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-2" value="5" /><span></span>
-								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-2" value="8" /><span></span>
@@ -3299,7 +3495,7 @@ Advantages
 								<input type="radio" class="hd"              name="attr_background-3" value="3" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-3" value="4" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-3" value="5" /><span></span>
-								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-3" value="8" /><span></span>
@@ -3321,8 +3517,8 @@ Advantages
 								<input type="radio" class="hd"              name="attr_background-4" value="3" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-4" value="4" /><span></span>
 								<input type="radio" class="hd"              name="attr_background-4" value="5" /><span></span>
-								<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
-								<input type="radio" class="hd show-10d-bgs" name="attr_background-4 value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="6" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="7" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="8" /><span></span>
 								<input type="radio" class="hd show-10d-bgs" name="attr_background-4" value="9" /><span></span>
@@ -3332,144 +3528,370 @@ Advantages
 					</div>
 				</div> <!-- END OF BACKGROUND FOUR -->
 <input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden /><!-- Hide Renown if not a Werewolf -->
-	<div class="race-werewolf-block">
+				<div class="race-werewolf-block">
 					<button type="action" class="collapse-button" name="act_collapse-advantage-renown">Renown</button>
-			<input type="hidden" name="attr_collapse-flag-advantage-renown" value="1">
-				<div class="border collapse-details"><!-- Renown ~ Werewolf  ~~ Priority XX -->
-					<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-zero" placeholder="Renown One"/></h3>
-					<ul>
-						<li class="aretepool" style="border-bottom: none;">
-							<input type="radio" class="hd zero" name="attr_RenownZero" value="0" checked /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="1" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="2" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="3" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="4" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd"      name="attr_RenownZero" value="6" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="7" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="8" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="9" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownZero" value="10" /><span></span></li>
-					</ul>
-					<ul>
-						<li class="aretepool" style="border-top: none;">
-							<input type="radio" class="hd square zero" name="attr_RenownZero-Used" value="0" checked /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="1" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="2" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="3" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="4" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="6" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="7" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="8" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="9" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="10" /><span></span></li>
-					</ul>
-					<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-two" placeholder="Renown Two"/></h3>
-					<ul>
-						<li class="aretepool" style="border-bottom: none;">
-							<input type="radio" class="hd zero" name="attr_RenownOne" value="0" checked /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="1" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="2" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="3" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="4" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd"      name="attr_RenownOne" value="6" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="7" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="8" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="9" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownOne" value="10" /><span></span></li>
-					</ul>
-					<ul>
-						<li class="aretepool" style="border-top: none;">
-							<input type="radio" class="hd square zero" name="attr_RenownOne-Used" value="0" checked /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="1" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="2" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="3" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="4" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="6" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="7" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="8" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="9" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="10" /><span></span></li>
-					</ul>
-					<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-three" placeholder="Renown Three"/></h3>
-					<ul>
-						<li class="aretepool" style="border-bottom: none;">
-							<input type="radio" class="hd zero" name="attr_RenownThree" value="0" checked /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="1" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="2" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="3" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="4" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd"      name="attr_RenownThree" value="6" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="7" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="8" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="9" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownThree" value="10" /><span></span></li>
-					</ul>
-					<ul>
-						<li class="aretepool" style="border-top: none;">
-							<input type="radio" class="hd square zero" name="attr_RenownThree-Used" value="0" checked /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="1" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="2" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="3" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="4" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="6" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="7" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="8" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="9" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="10" /><span></span></li>
-					</ul>
-										<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-four" placeholder="Renown Four"/></h3>
-					<ul>
-						<li class="aretepool" style="border-bottom: none;">
-							<input type="radio" class="hd zero" name="attr_RenownFour" value="0" checked /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="1" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="2" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="3" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="4" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd"      name="attr_RenownFour" value="6" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="7" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="8" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="9" /><span></span>
-							<input type="radio" class="hd"      name="attr_RenownFour" value="10" /><span></span></li>
-					</ul>
-					<ul>
-						<li class="aretepool" style="border-top: none;">
-							<input type="radio" class="hd square zero" name="attr_RenownFour-Used" value="0" checked /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="1" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="2" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="3" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="4" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="6" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="7" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="8" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="9" /><span></span>
-							<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="10" /><span></span></li>
-					</ul>
+						<input type="hidden" name="attr_collapse-flag-advantage-renown" value="1">
+							<div class="border collapse-details"><!-- Renown ~ Werewolf  ~~ Priority XX -->
+								<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-zero" placeholder="Renown One"/></h3>
+								<ul>
+									<li class="aretepool" style="border-bottom: none;">
+										<input type="radio" class="hd zero" name="attr_RenownZero" value="0" checked /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="1" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="2" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="3" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="4" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd"      name="attr_RenownZero" value="6" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="7" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="8" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="9" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownZero" value="10" /><span></span></li>
+								</ul>
+								<ul>
+									<li class="aretepool" style="border-top: none;">
+										<input type="radio" class="hd square zero" name="attr_RenownZero-Used" value="0" checked /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="1" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="2" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="3" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="4" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="6" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="7" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="8" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="9" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownZero-Used" value="10" /><span></span></li>
+								</ul>
+								<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-two" placeholder="Renown Two"/></h3>
+								<ul>
+									<li class="aretepool" style="border-bottom: none;">
+										<input type="radio" class="hd zero" name="attr_RenownOne" value="0" checked /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="1" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="2" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="3" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="4" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd"      name="attr_RenownOne" value="6" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="7" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="8" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="9" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownOne" value="10" /><span></span></li>
+								</ul>
+								<ul>
+									<li class="aretepool" style="border-top: none;">
+										<input type="radio" class="hd square zero" name="attr_RenownOne-Used" value="0" checked /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="1" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="2" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="3" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="4" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="6" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="7" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="8" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="9" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownOne-Used" value="10" /><span></span></li>
+								</ul>
+								<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-three" placeholder="Renown Three"/></h3>
+								<ul>
+									<li class="aretepool" style="border-bottom: none;">
+										<input type="radio" class="hd zero" name="attr_RenownThree" value="0" checked /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="1" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="2" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="3" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="4" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd"      name="attr_RenownThree" value="6" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="7" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="8" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="9" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownThree" value="10" /><span></span></li>
+								</ul>
+								<ul>
+									<li class="aretepool" style="border-top: none;">
+										<input type="radio" class="hd square zero" name="attr_RenownThree-Used" value="0" checked /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="1" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="2" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="3" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="4" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="6" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="7" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="8" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="9" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownThree-Used" value="10" /><span></span></li>
+								</ul>
+													<h3 class="subHeader"><input class="H1renownLabel" name="attr_renownLabel-four" placeholder="Renown Four"/></h3>
+								<ul>
+									<li class="aretepool" style="border-bottom: none;">
+										<input type="radio" class="hd zero" name="attr_RenownFour" value="0" checked /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="1" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="2" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="3" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="4" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd"      name="attr_RenownFour" value="6" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="7" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="8" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="9" /><span></span>
+										<input type="radio" class="hd"      name="attr_RenownFour" value="10" /><span></span></li>
+								</ul>
+								<ul>
+									<li class="aretepool" style="border-top: none;">
+										<input type="radio" class="hd square zero" name="attr_RenownFour-Used" value="0" checked /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="1" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="2" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="3" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="4" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="6" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="7" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="8" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="9" /><span></span>
+										<input type="radio" class="hd square"      name="attr_RenownFour-Used" value="10" /><span></span></li>
+								</ul>
+							</div>
+							<input type="hidden" name="attr_collapse-flag-advantage-renown" value="1">
+							<label class="smlabel collapse-details">
+								<select class="optionsDropdown" name="attr_werewolfRank" title="Use this dropdown to select an individual's rank within a Tribe.">
+									<option value="0">Ronin</option>
+									<option value="1" selected>• One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+									<option value="4">Four</option>
+									<option value="5">Five</option>
+									<option value="6">Legendary</option>
+								</select><br><span class="SkPoolLabel">Rank</span>
+							</label><!-- End of Renown -->
 				</div>
-				<input type="hidden" name="attr_collapse-flag-advantage-renown" value="1">
-				<label class="smlabel collapse-details">
-					<select class="optionsDropdown" name="attr_werewolfRank" title="Use this dropdown to select an individual's rank within a Tribe.">
-						<option value="0">Ronin</option>
-						<option value="1" selected>• One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-						<option value="4">Four</option>
-						<option value="5">Five</option>
-						<option value="6">Legendary</option>
-					</select><br><span class="SkPoolLabel">Rank</span>
-				</label><!-- End of Renown -->
-	</div>
+<input type="checkbox" name="attr_shen2ed-show" class="race-type-shen" hidden /><!-- Hide Kwnannon-Jin Advantages if not a Shen -->
+				<div class="race-shen-block">
+					<button type="action" class="collapse-button" name="act_collapse-advantage-KwannonJin">Kwannon-Jin Advantages</button>
+					<input type="hidden" name="attr_collapse-flag-advantage-KwannonJin" value="1">
+					<div class="border collapse-details grid-3col"><!-- Kwannon-Jin ~ Luck -->
+						<div class="span-row-2">Luck:</div>
+						<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_KwannonJin-Luck-Text" value=""/></div>
+					</div> <!-- END Kwannon-Jin ~ Luck -->
+					<input type="hidden" name="attr_collapse-flag-advantage-KwannonJin" value="1">
+					<div class="border collapse-details grid-3col"><!-- Kwannon-Jin ~ Curse -->
+						<div class="span-row-2">Curse:</div>
+						<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_KwannonJin-Curse-Text" value=""/></div>
+					</div> <!-- END Kwannon-Jin ~ Curse -->
+					<input type="hidden" name="attr_collapse-flag-advantage-KwannonJin" value="1">
+					<div class="border collapse-details grid-3col"><!-- Kwannon-Jin ~ Wani Form -->
+						<div class="span-row-2">Wani Form:</div>
+						<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_KwannonJin-WaniForm-Text" value=""/></div>
+					</div> <!-- END Kwannon-Jin ~ Wani Form -->
+				</div>
+<input type="checkbox" name="attr_shen2ed-show" class="race-type-shen" hidden /><!-- Hide Yin / Yang if not a Shen -->
+				<div class="race-shen-block">
+					<button type="action" class="collapse-button" name="act_collapse-advantage-yinYang">Yin &amp; Yang</button>
+					<input type="hidden" name="attr_collapse-flag-advantage-yinYang" value="1">
+						<div class="border collapse-details"><!-- Yin / Yang ~ Shen -->
+							<h3 class="subHeader"><input class="H1renownLabel" name="attr_YinLabel" placeholder="Yin"/></h3>
+							<ul>
+								<li class="aretepool" style="border-bottom: none;">
+									<input type="radio" class="hd zero" name="attr_Yin" value="0" checked /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="1" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="2" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="3" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="4" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd"      name="attr_Yin" value="6" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="7" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="8" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="9" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yin" value="10" /><span></span></li>
+							</ul>
+							<ul>
+								<li class="aretepool" style="border-top: none;">
+									<input type="radio" class="hd square zero" name="attr_Yin-Used" value="0" checked /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="1" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="2" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="3" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="4" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="6" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="7" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="8" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="9" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yin-Used" value="10" /><span></span></li>
+							</ul>
+							<h3 class="subHeader"><input class="H1renownLabel" name="attr_YangLabel" placeholder="Yang"/></h3>
+							<ul>
+								<li class="aretepool" style="border-bottom: none;">
+									<input type="radio" class="hd zero" name="attr_Yang" value="0" checked /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="1" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="2" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="3" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="4" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd"      name="attr_Yang" value="6" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="7" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="8" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="9" /><span></span>
+									<input type="radio" class="hd"      name="attr_Yang" value="10" /><span></span></li>
+							</ul>
+							<ul>
+								<li class="aretepool" style="border-top: none;">
+									<input type="radio" class="hd square zero" name="attr_Yang-Used" value="0" checked /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="1" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="2" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="3" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="4" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="6" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="7" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="8" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="9" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Yang-Used" value="10" /><span></span></li>
+							</ul>
+						</div><!-- End of Yin / Yang -->
+				</div>
 			</div>
 
 			
 			<div class="columns">
+<input type="checkbox" name="attr_mummy20-show" class="race-type-mummy" hidden /><!-- Hide Hekau if not a Mummy -->
+	<div class="race-mummy-block">
+				<button type="action" class="collapse-button" name="act_collapse-advantage-hekau">Hekau</button>
+				<input type="hidden" name="attr_collapse-flag-advantage-hekau" value="1">
+				<div class="border collapse-details grid-3col"><!-- Hekau  ~ Amulets -->
+					<div class="span-row-2">Amulets</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_hekau-amulet-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_hekau-amulets" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-amulets" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-amulets" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-amulets" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-amulets" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-amulets" value="5" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-amulets value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-amulets" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-amulets" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-amulets" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-amulets" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Hekau ~ Amulets -->
+				<input type="hidden" name="attr_collapse-flag-advantage-hekau" value="1">
+				<div class="border collapse-details grid-3col"><!-- Hekau  ~ Alchemy -->
+					<div class="span-row-2">Alchemy</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_hekau-alchemy-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_hekau-alchemy" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-alchemy" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-alchemy" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-alchemy" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-alchemy" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-alchemy" value="5" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-alchemy value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-alchemy" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-alchemy" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-alchemy" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-alchemy" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Hekau ~ Alchemy -->
+				<input type="hidden" name="attr_collapse-flag-advantage-hekau" value="1">
+				<div class="border collapse-details grid-3col"><!-- Hekau  ~ Celestial -->
+					<div class="span-row-2">Celestial</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_hekau-celestial-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_hekau-celestial" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-celestial" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-celestial" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-celestial" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-celestial" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-celestial" value="5" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-celestial value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-celestial" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-celestial" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-celestial" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-celestial" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Hekau ~ Celestial -->
+				<input type="hidden" name="attr_collapse-flag-advantage-hekau" value="1">
+				<div class="border collapse-details grid-3col"><!-- Hekau  ~ Effigy -->
+					<div class="span-row-2">Effigy</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_hekau-effigy-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_hekau-effigy" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-effigy" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-effigy" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-effigy" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-effigy" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-effigy" value="5" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-effigy value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-effigy" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-effigy" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-effigy" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-effigy" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Hekau ~ Effigy -->
+				<input type="hidden" name="attr_collapse-flag-advantage-hekau" value="1">
+				<div class="border collapse-details grid-3col"><!-- Hekau  ~ Necromancy -->
+					<div class="span-row-2">Necromancy</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_hekau-necromancy-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_hekau-necromancy" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-necromancy" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-necromancy" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-necromancy" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-necromancy" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-necromancy" value="5" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-necromancy value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-necromancy" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-necromancy" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-necromancy" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-necromancy" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Hekau ~ Necromancy -->
+				<input type="hidden" name="attr_collapse-flag-advantage-hekau" value="1">
+				<div class="border collapse-details grid-3col"><!-- Hekau  ~ Nomenclature -->
+					<div class="span-row-2">Nomenclature</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_hekau-nomenclature-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_hekau-nomenclature" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-nomenclature" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-nomenclature" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-nomenclature" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-nomenclature" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_hekau-nomenclature" value="5" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-nomenclature value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-nomenclature" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-nomenclature" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-nomenclature" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_hekau-nomenclature" value="10" /><span></span>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Hekau ~ Nomenclature -->
+		</div>
 <input type="checkbox" name="attr_vampire20-show" class="race-type-vampire" hidden /><!-- Hide Disciplines if not a Vampire -->
 	<div class="race-vampire-block">
 				<button type="action" class="collapse-button" name="act_collapse-advantage-disciplines">Disciplines</button>
@@ -3485,7 +3907,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_discipline-0" value="3" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-0" value="4" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-0" value="5" /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-0" value="6" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-0" value="7" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-0" value="8" /><span></span>
@@ -3507,7 +3929,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_discipline-1" value="3" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-1" value="4" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-1" value="5" /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-1" value="6" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-1" value="7" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-1" value="8" /><span></span>
@@ -3529,7 +3951,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_discipline-2" value="3" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-2" value="4" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-2" value="5" /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-2" value="6" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-2" value="7" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-2" value="8" /><span></span>
@@ -3551,7 +3973,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_discipline-3" value="3" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-3" value="4" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-3" value="5" /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-3" value="6" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-3" value="7" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-3" value="8" /><span></span>
@@ -3573,7 +3995,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_discipline-4" value="3" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-4" value="4" /><span></span>
 									<input type="radio" class="hd"              name="attr_discipline-4" value="5" /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-4" value="6" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-4" value="7" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_discipline-4" value="8" /><span></span>
@@ -3602,24 +4024,24 @@ Advantages
 	</div>
 <input type="checkbox" name="attr_mage20-show" class="race-type-mage" hidden /><!-- Hide ARETE button if not a MAGE -->
 	<div class="race-mage-block">
-					<button type="action" class="collapse-button" name="act_collapse-advantage-arete">Arete</button>
-			<input type="hidden" name="attr_collapse-flag-advantage-arete" value="1">
-				<div class="border collapse-details"><!-- Arete/Enlightenment ~ Mage/Technocrat ~~ Priority XX -->
-					<ul>
-						<li class="aretepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-spheres"  hidden />
-							<input type="radio" class="hd zero" name="attr_arete" value="0" checked /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="1" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="2" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="3" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="4" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="5" /><span></span>&nbsp;&nbsp;
-							<input type="radio" class="hd"      name="attr_arete" value="6" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="7" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="8" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="9" /><span></span>
-							<input type="radio" class="hd"      name="attr_arete" value="10" /><span></span></li>
-					</ul>
-				</div><!-- End of Arete -->
+	<button type="action" class="collapse-button" name="act_collapse-advantage-arete">Arete</button>
+	<input type="hidden" name="attr_collapse-flag-advantage-arete" value="1">
+		<div class="border collapse-details"><!-- Arete/Enlightenment ~ Mage/Technocrat ~~ Priority XX -->
+			<ul>
+				<li class="aretepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-spheres"  hidden />
+					<input type="radio" class="hd zero" name="attr_arete" value="0" checked /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="1" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="2" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="3" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="4" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="5" /><span></span>&nbsp;&nbsp;
+					<input type="radio" class="hd"      name="attr_arete" value="6" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="7" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="8" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="9" /><span></span>
+					<input type="radio" class="hd"      name="attr_arete" value="10" /><span></span></li>
+			</ul><button type="roll" name="roll_arete-check" value="[QUERY]" title="%{selected|arete-check} Tokenless Roll (No Token Select Required for this Roll)"></button>
+		</div><!-- End of Arete -->
 	</div>
 <input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden /><!-- Hide GIFT button if not a WEREWOLF or KINFOLK -->
 	<div class="race-werewolf-block">
@@ -3688,6 +4110,200 @@ Advantages
 					</ul>
 				</div><!-- End of Gnosis -->
 	</div>
+
+<!-- Humanity / Path -->
+<input type="checkbox" name="attr_vampire20-show" class="race-type-vampire" hidden /><!-- Hide Humanity / Path if not a Vampire -->
+	<div class="race-vampire-block">
+				<button type="action" class="collapse-button" name="act_collapse-advantage-humanity">Humanity / Path</button>
+				<input type="hidden" name="attr_collapse-flag-advantage-humanity" value="1">
+					<div class="border collapse-details grid-2"><!-- Humanity / Path -->
+						<div class="ghumanity"><input type="text" class="dottedline w100p" name="attr_humanity-path" /></div>
+						<div class="ghumanity center">
+									<input type="radio" class="hd zero"         name="attr_humanity" value="0" checked /><span></span>
+									<input type="radio" class="hd"              name="attr_humanity" value="1" /><span></span>
+									<input type="radio" class="hd"              name="attr_humanity" value="2" /><span></span>
+									<input type="radio" class="hd"              name="attr_humanity" value="3" /><span></span>
+									<input type="radio" class="hd"              name="attr_humanity" value="4" /><span></span>
+									<input type="radio" class="hd"              name="attr_humanity" value="5" /><span></span>
+									<input type="radio" class="hd" 				name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd" 				name="attr_humanity" value="6" /><span></span>
+									<input type="radio" class="hd" 				name="attr_humanity" value="7" /><span></span>
+									<input type="radio" class="hd"				name="attr_humanity" value="8" /><span></span>
+									<input type="radio" class="hd" 				name="attr_humanity" value="9" /><span></span>
+									<input type="radio" class="hd" 				name="attr_humanity" value="10" /><span></span>
+						</div>
+						<div class="ghumanity">Bearing:<input type="text" class="dottedline humanityText" name="attr_humanity-bearing" placeholder="Bearing" />(___)</div>
+					</div> <!-- END Discipline Zero -->
+	</div>
+<input type="checkbox" name="attr_mummy20-show" class="race-type-mummy" hidden /><!-- Hide BALANCE button if not a Mummy -->
+	<div class="race-mummy-block">
+					<button type="action" class="collapse-button" name="act_collapse-advantage-balance">Balance</button>
+			<input type="hidden" name="attr_collapse-flag-advantage-balance" value="1">
+				<div class="border collapse-details"><!-- Balance ~ Mummy -->
+					<ul>
+						<li class="aretepool">
+							<input type="radio" class="hd zero" name="attr_balance" value="0" checked /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="1" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="2" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="3" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="4" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="5" /><span></span>&nbsp;&nbsp;
+							<input type="radio" class="hd"      name="attr_balance" value="6" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="7" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="8" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="9" /><span></span>
+							<input type="radio" class="hd"      name="attr_balance" value="10" /><span></span></li>
+					</ul>
+				</div><!-- End of Balance -->
+	</div>
+<input type="checkbox" name="attr_shen2ed-show" class="race-type-shen" hidden /><!-- Hide Wu Tan if not a Shen -->
+	<div class="race-shen-block">
+				<button type="action" class="collapse-button" name="act_collapse-advantage-wuTan">Wu Tan</button>
+				<input type="hidden" name="attr_collapse-flag-advantage-wuTan" value="1">
+				<div class="border collapse-details grid-3col"><!-- Wu Tan  ~ Di Tan -->
+					<div class="span-row-2">Di Tan (Earth)</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_wutan-DiTan-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_wuTan-DiTan" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-DiTan" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-DiTan" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-DiTan" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-DiTan" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-DiTan" value="5" /><span></span>
+<!-- 					Shen can never gain more than 5 dots in Wu Tan...  PERIOD.
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-amulets value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-amulets" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-amulets" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-amulets" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-amulets" value="10" /><span></span> -->
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Wu Tan ~ Di Tan -->
+				<input type="hidden" name="attr_collapse-flag-advantage-wuTan" value="1">
+				<div class="border collapse-details grid-3col"><!-- Wu Tan  ~ Hou Tan -->
+					<div class="span-row-2">Hou Tan (Fire)</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_wutan-HouTan-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_wuTan-HouTan" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-HouTan" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-HouTan" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-HouTan" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-HouTan" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-HouTan" value="5" /><span></span>
+<!-- 					Shen can never gain more than 5 dots in Wu Tan...  PERIOD.
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-HouTan value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-HouTan" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-HouTan" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-HouTan" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-HouTan" value="10" /><span></span> -->
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Wu Tan ~ Hou Tan -->
+				<input type="hidden" name="attr_collapse-flag-advantage-wuTan" value="1">
+				<div class="border collapse-details grid-3col"><!-- Wu Tan  ~ Lin Tan -->
+					<div class="span-row-2">Lin Tan (Wood)</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_wutan-LinTan-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_wuTan-LinTan" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-LinTan" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-LinTan" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-LinTan" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-LinTan" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-LinTan" value="5" /><span></span>
+<!-- 					Shen can never gain more than 5 dots in Wu Tan...  PERIOD.
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-LinTan value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-LinTan" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-LinTan" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-LinTan" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-LinTan" value="10" /><span></span> -->
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Wu Tan ~ Lin Tan -->
+				<input type="hidden" name="attr_collapse-flag-advantage-wuTan" value="1">
+				<div class="border collapse-details grid-3col"><!-- Wu Tan  ~ Tieh Tan -->
+					<div class="span-row-2">Tieh Tan (Metal)</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_wutan-TiehTan-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_wuTan-TiehTan" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-TiehTan" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-TiehTan" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-TiehTan" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-TiehTan" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-TiehTan" value="5" /><span></span>
+<!-- 					Shen can never gain more than 5 dots in Wu Tan...  PERIOD.
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-TiehTan value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-TiehTan" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-TiehTan" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-TiehTan" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-TiehTan" value="10" /><span></span> -->
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Wu Tan ~ Tieh Tan -->
+				<input type="hidden" name="attr_collapse-flag-advantage-wuTan" value="1">
+				<div class="border collapse-details grid-3col"><!-- Wu Tan  ~ Shui Tan -->
+					<div class="span-row-2">Shui Tan (Water)</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_wutan-ShuiTan-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_wuTan-ShuiTan" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-ShuiTan" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-ShuiTan" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-ShuiTan" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-ShuiTan" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-ShuiTan" value="5" /><span></span>
+<!-- 					Shen can never gain more than 5 dots in Wu Tan...  PERIOD.
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-ShuiTan value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-ShuiTan" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-ShuiTan" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-ShuiTan" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-ShuiTan" value="10" /><span></span> -->
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Wu Tan ~ Shui Tan -->
+				<input type="hidden" name="attr_collapse-flag-advantage-wuTan" value="1">
+				<div class="border collapse-details grid-3col"><!-- Wu Tan  ~ Nei Tan -->
+					<div class="span-row-2">Nei Tan (Internal)</div>
+					<div class="span-row-2"><input type="text" class="dottedline w100p" name="attr_wutan-NeiTan-Text" value=""/></div>
+					<div class="span-row-2">
+						<ul>
+							<li class="griddicepool"><input type="checkbox" class="610-bgs" name="attr_show-10d-bgs" hidden />
+								<input type="radio" class="hd zero"         name="attr_wuTan-NeiTan" value="0" checked /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-NeiTan" value="1" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-NeiTan" value="2" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-NeiTan" value="3" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-NeiTan" value="4" /><span></span>
+								<input type="radio" class="hd"              name="attr_wuTan-NeiTan" value="5" /><span></span>
+<!-- 					Shen can never gain more than 5 dots in Wu Tan...  PERIOD.
+								<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-NeiTan value="6" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-NeiTan" value="7" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-NeiTan" value="8" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-NeiTan" value="9" /><span></span>
+								<input type="radio" class="hd show-10d-bgs" name="attr_wuTan-NeiTan" value="10" /><span></span> -->
+							</li>
+						</ul>
+					</div>
+				</div> <!-- END Wu Tan ~ Nei Tan -->
+	</div>
 				<button type="action" class="collapse-button" name="act_collapse-advantage-willpower">Willpower</button>
 				<input type="hidden" name="attr_collapse-flag-advantage-willpower" value="1">
 				<div class="border collapse-details">
@@ -3720,13 +4336,205 @@ Advantages
 							<input type="radio" class="hd square"      name="attr_Willpower_Used" value="10" /><span></span></li>
 					</ul>
 				</div><!-- End of Willpower -->
+<input type="checkbox" name="attr_mage20-show" class="race-type-mage" hidden /><!-- Hide Quintessence / Paradox if not a Mage -->
+				<div class="race-mage-block">
+					<button type="action" class="collapse-button" name="act_collapse-advantage-quintessence">Quintessence / Paradox</button>
+					<input type="hidden" name="attr_collapse-flag-advantage-quintessence" value="1">
+						<div class="border collapse-details"><!-- Quintessence / Paradox ~ Mage -->
+							<h3 class="subHeader"><input class="H1renownLabel" name="attr_QuintessenceLabel" placeholder="Quintessence"/></h3>
+							<ul>
+								<li class="aretepool" style="border-bottom: none;">
+									<input type="radio" class="hd zero" name="attr_Quintessence" value="0" checked /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="1" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="2" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="3" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="4" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd"      name="attr_Quintessence" value="6" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="7" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="8" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="9" /><span></span>
+									<input type="radio" class="hd"      name="attr_Quintessence" value="10" /><span></span></li>
+							</ul>
+							<ul>
+								<li class="aretepool" style="border-top: none;">
+									<input type="radio" class="hd square zero" name="attr_Quintessence-Used" value="0" checked /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="1" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="2" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="3" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="4" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="6" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="7" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="8" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="9" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Quintessence-Used" value="10" /><span></span></li>
+							</ul>
+							<h3 class="subHeader"><input class="H1renownLabel" name="attr_ParadoxLabel" placeholder="Paradox"/></h3>
+							<ul>
+								<li class="aretepool" style="border-bottom: none;">
+									<input type="radio" class="hd zero" name="attr_Paradox" value="0" checked /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="1" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="2" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="3" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="4" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd"      name="attr_Paradox" value="6" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="7" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="8" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="9" /><span></span>
+									<input type="radio" class="hd"      name="attr_Paradox" value="10" /><span></span></li>
+							</ul>
+							<ul>
+								<li class="aretepool" style="border-top: none;">
+									<input type="radio" class="hd square zero" name="attr_Paradox-Used" value="0" checked /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="1" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="2" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="3" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="4" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="5" /><span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="6" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="7" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="8" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="9" /><span></span>
+									<input type="radio" class="hd square"      name="attr_Paradox-Used" value="10" /><span></span></li>
+							</ul>
+
+						</div><!-- End of Quintessence / Paradox -->
+				</div>
+<input type="checkbox" name="attr_shen2ed-show" class="race-type-shen" hidden /><!-- Hide Yugen if not a Shen -->
+	<div class="race-shen-block">
+				<button type="action" class="collapse-button" name="act_collapse-advantage-yugen">Yugen</button>
+				<input type="hidden" name="attr_collapse-flag-advantage-yugen" value="1">
+					<div class="border collapse-details grid-2">
+						<div class="ghumanity center">
+							<ul>
+								<li class="aretepool">
+									<input type="radio" class="hd zero"		name="attr_yugen" value="0" checked /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="1" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="2" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="3" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="4" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="5" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="6" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="7" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="8" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="9" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="10" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="11" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="12" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="13" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="14" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="15" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="16" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="17" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="18" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="19" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="20" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="21" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="22" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="23" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="24" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="25" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="26" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="27" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="28" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="29" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="30" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="31" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="32" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="33" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="34" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="35" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="36" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="37" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="38" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="39" /><span></span>
+									<input type="radio" class="hd square"	name="attr_yugen" value="40" /><span></span>
+								</li>
+							</ul>
+						</div>
+						<div class="ghumanity">Yugen Per Turn:<input type="number" class="dottedline 2dig" name="attr_YugenPerTurn"  /></div>
+					</div> <!-- END Blood Pool -->
+	</div>
+<!-- Blood Pool -->
+<input type="checkbox" name="attr_vampire20-show" class="race-type-vampire" hidden /><!-- Hide Blood Pool if not a Vampire -->
+	<div class="race-vampire-block">
+				<button type="action" class="collapse-button" name="act_collapse-advantage-blood">Blood Pool</button>
+				<input type="hidden" name="attr_collapse-flag-advantage-blood" value="1">
+					<div class="border collapse-details grid-2"><!-- Humanity / Path -->
+						<div class="ghumanity center">
+							<ul>
+								<li class="aretepool">
+									<input type="radio" class="hd zero"		name="attr_bloodpool" value="0" checked /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="1" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="2" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="3" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="4" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="5" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="6" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="7" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="8" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="9" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="10" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="11" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="12" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="13" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="14" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="15" /><span></span>
+									<input type="radio" class="hd square" name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="16" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="17" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="18" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="19" /><span></span>
+									<input type="radio" class="hd square"	name="attr_bloodpool" value="20" /><span></span>
+								</li>
+							</ul>
+						</div>
+						<div class="ghumanity">Blood Per Turn:<input type="number" class="dottedline 2dig" name="attr_bloodPerTurn"  /></div>
+					</div> <!-- END Blood Pool -->
+	</div>
+<input type="checkbox" name="attr_mummy20-show" class="race-type-mummy" hidden /><!-- Hide Sehkem if not a Mummy -->
+	<div class="race-mummy-block">
+				<button type="action" class="collapse-button" name="act_collapse-advantage-sekhem">Sekhem</button>
+				<input type="hidden" name="attr_collapse-flag-advantage-sekhem" value="1">
+					<div class="border collapse-details grid-2"><!-- Sekhem -->
+						<div class="ghumanity center">
+							<ul>
+								<li class="aretepool">
+									<input type="radio" class="hd zero"		name="attr_sekhem" value="0" checked /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="1" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="2" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="3" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="4" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="5" /><span></span>
+									<input type="radio" class="hd square"   name="attr_" value="" disabled /><span class="blankdot"></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="6" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="7" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="8" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="9" /><span></span>
+									<input type="radio" class="hd square"	name="attr_sekhem" value="10" /><span></span>
+								</li>
+							</ul>
+						</div>
+					</div> <!-- END Blood Pool -->
+	</div>
 			</div>
 			<div class="columns">
 <input type="checkbox" name="attr_vampire20-show" class="race-type-vampire" hidden /><!-- Hide Virtues if not a Vampire -->
 	<div class="race-vampire-block">
 				<button type="action" class="collapse-button" name="act_collapse-advantage-virtues">Virtues</button>
 				<input type="hidden" name="attr_collapse-flag-advantage-virtues" value="1">
-					<div class="border collapse-details grid-2"><!-- Conscience/Conviction  -->
+					<div class="border collapse-details grid-2-a39"><!-- Conscience/Conviction  -->
 						<div class="span-row-2">Conscience/Conviction</div>
 						<div class="span-row-2">
 							<ul>
@@ -3737,7 +4545,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_conscience" value="3" /><span></span>
 									<input type="radio" class="hd"              name="attr_conscience" value="4" /><span></span>
 									<input type="radio" class="hd"              name="attr_conscience" value="5" /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_conscience" value="6" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_conscience" value="7" /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_conscience" value="8" /><span></span>
@@ -3748,7 +4556,7 @@ Advantages
 						</div>
 					</div> <!-- END Self-Control/Instinct -->
 					<input type="hidden" name="attr_collapse-flag-advantage-virtues" value="1">
-					<div class="border collapse-details grid-2"><!-- Conscience/Conviction -->
+					<div class="border collapse-details grid-2-a39"><!-- Conscience/Conviction -->
 						<div class="span-row-2">Self-Control/Instinct</div>
 						<div class="span-row-2">
 							<ul>
@@ -3759,7 +4567,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_selfcontrol" value="3"  /><span></span>
 									<input type="radio" class="hd"              name="attr_selfcontrol" value="4"  /><span></span>
 									<input type="radio" class="hd"              name="attr_selfcontrol" value="5"  /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_selfcontrol" value="6"  /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_selfcontrol" value="7"  /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_selfcontrol" value="8"  /><span></span>
@@ -3770,7 +4578,7 @@ Advantages
 						</div>
 					</div> <!-- END Courage -->
 					<input type="hidden" name="attr_collapse-flag-advantage-virtues" value="1">
-					<div class="border collapse-details grid-2"><!-- Courage -->
+					<div class="border collapse-details grid-2-a39"><!-- Courage -->
 						<div class="span-row-2">Courage</div>
 						<div class="span-row-2">
 							<ul>
@@ -3781,7 +4589,7 @@ Advantages
 									<input type="radio" class="hd"              name="attr_courage" value="3"  /><span></span>
 									<input type="radio" class="hd"              name="attr_courage" value="4"  /><span></span>
 									<input type="radio" class="hd"              name="attr_courage" value="5"  /><span></span>
-									<input type="radio" class="hd" style="opacity: 0;" name="attr_" value=""  /><span style="opacity: 0;"></span>
+									<input type="radio" class="hd show-10d-bgs" name="attr_" value="" disabled /><span class="blankdot"></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_courage" value="6"  /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_courage" value="7"  /><span></span>
 									<input type="radio" class="hd show-10d-bgs" name="attr_courage" value="8"  /><span></span>
@@ -3831,7 +4639,7 @@ Advantages
 				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Bruised -->
 					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Bruised</label>
 					<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;-0</label>
-					<label class="health-box" style="max-width: 2em; text-align: right; border: 1px solid black; line-height: 1em;">
+					<label class="health-box" style="max-width: 2em; text-align: right;">
 						<input type="radio" class="healthbox blackdot"      name="attr_healthbox_0" value="0" checked="checked">        
 						<input type="radio" class="healthbox whitedot"      name="attr_healthbox_0" value="0.1">
 						<input type="radio" class="healthbox bashingdot"    name="attr_healthbox_0" value="0.2">
@@ -3848,7 +4656,7 @@ Advantages
 				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Hurt -->
 					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Hurt</label>
 					<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;-1</label>
-					<label class="health-box" style="max-width: 2em; text-align: right; border: 1px solid black; line-height: 1em;">
+					<label class="health-box" style="max-width: 2em; text-align: right;">
 						<input type="radio" class="healthbox blackdot"      name="attr_healthbox_1" value="0" checked="checked">        
 						<input type="radio" class="healthbox whitedot"      name="attr_healthbox_1" value="0.1">
 						<input type="radio" class="healthbox bashingdot"    name="attr_healthbox_1" value="0.2">
@@ -3865,7 +4673,7 @@ Advantages
 				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Injured -->
 					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Injured</label>
 					<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;-1</label>
-					<label class="health-box" style="max-width: 2em; text-align: right; border: 1px solid black; line-height: 1em;">
+					<label class="health-box" style="max-width: 2em; text-align: right;">
 						<input type="radio" class="healthbox blackdot"      name="attr_healthbox_2" value="0" checked="checked">        
 						<input type="radio" class="healthbox whitedot"      name="attr_healthbox_2" value="0.1">
 						<input type="radio" class="healthbox bashingdot"    name="attr_healthbox_2" value="0.2">
@@ -3882,7 +4690,7 @@ Advantages
 				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Wounded -->
 					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Wounded</label>
 					<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;-2</label>
-					<label class="health-box" style="max-width: 2em; text-align: right; border: 1px solid black; line-height: 1em;">
+					<label class="health-box" style="max-width: 2em; text-align: right;">
 						<input type="radio" class="healthbox blackdot"      name="attr_healthbox_3" value="0" checked="checked">        
 						<input type="radio" class="healthbox whitedot"      name="attr_healthbox_3" value="0.1">
 						<input type="radio" class="healthbox bashingdot"    name="attr_healthbox_3" value="0.2">
@@ -3899,7 +4707,7 @@ Advantages
 				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Mauled -->
 					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Mauled</label>
 					<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;-2</label>
-					<label class="health-box" style="max-width: 2em; text-align: right; border: 1px solid black; line-height: 1em;">
+					<label class="health-box" style="max-width: 2em; text-align: right;">
 						<input type="radio" class="healthbox blackdot"      name="attr_healthbox_4" value="0" checked="checked">        
 						<input type="radio" class="healthbox whitedot"      name="attr_healthbox_4" value="0.1">
 						<input type="radio" class="healthbox bashingdot"    name="attr_healthbox_4" value="0.2">
@@ -3916,7 +4724,7 @@ Advantages
 				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Crippled -->
 					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Crippled</label>
 					<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;-5</label>
-					<label class="health-box" style="max-width: 2em; text-align: right; border: 1px solid black; line-height: 1em;">
+					<label class="health-box" style="max-width: 2em; text-align: right;">
 						<input type="radio" class="healthbox blackdot"      name="attr_healthbox_5" value="0" checked="checked">        
 						<input type="radio" class="healthbox whitedot"      name="attr_healthbox_5" value="0.1">
 						<input type="radio" class="healthbox bashingdot"    name="attr_healthbox_5" value="0.2">
@@ -3933,7 +4741,7 @@ Advantages
 				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Incapacitated -->
 					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Incapacitated</label>
 					<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;</label>
-					<label class="health-box" style="max-width: 2em; text-align: right; border: 1px solid black; line-height: 1em;">
+					<label class="health-box" style="max-width: 2em; text-align: right;">
 						<input type="radio" class="healthbox blackdot"      name="attr_healthbox_6" value="0" checked="checked">        
 						<input type="radio" class="healthbox whitedot"      name="attr_healthbox_6" value="0.1">
 						<input type="radio" class="healthbox bashingdot"    name="attr_healthbox_6" value="0.2">
@@ -3946,13 +4754,248 @@ Advantages
 							<span class="healthbox aggravateddot"></span>
 					</label>
 				</div>
+<!-- ~~~~~~~~~~~~ Mummy Health ~~~~~~~~~~~~~~~~~ -->
+<input type="checkbox" name="attr_mummy20-show" class="race-type-mummy" hidden /><!-- Hide DEALTH LEVELS button if not a MUMMY -->
+				<div class="race-mummy-block">
+					<input type="hidden" name="attr_collapse-flag-advantage-health" value="1">
+					<div class="abilBuffs collapse-details" style="border-top: 3px solid black;"><!-- Mummy ~ Broken/Scorched -->
+						<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Broken/Scorched</label>
+						<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;</label>
+						<label class="health-box" style="max-width: 2em; text-align: right;">
+							<input type="checkbox" class="health-box m20death" name="attr_mummy-broken"	value="0"><span class="health-box m20death"></span>
+						</label>
+					</div>
+					<input type="hidden" name="attr_collapse-flag-advantage-health" value="1">
+					<div class="abilBuffs collapse-details"><!-- Mummy ~ Crushed / Burned -->
+						<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Crushed/Burned</label>
+						<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;</label>
+						<label class="health-box" style="max-width: 2em; text-align: right;">
+							<input type="checkbox" class="health-box m20death" name="attr_mummy-crushed" value="0"><span class="health-box m20death"></span>
+						</label>
+					</div>
+					<input type="hidden" name="attr_collapse-flag-advantage-health" value="1">
+					<div class="abilBuffs collapse-details"><!-- Mummy ~ Dismembered / Incinerated -->
+						<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Dismembered/Incinerated</label>
+						<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;</label>
+						<label class="health-box" style="max-width: 2em; text-align: right;">
+							<input type="checkbox" class="health-box m20death" name="attr_mummy-dismembered" value="0"><span class="health-box m20death"></span>
+						</label>
+					</div>
+					<input type="hidden" name="attr_collapse-flag-advantage-health" value="1">
+					<div class="abilBuffs collapse-details"><!-- Mummy ~ Pulverized / Cremated -->
+						<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Pulverized/Cremated</label>
+						<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;</label>
+						<label class="health-box" style="max-width: 2em; text-align: right;">
+							<input type="checkbox" class="health-box m20death" name="attr_mummy-pulverized" value="0"><span class="health-box m20death"></span>
+						</label>
+					</div>
+					<input type="hidden" name="attr_collapse-flag-advantage-health" value="1">
+					<div class="abilBuffs collapse-details"><!-- Mummy ~ Dust / Ash -->
+						<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Dust/Ash</label>
+						<label style="text-align: right; line-height:1em;padding-top:0.3em;">&nbsp;</label>
+						<label class="health-box" style="max-width: 2em; text-align: right;">
+							<input type="checkbox" class="health-box m20death" name="attr_mummy-dust" value="0"><span class="health-box m20death"></span>
+						</label>
+					</div>
+				</div>
 			</div>
-		</div>	
-				
-				
+		</div>				
+</div>
+<div class="combat">
+<input type="checkbox" name="attr_werewolf20-show" class="race-type-werewolf" hidden /><!-- Hide Wereforms button if not a Fera -->
+	<div class="race-werewolf-block">
+		<div class="sectionHeader">Forms</div>
+		<div class="sectHeadCntr">
+			<ul class="sectHeadCntr">
+				<li><button type="action" class="swbutton" name="act_collapseAll" title="Collapse All">_</button><input type="checkbox" class="collapse-show cssbutton" title="Minimize all rows."   name="attr_All" value="1" /><span></span></li>
+				<li><button type="action" class="swbutton" name="act_expandAll" Expand All />☐</button><input type="checkbox" class="help-show cssbutton" title="Show help for this section." name="attr_expandAll" value="1" /><span></span></li>
+				<li> This is placeholder text for possible future content.</li>
+			</ul>
+		</div>
+<!-- ** CODE NOTES ***********************************************************************************
+    *** the attr_ names for this section all being with "attr_form-" this is to make it easier to integrate with sheetworkers. -->
+		<div class="shapeshiftForms">
+			<div class="creatureName"></div>
+			<div class="humanoid-label"><h3 class="subHeader"><input class="H1renownLabel" name="attr_form-homid-label" placeholder="Human"/></h3></div>
+			<div class="nearHuman-label"><h3 class="subHeader"><input class="H1renownLabel" name="attr_form-nearhuman-label" placeholder="Near-Human"/></h3></div>
+			<div class="warform-label"><h3 class="subHeader"><input class="H1renownLabel" name="attr_form-warform-label" placeholder="War Form"/></h3></div>
+			<div class="nearBeast-label"><h3 class="subHeader"><input class="H1renownLabel" name="attr_form-nearbeast-label" placeholder="Near Beast"/></h3></div>
+			<div class="beast-label"><h3 class="subHeader"><input class="H1renownLabel" name="attr_form-beast-label" placeholder="Beast"/></h3></div>
+			<div class="humanoid-details details-selected">
+				<ul class="nList">
+					<li><input type="radio" name="attr_form-str" value="0" /><input type="number" class="2dig" name="attr_form-str-mod" value="0" disabled /> Strength</li>
+					<li><input type="radio" name="attr_form-sta" value="0" /><input type="number" class="2dig" name="attr_form-sta-mod" value="0" disabled /> Stamina</li>
+					<li><input type="radio" name="attr_form-dex" value="0" /><input type="number" class="2dig" name="attr_form-dex-mod" value="0" disabled /> Dexterity</li>
+					<li><input type="radio" name="attr_form-cha" value="0" /><input type="number" class="2dig" name="attr_form-cha-mod" value="0" disabled /> Charisma</li>
+					<li><input type="radio" name="attr_form-man" value="0" /><input type="number" class="2dig" name="attr_form-man-mod" value="0" disabled /> Manipulation</li>
+					<li><input type="radio" name="attr_form-app" value="0" /><input type="number" class="2dig" name="attr_form-app-mod" value="0" disabled /> Appearence</li>
+					<li><input type="radio" name="attr_form-per" value="0" /><input type="number" class="2dig" name="attr_form-per-mod" value="0" disabled /> Perception</li>
+					<li><input type="radio" name="attr_form-int" value="0" /><input type="number" class="2dig" name="attr_form-int-mod" value="0" disabled /> Intelligence</li>
+					<li><input type="radio" name="attr_form-wit" value="0" /><input type="number" class="2dig" name="attr_form-wit-mod" value="0" disabled /> Wits</li>
+					<li>&nbsp;</li>
+					<li>
+						<label class="smlabel">
+							<select class="cfg-select" name="attr_form-bitedmg" title="Set the Bite Damage for this form.">
+								<option value="0">• Select One</option>
+								<option value="0">STR</option>
+								<option value="0">STR + 1</option>
+								<option value="0">STR + 2</option>
+								<option value="0">STR + 3</option>
+							</select><input type="number" class="2dig" style="line-height: 1.8em;" name="attr_form-bitedmg-mod" value="0" disabled /><br><span class="SkPoolLabel">Bite Damage</span>
+						</label>
+					</li>
+					<li>
+						<label class="smlabel">
+							<select class="cfg-select" name="attr_form-clawdmg" title="Set the Craw/Talon Damage for this form.">
+								<option value="0">• Select One</option>
+								<option value="0">STR</option>
+								<option value="0">STR + 1</option>
+								<option value="0">STR + 2</option>
+								<option value="0">STR + 3</option>
+							</select><input type="number" class="2dig" style="line-height: 1.8em;" name="attr_form-clawdmg-mod" value="0" disabled /><br><span class="SkPoolLabel">Claw Damage</span>
+						</label>
+					</li>
+					<li><input type="radio" name="attr_form-percdiff"  value="0" /><input type="number" class="2dig" name="attr_form-perc-diff-mod" value="0"  disabled /> Perc. Diff.</li>
+					<li>&nbsp;</li>
+					<li><input type="radio" name="attr_form-shiftdiff" value="0" /><input type="number" class="2dig" name="attr_form-shapeshift-diff-mod" value="0" disabled /> Shapeshift Diff.</li>
+				</ul>
+			</div>
+			<div class="nearHuman-details"></div>
+			<div class="warform-details"></div>
+			<div class="nearBeast-details"></div>
+			<div class="beast-details"></div>
+			<div class="humanoid-buttons">  <button type="action" class="formbutton" name="act_form-human"     title="Assume Humanoid Form">Activate</button></div>
+			<div class="nearHuman-buttons"> <button type="action" class="formbutton" name="act_form-nearhuman" title="Assume Near-Human Form">Activate</button></div>
+			<div class="warform-buttons">   <button type="action" class="formbutton" name="act_form-warform"   title="Assume Crinos Form">Activate</button></div>
+			<div class="nearBeast-buttons"> <button type="action" class="formbutton" name="act_form-nearbeast" title="Assume Near-Beast Form">Activate</button></div>
+			<div class="beast-buttons">     <button type="action" class="formbutton" name="act_form-beast"     title="Assume Beast Form Form">Activate</button></div>
+		</div>
+	</div><!-- End of Werewolf Only Block -->
+<div class="weapon-details">
+	<div class="weapon-header">Weapons / Attacks</div>
+
+
+	<div class="name-header border-odd">Weapon / Attack</div>
+	<div class="roll-header border-even">Roll</div>
+	<div class="diff-header border-odd">Diff.</div>
+	<div class="dmg-header border-even">Damage</div>
+	<div class="rmg-header border-odd">Range</div>
+	<div class="rate-header border-even">Rate</div>
+	<div class="clip-header border-odd">Clip</div>
+	<div class="conceal-header border-even">Conceal</div>
+	
+	<div class="w1-name border-odd"><input type="text" class="sheet-dottedline w100p h100p" name="attr_weap-1-name"></div>
+	<div class="w1-roll border-even"><button type="roll" name="attr_weap-1-atk-roll" title="" value="&{template:GenericRolls} {{name=@{weap-1-name} [B/L/A] }}{{pool-1= }} {{pool-2= }}  {{pool= }} {{threshold= }} {{diff= }}"></button>
+		<select class="attr-select" name="attr_weap-1-atk-attr" title="Attack Roll Attribute">
+			<option value="0">• Select One</option>
+			<option value="0">STR</option>
+			<option value="0">DEX</option>
+			<option value="0">STA</option>
+			<option value="0">CHA</option>
+			<option value="0">MAN</option>
+			<option value="0">APP</option>
+			<option value="0">PER</option>
+			<option value="0">INT</option>
+			<option value="0">WIT</option>
+		</select>
+		+
+		<select class="cfg-select" name="attr_weap-1-atk-skill" title="Attack Roll Skill">
+			<option value="0">• Select One</option>
+			<option value="0">Brawl</option>
+			<option value="0">Archery</option>
+			<option value="0">Athletics</option>
+			<option value="0">Do</option>
+			<option value="0">Firearms</option>
+			<option value="0">Kalindo</option>
+			<option value="0">Klaviviskar</option><!-- Revised became Melee -->
+			<option value="0">Martial Arts</option>
+			<option value="0">Melee</option>
+			<option value="0">Custom</option>
+		</select>
+	</div>
+	<div class="w1-diff border-odd"><input     type="number" class="2dig" name="attr_weap-1-diff" value="0"/></div>
+	<div class="w1-dmg border-even">STR + <input     type="number" class="2dig w100p h100p" name="attr_weap-1-dmg" value="0"/></div>
+	<div class="w1-rng border-odd"><input      type="number" class="2dig w100p h100p" name="attr_weap-1-rng" value="0"/> m.</div>
+	<div class="w1-rate border-even"><input    type="number" class="2dig w100p h100p" name="attr_weap-1-rate" value="0"/></div>
+	<div class="w1-clip border-odd"><input     type="number" class="2dig w100p h100p" name="attr_weap-1-clip" value="0"/></div>
+	<div class="w1-conceal border-even"><input type="text" class="sheet-dottedline w100p h100p" name="attr_weap-1-conceal"></div>
+	
+	<div class="w2-name border-odd"></div>
+	<div class="w2-roll border-even"></div>
+	<div class="w2-diff border-odd"></div>
+	<div class="w2-dmg border-even"></div>
+	<div class="w2-rng border-odd"></div>
+	<div class="w2-rate border-even"></div>
+	<div class="w2-clip border-odd"></div>
+	<div class="w2-conceal border-even"></div>
+	
+	<div class="w3-name border-odd"></div>
+	<div class="w3-roll border-even"></div>
+	<div class="w3-diff border-odd"></div>
+	<div class="w3-dmg border-even"></div>
+	<div class="w3-rng border-odd"></div>
+	<div class="w3-rate border-even"></div>
+	<div class="w3-clip border-odd"></div>
+	<div class="w3-conceal border-even"></div>
+	
+	<div class="w4-name border-odd"></div>
+	<div class="w4-roll border-even"></div>
+	<div class="w4-diff border-odd"></div>
+	<div class="w4-dmg border-even"></div>
+	<div class="w4-rng border-odd"></div>
+	<div class="w4-rate border-even"></div>
+	<div class="w4-clip border-odd"></div>
+	<div class="w4-conceal border-even"></div>
+	
+	<div class="w5-name border-odd"></div>
+	<div class="w5-roll border-even"></div>
+	<div class="w5-diff border-odd"></div>
+	<div class="w5-dmg border-even"></div>
+	<div class="w5-rng border-odd"></div>
+	<div class="w5-rate border-even"></div>
+	<div class="w5-clip border-odd"></div>
+	<div class="w5-conceal border-even"></div>
+	
+	<div class="w6-name border-odd"></div>
+	<div class="w6-roll border-even"></div>
+	<div class="w6-diff border-odd"></div>
+	<div class="w6-dmg border-even"></div>
+	<div class="w6-rng border-odd"></div>
+	<div class="w6-rate border-even"></div>
+	<div class="w6-clip border-odd"></div>
+	<div class="w6-conceal border-even"></div>
+	
+	<div class="weapon-repeating">repeating weapons/attacks</div>
+
+</div>
+	
+	
 </div>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONFIG SECTION ~~~~~~~~~~~~~~~~~~~ -->
 <div class="config">
+
+		<div class="sectionHeader">Major Template / Race Selection</div>
+		<div class="sectHeadCntr">
+			<ul class="sectHeadCntr">
+				<li><button type="action" class="swbutton" name="act_collapseAll" title="Collapse All">_</button><input type="checkbox" class="collapse-show cssbutton" title="Minimize all rows."   name="attr_All" value="1" /><span></span></li>
+				<li><button type="action" class="swbutton" name="act_expandAll" Expand All />☐</button><input type="checkbox" class="help-show cssbutton" title="Show help for this section." name="attr_expandAll" value="1" /><span></span></li>
+				<li> This is placeholder text for possible future content.</li>
+			</ul>
+		</div>
+		<div class="singleColumn">
+			<button type="action" class="collapse-button" name="act_collapse-options-Mage20Show">Mage 20th Options</button>
+			<button type="action" class="collapse-button" name="act_collapse-options-Werewolf20Show">Werewolf 20th Options</button>
+			<button type="action" class="collapse-button" name="act_collapse-options-Vampire20Show">Vampire 20th Options</button>
+			<button type="action" class="collapse-button" name="act_collapse-options-Changeling20Show">Changeling 20th Options</button>
+			<button type="action" class="collapse-button" name="act_collapse-options-Mummy20Show">Mummy 20th Options</button>
+			<button type="action" class="collapse-button disabledButton" name="act_collapse-options-Hunter20Show">Hunter 20th Options</button>
+			<button type="action" class="collapse-button disabledButton" name="act_collapse-options-Wraith20Show">Wrath 20th Options</button>
+			<button type="action" class="collapse-button" name="act_collapse-options-BygoneShow">Bygone Options</button>
+			<button type="action" class="collapse-button disabledButton" name="act_collapse-options-Demon20Show">Demon 20th Options</button>
+			<button type="action" class="collapse-button disabledButton" name="act_collapse-options-Disabled">3rd Party Homebrew #1</button>
+			<button type="action" class="collapse-button disabledButton" name="act_collapse-options-Disabled">3rd Party Homebrew #2</button>
+		</div>
+<br></br>
  <div class="table header-row">&nbsp;</div>
  <div>
 	<div class="h2-section table spell-options options named">
@@ -3966,6 +5009,16 @@ Advantages
 			<span class="table-data left" style="width:20%;" /><label><input type="checkbox" name="attr_mummy20-show" class="boldlabel-check noshow" /><b title="Uncheck to Hide Mummy 20th Character Information">Use Mummy 20th</b></label></span>
 			<span class="table-data left" style="width:20%;" /><label><input type="checkbox" name="attr_hunter20-show" class="boldlabel-check noshow" /><b title="Uncheck to Hide Hunter 20th Character Information">Use Hunter 20th</b></label></span>
 			<span class="table-data left" style="width:20%;" /><label><input type="checkbox" name="attr_bygone-show" class="boldlabel-check noshow" /><b title="Check for Bygone Creation">Use Bygone Specific Options</b></label></span>
+		</div>
+		<div class="table-row">
+			<span class="table-data left" style="width:20%;" />&nbsp;</span>
+			<span class="table-data left" style="width:20%;" />&nbsp;</span>			
+			<span class="table-data left" style="width:20%;" />&nbsp;</span>
+			<span class="table-data left" style="width:20%;" />&nbsp;</span>
+			<span class="table-data left" style="width:20%;" /><label><input type="checkbox" name="attr_shen2ed-show" class="boldlabel-check noshow" /><b title="Uncheck to Hide Shen 2ed Character Information">Use Shen 2ed</b></label></span>
+			<span class="table-data left" style="width:20%;" />&nbsp;</span>
+			<span class="table-data left" style="width:20%;" />&nbsp;</span>
+			<span class="table-data left" style="width:20%;" />&nbsp;</span>
 		</div>
 	</div>
 	
@@ -4011,12 +5064,30 @@ Advantages
 </div>
 <!-- Footer Section -->
 	<div class="pagefooter" /><br><br><br><br>
-		<p style="text-align: center;">Original Sheet created by Tobias Fox for Roll20.net | Jun. 04, 2015</p>
+		<p style="text-align: center;">Original Sheet created by Tobias Fox for Roll20.net | Final Date of First Revision</p>
 		<p style="text-align: center;">Maintained by TobyFox2002 with Contributions from Oosh of roll20; and SheetWorkers support by Scott X on roll20.</p>
 		<p style="text-align: center;">Comments and Suggestions can be left on the Public Test Game at <input type="text" style="width: 10em; margin-bottom: .4em;" name="attr_pubTest" value="http://wwww.url.here" disabled /></p>
-		<p style="text-align: center;">Last Updated on Sept. 14, 2021</p>
+		<p style="text-align: center;">Last Updated on Oct. 06, 2021; vers. 0.7a</p>
 	</div>
-<!-- Sheet Workers -->
+	
+<!-- ================================== ROLL TEMPLATES =================================== -->
+
+<!-- Advanced Attack Roll Template -->
+<rolltemplate class="sheet-rolltemplate-GenericRolls"> <!-- Generic Rolls Roll Template -->
+<div class="sheet-rolltemplate-wrapper">
+  <div class="sheet-header">header</div>
+  <div class="sheet-pool">Pool</div>
+  <div class="sheet-threshold">Thresh. </div>
+  <div class="sheet-difficulty">Diff. </div>
+  <div class="sheet-pool-1">Pool 2</div>
+  <div class="sheet-pool-2">Pool 1</div>
+  <div class="sheet-bonus">Bonus</div>
+  <div class="sheet-specialty">Specialty:</div>
+  <div class="sheet-result">result</div>
+</div>
+</rolltemplate>
+
+<!-- ================================== SHEET WORKERS ==================================== -->
 <script type="text/worker">
 	const buttonlist = ["core","combat","abilities", "advantages", "details","biography","config"];
 	 buttonlist.forEach(button => {
@@ -4028,7 +5099,7 @@ Advantages
 	 });
 	 
 	 /* Show/Hide buttons for the abilities (skills) section */
-	 const abilities = ['Alertness', 'Art', 'Athletics', 'Awareness', 'Brawl', 'Empathy', 'Expression', 'Flying', 'Intimidation', 'Leadership', 'Streetwise', 'Subterfuge', 'Acrobatics', 'AnimalKen', 'Crafts', 'Drive', 'Elusion', 'Etiquette', 'Firearms', 'Larceny', 'MartialArts', 'Melee', 'Meditation', 'Performance', 'Ride', 'Research', 'Stealth', 'Survival', 'WildHunting', 'Technology', 'Academics', 'AnimalSpeech', 'BeastLore', 'Computers', 'Cosmology', 'Culture', 'Enigmas', 'Esoterica', 'HearthWisdom', 'Finance', 'Gremayre', 'Investigation', 'Law', 'Medicine', 'Metaphysics', 'Occult', 'Rituals', 'Politics', 'Seneschal', 'Science'];
+	 const abilities = ['Alertness', 'Art', 'Athletics', 'Awareness', 'Brawl', 'Empathy', 'Expression', 'Flying', 'Intimidation', 'Leadership', 'Streetwise', 'Subterfuge', 'Acrobatics', 'AnimalKen', 'Crafts', 'Drive', 'Do', 'Elusion', 'Etiquette', 'Firearms', 'Kalindo', 'Klaviviskar', 'Larceny', 'MartialArts', 'Melee', 'Meditation', 'Performance', 'Ride', 'Research', 'Stealth', 'Survival', 'WildHunting', 'Technology', 'Academics', 'AnimalSpeech', 'BeastLore', 'Computers', 'Cosmology', 'Culture', 'Enigmas', 'Esoterica', 'HearthWisdom', 'Finance', 'Gremayre', 'Investigation', 'Law', 'Medicine', 'Metaphysics', 'Occult', 'Rituals', 'Politics', 'Seneschal', 'Science'];
 	 let abilityButtonEvents = abilities.map(ability => `clicked:collapse-${ability}-diffmods clicked:collapse-${ability}-dicepool`);
 	 
 	 on(abilityButtonEvents.join(' '), (ev) => {
@@ -4037,10 +5108,20 @@ Advantages
 		toggleAttr(`collapse-flag-${section}`, true);
 	});
 	/* Show/Hide buttons for the advantages section */
-	const advantages = ['backgrounds', 'renown', 'rage', 'gnosis', 'disciplines', 'virtues', 'giftOne', 'giftTwo', 'arete', 'willpower', 'health'];
+	const advantages = ['backgrounds', 'renown', 'rage', 'gnosis', 'KwannonJin', 'yinYang', 'hekau', 'disciplines', 'virtues', 'giftOne', 'giftTwo', 'arete', 'humanity', 'balance', 'wuTan', 'willpower', 'quintessence', 'yugen', 'tao', 'sekhem', 'blood', 'health'];
 	 let advantageButtonEvents = advantages.map(advantage => `clicked:collapse-advantage-${advantage} clicked:collapse-advantage-${advantage}`);
 	 
 	 on(advantageButtonEvents.join(' '), (ev) => {
+		let section = (ev.triggerName.match(/collapse-(.*)/i) || [])[1];
+		console.info(`Collapse event triggered on section: "${section}"`, ev);
+		toggleAttr(`collapse-flag-${section}`, true);
+	});
+	
+		/* Show/Hide buttons for the options section */
+	const options = ['Mage20Show', 'Werewolf20Show', 'Vampire20Show', 'Changeling20Show', 'Mummy20Show', 'Hunter20Show', 'Wraith20Show', 'BygoneShow', 'Demon20Show', '', '', '', '', '', '', ''];
+	 let optionButtonEvents = options.map(option => `clicked:collapse-options-${option} clicked:collapse-options-${option}`);
+	 
+	 on(optionButtonEvents.join(' '), (ev) => {
 		let section = (ev.triggerName.match(/collapse-(.*)/i) || [])[1];
 		console.info(`Collapse event triggered on section: "${section}"`, ev);
 		toggleAttr(`collapse-flag-${section}`, true);

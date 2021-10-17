@@ -11,6 +11,20 @@
 /* The default font family is called "dicefontd20" which has the icon shape of a 20-sided dice */
 /* See https://wiki.roll20.net/CSS#Icon_Fonts for more details */
 
+/* Generic Styles */
+.sheet-invis   {opacity: 0%; !important}
+.sheet-left    {text-align: left !important;    text-align: -webkit-left !important;}
+.sheet-center  {text-align: center !important;  text-align: -webkit-center !important;}
+.sheet-justify {text-align: justify !important; text-align: -webkit-justify !important;}
+.sheet-right   {text-align: right !important;   text-align: -webkit-right !important;}
+
+.sheet-w100p   {width : 99% !important}
+.sheet-h100p   {height: 99% !important}
+.sheet-w50p    {width : 50% !important}
+.sheet-h50p    {height: 50% !important}
+
+.sheet-fontRufScript {font-familiy: "RufscriptRegular";}
+
 button[type="roll"]:before {
 	font-family: "dicefontd10" !important;
 	font-size: 1.7em;
@@ -53,6 +67,7 @@ input[type="text"].sheet-dottedline, input[type="number"].sheet-dottedline {
 	margin: 1px;
 	line-height: 0px;
 }
+.sheet-humanityText {width: calc(99% - 6.5em) !important;}
 textarea, select, .sheet-uneditable-input {
 	margin-bottom: 0px; /* Override default margin */
 }
@@ -141,7 +156,7 @@ div.sheet-repeating-container input.sheet-hd[type="checkbox"] + span::before {
 .sheet-610-attr:not(:checked)   ~ input.sheet-show-10d-attr.sheet-hd[type="radio"] + span::before,
 .sheet-610-bgs:not(:checked)    ~ input.sheet-show-10d-bgs.sheet-hd[type="radio"] + span::before,
 .sheet-610-skills:not(:checked) ~ input.sheet-show-10d-skills.sheet-hd[type="radio"] + span::before,
-.sheet-610-spheres:not(:checked) ~ input.sheet-show-10d-spheres.sheet-hd[type="radio"] + span::before {
+.sheet-610-spheres:not(:checked)~ input.sheet-show-10d-spheres.sheet-hd[type="radio"] + span::before {
 	display: none;
 }
 .sheet-610-attr:checked ~ .sheet-show-10d-attr.sheet-hd,
@@ -286,12 +301,79 @@ label.sheet-ability-optGroup2 {
     line-height: 2.3vh;
 }
 
-/* Section Level Elements */
-div.sheet-PreNav {
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
+/* PRE-NAV Grid Section */
+.sheet-PreNav {
+	display: grid;
+	grid-template-columns: 60px auto 1fr 1fr 1fr 110px;
+	grid-template-rows: 1fr;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas: "Logo splat-selector character player chronicle-name config";
+	border: solid 1px black;
 }
+
+.sheet-tn-Logo { grid-area: Logo; justify-self: stretch; align-self: center;}
+
+.sheet-tn-splat-selector {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas:
+    "majTemplate"
+    "minTemplate";
+	grid-area: splat-selector;
+	border: solid 1px red;
+	
+	justify-self: center;
+	align-self: center;
+}
+
+.sheet-majTemplate {
+	grid-area: majTemplate;
+}
+
+.sheet-minTemplate {
+	grid-area: minTemplate;
+}
+
+.sheet-tn-player { 
+	grid-area: player; 
+	justify-self: center; 
+	align-self: center;
+}
+
+.sheet-tn-chronicle-name { 
+	grid-area: chronicle-name; 
+	justify-self: center; 
+	align-self: center;
+}
+
+.sheet-tn-character {
+	grid-area: character; 
+	justify-self: center; 
+	align-self: center;
+}
+
+.sheet-tn-config {
+	grid-area: config; 
+	justify-self: center; 
+	align-self: center;
+	border: solid 1px red;
+}
+.sheet-cfg-select {
+	width: 10em;
+	height: 3.5vh;
+	
+	font-family: sans-serif;
+	font-size: 1.3vh;
+	
+	border: 1px solid black;
+	border-radius: 6px;
+	margin-bottom: -1px;
+}
+/* Section Level Elements */
 div.sheet-sectionHeader {
   /* Uses H1 style by default, making h1 tag unnessisary */
   display: block;
@@ -330,12 +412,14 @@ div.sheet-sectHeadCntr ul {
   flex-wrap: wrap;
   justify-content: left;
   align-items: center;
+  height: 3.5em;
 }
 li {
-  margin: .5em 0em .5em 0em;
+  /* margin: .5em 0em .5em 0em; */
+  list-style: none;
 }
 
-div.sheet-triColumn {
+div.sheet-triColumn, div.sheet-5Column {
   display: flex;
 }
 div.sheet-columns {
@@ -362,6 +446,13 @@ div.sheet-columns ul li {
 	/* possibly change font size to 1.5vh */
   flex: 1;
   border: 1px solid black;
+}
+ul.sheet-nList { /* Overrides so that it uses the normal list display without bullets or numbers */
+	display: initial !important;
+	flex-wrap: none !important;
+	
+	margin: 0px !important;
+	padding: 0px !important;
 }
 .sheet-border { /* Bounding Box for tri-column elements. */
 	border: 1px solid black;
@@ -394,8 +485,22 @@ li.sheet-griddicepool {
     grid-gap: 3px;
 	border-top: 3px red solid;
 }
-.sheet-gRollLabel {grid-column: span 2 / auto; border: 1px solid black;}
-.sheet-gRollSpec {grid-column: span 2 / auto; border: 1px solid black;}
+.sheet-grid-2-a39 { /* grid-template-columns: auto 39% */
+    display: grid;
+    grid-template-columns: auto 39%;
+    grid-gap: 3px;
+	border-top: 3px red solid;
+}
+.sheet-grid-3col {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 0px;
+	border: 1px black solid;
+}
+.sheet-gRollLabel  {grid-column: span 2 / auto; border: 1px solid black;}
+.sheet-gRollSpec   {grid-column: span 2 / auto; border: 1px solid black;}
+.sheet-ghumanity   {grid-column: span 2 / auto;}
+
 
 .sheet-span-row-2{grid-row: span 2 / auto; border: 1px solid black;}
 /* ********************************** End of Grid Code */
@@ -445,7 +550,7 @@ h3.sheet-subHeader {
 	display: block;
 	font-size: 1.17em;
 	margin-top: 0em;
-	margin-bottom: -0.7em;
+	margin-bottom: -0.43em;
 	margin-left: 0;
 	margin-right: 0;
 	font-weight: bold;
@@ -482,6 +587,7 @@ button.sheet-Pictos {
 	height: 1em !important;
 	width: 1em !important;
 	padding: .4em;
+	margin-left: 0.4em;
 	
 	font-family: "Pictos" !important;
 	font-size: 1.3em;
@@ -499,7 +605,7 @@ button.sheet-Pictos {
 .sheet-configbutton {
     margin-right: 15px; /* -1.5rem */
 }
-input.sheet-cssbutton, input.sheet-showarrow, input.sheet-ack-button,
+input.sheet-cssbutton, input.sheet-showarrow, input.sheet-ack-buttonbutton,
 input.sheet-refreshbutton, input.sheet-split-column-show, input.sheet-lock-show , input.sheet-counted {
 	height: 1.6em;
 }
@@ -526,6 +632,11 @@ input.sheet-refreshbutton, input.sheet-split-column-show, input.sheet-lock-show 
 }
 .sheet-minimize-show  + span::before,
 .sheet-collapse-show + span::before {
+	font-family: Arial, Sans-serif !important;
+	content: '☐';
+}
+.sheet-minimize-show:checked + span::before,
+.sheet-collapse-show:checked + span::before {
 	font-family: "Pictos" !important;
 	content: '_';
 }
@@ -533,10 +644,45 @@ input.sheet-refreshbutton, input.sheet-split-column-show, input.sheet-lock-show 
 	font-family: "Pictos" !important;
 	content: "?";
 }
-.sheet-minimize-show:checked + span::before,
-.sheet-collapse-show:checked + span::before {
-	font-family: Arial, Sans-serif !important;
-	content: '☐';
+.sheet-noexpand + span:before {
+	font-family: "Pictos" !important;
+	content: ")";
+}
+.sheet-noexpand:checked + span:before {
+	font-family: "Pictos" !important;
+	content: "(";
+}
+.sheet-reset + span:before {
+	font-family: "Pictos" !important;
+	content: "!";
+}
+.sheet-reset:checked + span:before {
+	font-family: "Pictos" !important;
+	content: "!";
+}
+.sheet-notify + span:before {
+	font-family: "Pictos" !important;
+	content: "U";
+}
+.sheet-notify:checked + span:before {
+	font-family: "Pictos" !important;
+	content: "U";
+}
+.sheet-rollonly + span:before {
+	font-family: "Pictos" !important;
+	content: "W";
+}
+.sheet-rollonly:checked + span:before {
+	font-family: "Pictos" !important;
+	content: "n";
+}
+.sheet-fancy + span:before {
+	font-family: "Pictos" !important;
+	content: "F";
+}
+.sheet-fancy:checked + span:before {
+	font-family: "Pictos" !important;
+	content: "P";
 }
 /* Navigational Buttons and Config Buttons */
 /* Show/Hide Content for the selected navigational Tab */
@@ -589,9 +735,10 @@ div.sheet-flexwrap {display: flex;}
 div.sheet-race-mage, div.sheet-race-mage-block, div.sheet-race-mage-grid,
 div.sheet-race-werewolf, div.sheet-race-werewolf-block, div.sheet-race-werewolf-grid,
 div.sheet-race-vampire, div.sheet-race-kueijin, div.sheet-race-vampire-block, div.sheet-race-kueijin-block, div.sheet-race-vampire-grid, div.sheet-race-kueijin-grid,
-div.sheet-race-changeling, div.sheet-race-shen, div.sheet-race-changeling-block, div.sheet-race-shen-block, div.sheet-race-changeling-grid, div.sheet-race-shen-grid,
+div.sheet-race-changeling, div.sheet-race-shen, span.sheet-race-shen, div.sheet-race-changeling-block, div.sheet-race-shen-block, div.sheet-race-changeling-grid, div.sheet-race-shen-grid,
 div.sheet-race-mummy, div.sheet-race-mummy-block, div.sheet-race-mummy-grid,
 div.sheet-race-hunter, div.sheet-race-hunter-block, div.sheet-race-hunter-grid,
+div.sheet-race-demon, div.sheet-race-demon-block, div.sheet-race-demon-grid,
 div.sheet-race-bygone, div.sheet-race-bygone-block, div.sheet-race-bygone-grid,
 input.sheet-show-10d-attr.sheet-hd,
 input.sheet-show-10d-bgs.sheet-hd,
@@ -607,6 +754,7 @@ input.sheet-show-10d-skills.sheet-hd {
 .sheet-race-type-shen:checked ~ div.sheet-race-shen,
 .sheet-race-type-mummy:checked ~ div.sheet-race-mummy,
 .sheet-race-type-hunter:checked ~ div.sheet-race-hunter,
+.sheet-race-type-demon:checked ~ div.sheet-race-demon,
 .sheet-race-type-bygone:checked ~ div.sheet-race-bygone {
     display: flex;
 }
@@ -619,10 +767,12 @@ input.sheet-show-10d-skills.sheet-hd {
 .sheet-race-type-shen:checked ~ div.sheet-race-shen-block,
 .sheet-race-type-mummy:checked ~ div.sheet-race-mummy-block,
 .sheet-race-type-hunter:checked ~ div.sheet-race-hunter-block,
+.sheet-race-type-demon:checked ~ div.sheet-race-demon-block,
 .sheet-race-type-bygone:checked ~ div.sheet-race-bygone-block {
     display: block;
 }
-
+/* show/hide as inline */
+.sheet-race-type-shen:checked ~ span.sheet-race-shen {display: inline;}
 /* show/hide as grid */
 .sheet-race-type-werewolf:checked ~ div.sheet-race-werewolf-grid,
 .sheet-race-type-mage:checked ~ .sheet-race-mage-grid,
@@ -632,6 +782,7 @@ input.sheet-show-10d-skills.sheet-hd {
 .sheet-race-type-shen:checked ~ div.sheet-race-shen-grid,
 .sheet-race-type-mummy:checked ~ div.sheet-race-mummy-grid,
 .sheet-race-type-hunter:checked ~ div.sheet-race-hunter-grid,
+.sheet-race-type-demon:checked ~ div.sheet-race-demon-grid,
 .sheet-race-type-bygone:checked ~ div.sheet-race-bygone-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -859,7 +1010,7 @@ div.sheet-repeating-container div.sheet-abilBuffs {
     margin: 0px;
 }
 /* Togglable Health Levels Code */
-/* -----Health boxes----- */
+/* ------------ Health boxes ------------ */
 table.sheet-damagetrack td {
     margin-bottom: 5px;
 }
@@ -935,8 +1086,8 @@ input.sheet-aggravateddot:checked ~ span.sheet-aggravateddot {
     content:"/";
     font-weight: 900;
     font-size: 23px;
-	/* line-height: 0px; */
-    margin-right: 4px;
+    margin-right: 3px;
+	line-height: 0.5em;
 }
 
 .sheet-lethaldot {
@@ -953,7 +1104,7 @@ input.sheet-aggravateddot:checked ~ span.sheet-aggravateddot {
     content:"X";
     font-weight: 900;
     font-size: 23px;
-	/* line-height: 0px; */
+	line-height: 0.5em;
     margin-left:0px;
 }
 
@@ -970,6 +1121,327 @@ input.sheet-aggravateddot:checked ~ span.sheet-aggravateddot {
     content:"X";
     font-weight: 900;
     font-size: 23px;
-	/* line-height: 0px; */
+	line-height: 0.5em;
     color:red;
+}
+/* Hide actual checkbox */
+input.sheet-m20death[type="checkbox"] {
+    opacity: 0;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: -2px;
+    left: 6px;
+    margin: -10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* Mummy20th death levels checkboxes */
+input.sheet-m20death[type="checkbox"] + span::before {
+    content: "";
+	font-weight: normal;
+	font-size: 23px;
+	width: 15px;
+    height: 15px;
+    background: transparent;
+    background-size: 100%;
+	    border:2px solid black;
+		display: inline-block;
+}
+input.sheet-m20death[type="checkbox"]:checked + span::before {
+    content: "X";
+	font-weight: 900;
+	font-size: 23px;
+	width: 15px;
+    background: transparent;
+    background-size: 100%;
+    color:black;
+	    border:2px solid black;
+		display: inline-block
+}
+/* Shapeshifting Forms and related Styles */
+.sheet-shapeshiftForms {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 0.2fr 0.2fr 3.3fr 0.3fr;
+	grid-auto-columns: 1fr;
+	grid-auto-rows: 1fr;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas:
+    "creatureName creatureName creatureName creatureName creatureName"
+    "humanoid-label nearHuman-label warform-label nearBeast-label beast-label"
+    "humanoid-details nearHuman-details warform-details nearBeast-details beast-details"
+    "humanoid-buttons nearHuman-buttons warform-buttons nearBeast-buttons beast-buttons";
+	border: solid 1px black;
+	
+}
+
+.sheet-creatureName {
+	grid-area: creatureName;
+	border: solid 1px black;
+	border-bottom: none;
+}
+.sheet-humanoid-label {
+	grid-area: humanoid-label;
+	border: solid 1px black;
+}
+.sheet-nearHuman-label {
+	grid-area: nearHuman-label;
+	border: solid 1px black;
+}
+.sheet-warform-label {
+	grid-area: warform-label;
+	border: solid 1px black;
+}
+.sheet-nearBeast-label {
+	grid-area: nearBeast-label;
+	border: solid 1px black;
+}
+.sheet-beast-label {
+	grid-area: beast-label;
+	border: solid 1px black;
+}
+.sheet-humanoid-details {
+	grid-area: humanoid-details;
+	border: solid 1px black;
+}
+.sheet-nearHuman-details {
+	grid-area: nearHuman-details;
+	border: solid 1px black;
+}
+.sheet-warform-details {
+	grid-area: warform-details;
+	border: solid 1px black;
+}
+.sheet-nearBeast-details {
+	grid-area: nearBeast-details;
+	border: solid 1px black;
+}
+.sheet-beast-details {
+	grid-area: beast-details;
+	border: solid 1px black;
+}
+.sheet-details-selected {
+	background: #FFFFFF;
+	background: -webkit-radial-gradient(ellipse farthest-corner at center center, #FFFFFF 0%, #AB0606 100%);
+	background: -moz-radial-gradient(ellipse farthest-corner at center center, #FFFFFF 0%, #AB0606 100%);
+	background: radial-gradient(ellipse farthest-corner at center center, #FFFFFF 0%, #AB0606 100%);
+
+}
+.sheet-humanoid-buttons {
+	grid-area: humanoid-buttons;
+	text-align: center;
+	border: solid 1px black;
+}
+.sheet-nearHuman-buttons {
+	grid-area: nearHuman-buttons;
+	text-align: center;
+	border: solid 1px black;
+}
+.sheet-warform-buttons {
+	grid-area: warform-buttons;
+	text-align: center;
+	border: solid 1px black;
+}
+.sheet-nearBeast-buttons {
+	grid-area: nearBeast-buttons;
+	text-align: center;
+	border: solid 1px black;
+}
+.sheet-beast-buttons {
+	grid-area: beast-buttons;
+	text-align: center;
+	border: solid 1px black;
+}
+.sheet-formbutton {
+	height: 1em !important;
+	padding: .4em;
+	
+	font-size: 1.3em;
+	
+	border: 1px solid black;
+	border-radius: 5px;
+}
+/* Weapons, attacks and Armor */
+.sheet-weapon-details {
+  display: grid;
+  grid-template-columns: auto 16em 3.5em 10em 5em 3.5em 3.5em 4em;
+  grid-template-rows   : 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "weapon-header weapon-header weapon-header weapon-header weapon-header weapon-header weapon-header weapon-header"
+	"name-header roll-header diff-header dmg-header rng-header rate-header clip-header conceal-header"
+    "w1-name w1-roll w1-diff w1-dmg w1-rng w1-rate w1-clip w1-conceal"
+    "w2-name w2-roll w2-diff w2-dmg w2-rng w2-rate w2-clip w2-conceal"
+    "w3-name w3-roll w3-diff w3-dmg w3-rng w3-rate w3-clip w3-conceal"
+    "w4-name w4-roll w4-diff w4-dmg w4-rng w4-rate w4-clip w4-conceal"
+    "w5-name w5-roll w5-diff w5-dmg w5-rng w5-rate w5-clip w5-conceal"
+    "w6-name w6-roll w6-diff w6-dmg w6-rng w6-rate w6-clip w6-conceal"
+    "weapon-repeating weapon-repeating weapon-repeating weapon-repeating weapon-repeating weapon-repeating weapon-repeating weapon-repeating";
+	border: solid 1px black;
+}
+.sheet-attr-select {width: 5.6em; height: 3.5vh; font-family: sans-serif; font-size: 1.3vh; border: 1px solid black; border-radius: 6px; margin-bottom: -1px; }
+/* Borders ==============================*/
+.sheet-border-even {border: solid 1px black; background-color: lightgray}
+.sheet-border-odd  {border: solid 1px black;}
+
+.sheet-name-header {grid-area: name-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-name { grid-area: w1-name; }
+.sheet-w2-name { grid-area: w2-name; }
+.sheet-w3-name { grid-area: w3-name; }
+.sheet-w4-name { grid-area: w4-name; }
+.sheet-w5-name { grid-area: w5-name; }
+.sheet-w6-name { grid-area: w6-name; }
+
+.sheet-roll-header {grid-area: roll-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-roll { grid-area: w1-roll; }
+.sheet-w2-roll { grid-area: w2-roll; }
+.sheet-w3-roll { grid-area: w3-roll; }
+.sheet-w4-roll { grid-area: w4-roll; }
+.sheet-w5-roll { grid-area: w5-roll; }
+.sheet-w6-roll { grid-area: w6-roll; }
+
+.sheet-diff-header {grid-area: diff-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-diff { grid-area: w1-diff; }
+.sheet-w2-diff { grid-area: w2-diff; }
+.sheet-w3-diff { grid-area: w3-diff; }
+.sheet-w4-diff { grid-area: w4-diff; }
+.sheet-w5-diff { grid-area: w5-diff; }
+.sheet-w6-diff { grid-area: w6-diff; }
+
+.sheet-dmg-header {grid-area: dmg-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-dmg { grid-area: w1-dmg; }
+.sheet-w2-dmg { grid-area: w2-dmg; }
+.sheet-w3-dmg { grid-area: w3-dmg; }
+.sheet-w4-dmg { grid-area: w4-dmg; }
+.sheet-w5-dmg { grid-area: w5-dmg; }
+.sheet-w6-dmg { grid-area: w6-dmg; }
+
+.sheet-rng-header {grid-area: rng-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-rng { grid-area: w1-rng; }
+.sheet-w2-rng { grid-area: w2-rng; }
+.sheet-w3-rng { grid-area: w3-rng; }
+.sheet-w4-rng { grid-area: w4-rng; }
+.sheet-w5-rng { grid-area: w5-rng; }
+.sheet-w6-rng { grid-area: w6-rng; }
+
+.sheet-rate-header {grid-area: rate-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-rate { grid-area: w1-rate; }
+.sheet-w2-rate { grid-area: w2-rate; }
+.sheet-w3-rate { grid-area: w3-rate; }
+.sheet-w4-rate { grid-area: w4-rate; }
+.sheet-w5-rate { grid-area: w5-rate; }
+.sheet-w6-rate { grid-area: w6-rate; }
+
+.sheet-clip-header {grid-area: clip-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-clip { grid-area: w1-clip; }
+.sheet-w2-clip { grid-area: w2-clip; }
+.sheet-w3-clip { grid-area: w3-clip; }
+.sheet-w4-clip { grid-area: w4-clip; }
+.sheet-w5-clip { grid-area: w5-clip; }
+.sheet-w6-clip { grid-area: w6-clip; }
+
+.sheet-conceal-header {grid-area: conceal-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-conceal { grid-area: w1-conceal; }
+.sheet-w2-conceal { grid-area: w2-conceal; }
+.sheet-w3-conceal { grid-area: w3-conceal; }
+.sheet-w4-conceal { grid-area: w4-conceal; }
+.sheet-w5-conceal { grid-area: w5-conceal; }
+.sheet-w6-conceal { grid-area: w6-conceal; }
+
+
+.sheet-weapon-repeating {grid-area: weapon-repeating; border: solid 1px black;}
+.sheet-weapon-header {justify-self: stretch; align-self: stretch; text-align: center; grid-area: weapon-header; border: solid 1px black; font-size: 1.17em;	font-weight: bold; font-family: "RufscriptRegular";}
+
+/* ======================== ROLL TEMPLATE STYLES ====================== */
+/* Advanced Attacks Roll Template */
+
+.sheet-rolltemplate-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 0.6fr 1.4fr 1fr 1fr 1fr;
+	gap: 1px 1px;
+	grid-auto-flow: row;
+	grid-template-areas:
+		"header header header"
+		"pool threshold difficulty"
+		"pool-1 pool-2 bonus"
+		"specialty specialty specialty"
+		"result result result";
+	background:url(http://i.imgur.com/BLb0XMU.jpg) top left repeat;
+	border: solid 1px #7e2d40;
+    border-radius: 5px;
+}
+
+.sheet-rolltemplate-wrapper .sheet-header     { grid-area: header; border: solid 1px #7e2d40; color: rgb(126, 45, 64); text-align: left; font-family: "RufscriptRegular"; font-variant: small-caps; }
+.sheet-rolltemplate-wrapper .sheet-pool       { grid-area: pool; border: solid 1px #7e2d40; }
+.sheet-rolltemplate-wrapper .sheet-threshold  { grid-area: threshold; border: solid 1px #7e2d40; }
+.sheet-rolltemplate-wrapper .sheet-difficulty { grid-area: difficulty; border: solid 1px #7e2d40; }
+.sheet-rolltemplate-wrapper .sheet-pool-1     { grid-area: pool-1; border: solid 1px #7e2d40; }
+.sheet-rolltemplate-wrapper .sheet-pool-2     { grid-area: pool-2; border: solid 1px #7e2d40; }
+.sheet-rolltemplate-wrapper .sheet-bonus      { grid-area: bonus; border: solid 1px #7e2d40; }
+.sheet-rolltemplate-wrapper .sheet-specialty  { grid-area: specialty; border: solid 1px #7e2d40; }
+.sheet-rolltemplate-wrapper .sheet-result     { grid-area: result; border: solid 1px #7e2d40; }
+
+
+
+
+
+
+
+
+
+
+.sheet-rt-GenericRolls .sheet-wrapper {
+
+}
+.sheet-rolltemplate-GenericRolls table {
+    width: 100%;
+    padding: 2px;
+}
+.sheet-rt-GenericRolls .sheet-subheader {
+    color: #000;
+    font-size: 1em;
+    font-style: italic;
+}
+.sheet-rt-GenericRolls .sheet-arrow-right {
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-left: 180px solid rgb(126, 45, 64);
+}
+.sheet-rt-GenericRolls .sheet-tcat {
+    font-weight: bold;
+	font-size: 0.7em;
+}
+.sheet-rt-GenericRolls td {
+    padding-left: 1px;
+	line-height: 0.8em;
+}
+/* Default Color for inline rolls */
+.sheet-rt-GenericRolls  .inlinerollresult {
+    background-color: transparent;
+    border: none;
+	padding: 0px; /* Trims unneeded whitespace */
+	font-size: 0.9em;
+}
+.sheet-rt-GenericRolls .inlinerollresult.fullcrit {
+    background-color: transparent;
+    color: #3FB315;
+    border: none;
+	padding: 0px; /* Trims unneeded whitespace */
+}
+.sheet-rt-GenericRolls .inlinerollresult.fullfail {
+    background-color: transparent;
+    color: #B31515;
+    border: none;
+	padding: 0px; /* Trims unneeded whitespace */
+}
+.sheet-rt-GenericRolls .inlinerollresult.importantroll {
+    background-color: transparent;
+    color: #4A57ED;
+    border: none;
+	padding: 0px; /* Trims unneeded whitespace */
 }
