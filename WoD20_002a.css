@@ -73,10 +73,10 @@ textarea, select, .sheet-uneditable-input {
 }
 .sheet-skAttrSz {
 	width: 7em;
-	height: 3.5vh;
+	height: 2.7em;
 	
 	font-family: sans-serif;
-	font-size: 1.3vh;
+	font-size: .6em;
 	
 	border: 1px solid black;
 	border-radius: 6px;
@@ -97,7 +97,8 @@ textarea, select, .sheet-uneditable-input {
 }
 
 .sheet-3dig {width: 2.2em !important; min-width: 2.2em !important; padding-right: 0.30em !important;}
-.sheet-2dig {width: 3em !important; min-width: 2.95em !important; padding: 0em;}
+.sheet-2dig {width: 2.45em !important; min-width: 1.95em !important; padding: 0em !important;}
+.sheet-1dig {width: 1.7em !important; min-with: 1.5em !important; padding: 0em !important;}
 .sheet-textEnd {text-align: end; !important;}
 input.sheet-specialize {width: 4em;}
 /* Hide actual dot/checkbox */
@@ -362,16 +363,19 @@ label.sheet-ability-optGroup2 {
 	align-self: center;
 	border: solid 1px red;
 }
-.sheet-cfg-select {
+.sheet-cfg-select, .sheet-cfg-select-long {
 	width: 10em;
-	height: 3.5vh;
+	height: 2.7em;
 	
 	font-family: sans-serif;
-	font-size: 1.3vh;
+	font-size: 0.6em;
 	
 	border: 1px solid black;
 	border-radius: 6px;
 	margin-bottom: -1px;
+}
+.sheet-cfg-select-long {
+	width: 20em;
 }
 /* Section Level Elements */
 div.sheet-sectionHeader {
@@ -482,7 +486,7 @@ li.sheet-griddicepool {
 .sheet-grid-2 {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    grid-gap: 3px;
+    grid-gap: 0px;
 	border-top: 3px red solid;
 }
 .sheet-grid-2-a39 { /* grid-template-columns: auto 39% */
@@ -555,6 +559,39 @@ h3.sheet-subHeader {
 	margin-right: 0;
 	font-weight: bold;
 }
+.sheet-btnHeader {
+	display: block;
+	width: 96% !important;
+	font-family: "RufscriptRegular";
+	margin-bottom: 1em !important;
+	font-weight: bold;
+	
+	border: solid 1px black;
+	border-radius: 5px;
+}
+.sheet-btnHeader {
+	display: block;
+	width: 96% !important;
+	font-family: "RufscriptRegular";
+	margin-bottom: 1em !important;
+	font-weight: bold;
+	
+	border: solid 1px black;
+	border-radius: 5px;
+}
+.sheet-btnTxtRoll {
+	display: block;
+	/* width property set for each button uniquely. */
+	font-family: "RufscriptRegular";
+	font-weight: bold;
+	line-height: .5em; /* I dont know why this works, but it does */
+	border: solid 1px black;
+	border-radius: 5px;
+}
+button[type=roll].sheet-btnHeader::before, button[type=roll].sheet-btnTxtRoll::before {
+    content: ' ' !important;
+}
+.sheet-btnSoakRoll {width: 5em;}
 /* Layout Elements */
 label.sheet-smlabel {
   text-align: center;
@@ -695,7 +732,7 @@ input.sheet-refreshbutton, input.sheet-split-column-show, input.sheet-lock-show 
 .sheet-config {
 	display: none;
 }
-
+/* Primary Navigation Tabs */
 .sheet-tabstoggle[value="core"] ~ div.sheet-core,
 .sheet-tabstoggle[value="combat"] ~ div.sheet-combat,
 .sheet-tabstoggle[value="abilities"] ~ div.sheet-abilities,
@@ -705,6 +742,49 @@ input.sheet-refreshbutton, input.sheet-split-column-show, input.sheet-lock-show 
 .sheet-tabstoggle[value="config"] ~ div.sheet-config {
 	display: block;
 }
+/*-------Start of sheet-Query-----------*/
+/*
+div.sheet-Query {
+    position: relative;
+    width: 30px;
+    height: 20px;
+    left:20px;    
+    top:5px;
+    margin:-15px;
+}
+
+input.sheet-Query {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left:10px;  
+    top:0px;
+    z-index: 1;
+    opacity: 0;
+}
+
+span.sheet-Query {
+    margin: 10px 0 0 40px;
+    display: none;
+    position: absolute;
+    left:-40px;
+    top:-10px;
+    width:50px;
+    text-align:center;
+}
+
+input.sheet-no { 
+    z-index: 2; 
+}
+input.sheet-no:checked + input.sheet-yes,
+input.sheet-yes:checked + input.sheet-no {
+    z-index: 3; 
+}
+
+input.sheet-no:checked ~ span.sheet-no,
+input.sheet-yes:checked ~ span.sheet-yes { 
+    display: inline-block; 
+}*/
 button.sheet-button-tab {
   background: #4a6486;
   color: white;
@@ -718,6 +798,7 @@ button.sheet-button-tab {
   font-family: Arial;
   font-weight: bold;
 }
+
 .sheet-collapse-button {
 	width: 93%;
 	border-radius: 30px;
@@ -726,8 +807,14 @@ button.sheet-button-tab {
 	font-size: .9em;
 	padding-bottom: .2em;
 }
+.sheet-cfg-button {margin-left: 2.5%}
+
 input[name*="collapse-flag"][value="0"] + .sheet-collapse-details {
     display: none;
+}
+.sheet-cfg-area {
+    margin-left: 3.5%;
+	margin-right: 3.5%;
 }
 div.sheet-flexwrap {display: flex;}
 
@@ -1265,15 +1352,22 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 	border-radius: 5px;
 }
 /* Weapons, attacks and Armor */
+
 .sheet-weapon-details {
   display: grid;
   grid-template-columns: auto 16em 3.5em 10em 5em 3.5em 3.5em 4em;
-  grid-template-rows   : 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows   : repeat(10, auto);
   gap: 1px 1px;
   grid-auto-flow: row;
   grid-template-areas:
     "weapon-header weapon-header weapon-header weapon-header weapon-header weapon-header weapon-header weapon-header"
 	"name-header roll-header diff-header dmg-header rng-header rate-header clip-header conceal-header"
+	". . . . . . . ." /* For the Generic Do not Fill in area names */
+	". . . . . . . ."
+	". . . . . . . ."
+	". . . . . . . ."
+	". . . . . . . ."
+	". . . . . . . ."
     "w1-name w1-roll w1-diff w1-dmg w1-rng w1-rate w1-clip w1-conceal"
     "w2-name w2-roll w2-diff w2-dmg w2-rng w2-rate w2-clip w2-conceal"
     "w3-name w3-roll w3-diff w3-dmg w3-rng w3-rate w3-clip w3-conceal"
@@ -1289,6 +1383,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-border-odd  {border: solid 1px black;}
 
 .sheet-name-header {grid-area: name-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w-name {}
 .sheet-w1-name { grid-area: w1-name; }
 .sheet-w2-name { grid-area: w2-name; }
 .sheet-w3-name { grid-area: w3-name; }
@@ -1297,6 +1392,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-w6-name { grid-area: w6-name; }
 
 .sheet-roll-header {grid-area: roll-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w-roll {}
 .sheet-w1-roll { grid-area: w1-roll; }
 .sheet-w2-roll { grid-area: w2-roll; }
 .sheet-w3-roll { grid-area: w3-roll; }
@@ -1305,6 +1401,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-w6-roll { grid-area: w6-roll; }
 
 .sheet-diff-header {grid-area: diff-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w-diff { }
 .sheet-w1-diff { grid-area: w1-diff; }
 .sheet-w2-diff { grid-area: w2-diff; }
 .sheet-w3-diff { grid-area: w3-diff; }
@@ -1313,6 +1410,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-w6-diff { grid-area: w6-diff; }
 
 .sheet-dmg-header {grid-area: dmg-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w-dmg {}
 .sheet-w1-dmg { grid-area: w1-dmg; }
 .sheet-w2-dmg { grid-area: w2-dmg; }
 .sheet-w3-dmg { grid-area: w3-dmg; }
@@ -1321,6 +1419,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-w6-dmg { grid-area: w6-dmg; }
 
 .sheet-rng-header {grid-area: rng-header; font-family: "RufscriptRegular"; text-align: center;}
+.shee-w-range {}
 .sheet-w1-rng { grid-area: w1-rng; }
 .sheet-w2-rng { grid-area: w2-rng; }
 .sheet-w3-rng { grid-area: w3-rng; }
@@ -1329,6 +1428,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-w6-rng { grid-area: w6-rng; }
 
 .sheet-rate-header {grid-area: rate-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w1-rate {}
 .sheet-w1-rate { grid-area: w1-rate; }
 .sheet-w2-rate { grid-area: w2-rate; }
 .sheet-w3-rate { grid-area: w3-rate; }
@@ -1337,6 +1437,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-w6-rate { grid-area: w6-rate; }
 
 .sheet-clip-header {grid-area: clip-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-w-clip {}
 .sheet-w1-clip { grid-area: w1-clip; }
 .sheet-w2-clip { grid-area: w2-clip; }
 .sheet-w3-clip { grid-area: w3-clip; }
@@ -1345,6 +1446,7 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-w6-clip { grid-area: w6-clip; }
 
 .sheet-conceal-header {grid-area: conceal-header; font-family: "RufscriptRegular"; text-align: center;}
+.sheet-1-conceal {}
 .sheet-w1-conceal { grid-area: w1-conceal; }
 .sheet-w2-conceal { grid-area: w2-conceal; }
 .sheet-w3-conceal { grid-area: w3-conceal; }
@@ -1356,38 +1458,112 @@ input.sheet-m20death[type="checkbox"]:checked + span::before {
 .sheet-weapon-repeating {grid-area: weapon-repeating; border: solid 1px black;}
 .sheet-weapon-header {justify-self: stretch; align-self: stretch; text-align: center; grid-area: weapon-header; border: solid 1px black; font-size: 1.17em;	font-weight: bold; font-family: "RufscriptRegular";}
 
+/* ====================== Soak Area ========================= */
+.sheet-soak {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0px 0px;
+  grid-auto-flow: row;
+}
+
+.sheet-header { grid-area: 1 / 1 / 2 / 6; }
+.sheet-bashing-button { grid-area: 3 / 1 / 4 / 2; }
+.sheet-lethal-button { grid-area: 4 / 1 / 5 / 2; }
+.sheet-agg-button { grid-area: 5 / 1 / 6 / 2; }
+.sheet-armorOnly-button { grid-area: 6 / 1 / 7 / 2; }
+
+
+
 /* ======================== ROLL TEMPLATE STYLES ====================== */
 /* Advanced Attacks Roll Template */
 
 .sheet-rolltemplate-wrapper {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 0.6fr 1.4fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr auto;
+	grid-template-rows: auto auto auto auto auto auto auto auto;
 	gap: 1px 1px;
 	grid-auto-flow: row;
 	grid-template-areas:
-		"header header header"
-		"pool threshold difficulty"
-		"pool-1 pool-2 bonus"
-		"specialty specialty specialty"
-		"result result result";
+		"header header header header"
+		"spheres spheres spheres spheres"
+		"initiative initiative initiative initiative"
+		"pool pool threshold difficulty"
+		"pool-1 pool-2 target-roll target-roll"
+		"specialty specialty specialty specialty"
+		"result result result result"
+		"notes notes notes notes"
+		"buttons buttons buttons buttons";		
 	background:url(http://i.imgur.com/BLb0XMU.jpg) top left repeat;
 	border: solid 1px #7e2d40;
     border-radius: 5px;
 }
+.sheet-rolltemplate-arete-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr auto;
+	grid-template-rows: auto auto auto auto auto auto auto auto;
+	gap: 1px 1px;
+	grid-auto-flow: row;
+	grid-template-areas:
+		"header header header header"
+		"spheres spheres spheres spheres"
+		"initiative initiative initiative initiative"
+		"pool pool threshold difficulty"
+		"pool-1 pool-2 target-roll target-roll"
+		"specialty specialty specialty specialty"
+		"result result result result"
+		"notes notes notes notes"
+		"buttons buttons buttons buttons";		
+	background:url(http://i.imgur.com/BLb0XMU.jpg) top left repeat;
+	border: solid 1px #7e2d40;
+    border-radius: 5px;
+}
+.sheet-rolltemplate-wrapper .sheet-header     { grid-area: header; border: solid 1px #7e2d40; color: rgb(126, 45, 64); text-align: left; font-family: "RufscriptRegular"; font-size: 1.2em;padding-top:.2em; font-variant: small-caps; }
 
-.sheet-rolltemplate-wrapper .sheet-header     { grid-area: header; border: solid 1px #7e2d40; color: rgb(126, 45, 64); text-align: left; font-family: "RufscriptRegular"; font-variant: small-caps; }
+
 .sheet-rolltemplate-wrapper .sheet-pool       { grid-area: pool; border: solid 1px #7e2d40; }
+
+
 .sheet-rolltemplate-wrapper .sheet-threshold  { grid-area: threshold; border: solid 1px #7e2d40; }
+
+
 .sheet-rolltemplate-wrapper .sheet-difficulty { grid-area: difficulty; border: solid 1px #7e2d40; }
+
+
 .sheet-rolltemplate-wrapper .sheet-pool-1     { grid-area: pool-1; border: solid 1px #7e2d40; }
+
+
 .sheet-rolltemplate-wrapper .sheet-pool-2     { grid-area: pool-2; border: solid 1px #7e2d40; }
+
+
 .sheet-rolltemplate-wrapper .sheet-bonus      { grid-area: bonus; border: solid 1px #7e2d40; }
+
+
 .sheet-rolltemplate-wrapper .sheet-specialty  { grid-area: specialty; border: solid 1px #7e2d40; }
+
+
 .sheet-rolltemplate-wrapper .sheet-result     { grid-area: result; border: solid 1px #7e2d40; }
 
 
+.sheet-rolltemplate-wrapper .sheet-initiative { grid-area: initiative; border: solid 1px #7e2d40; }
 
+
+
+
+
+.sheet-rolltemplate-wrapper .sheet-spheres { grid-area: spheres; border: solid 1px #7e2d40; }
+
+.sheet-rolltemplate-wrapper .sheet-header { grid-area: header; border: solid 1px #7e2d40; }
+
+.sheet-rolltemplate-wrapper .sheet-target-roll { grid-area: target-roll; border: solid 1px #7e2d40; }
+
+.sheet-rolltemplate-wrapper .sheet-focus { grid-area: focus; border: solid 1px #7e2d40;  }
+
+.sheet-rolltemplate-wrapper .sheet-consequences { grid-area: consequences; border: solid 1px #7e2d40; }
+
+.sheet-rolltemplate-wrapper .sheet-notes { grid-area: notes; border: solid 1px #7e2d40; }
+
+.sheet-rolltemplate-wrapper .sheet-buttons { grid-area: buttons; border: solid 1px #7e2d40; }
 
 
 
