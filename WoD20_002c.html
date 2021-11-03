@@ -7,7 +7,7 @@
 	 <div class="tn-splat-selector">
 		<div class="majTemplate">
 			<label class="smlabel">
-				<select class="cfg-select" name="attr_cfg-majTemplate" title="Select which character sheet type you are using.">
+				<select class="cfg-select-template" name="attr_cfg-majTemplate" title="Select which character sheet type you are using.">
 					<option class="opt-default"         value="0">• Select One</option>
 					<option class="opt-hide-bygone"     value="0">Bygone</option>
 					<option class="opt-hide-changeling" value="0">Changeling</option>
@@ -22,12 +22,12 @@
 					<option class="opt-hide-wraith"     value="0">Wraith</option>
 					<option class="opt-hide-werewolf"   value="0">Werewolf</option>
 					<option class="opt-hide-vampire"    value="0">Vampire</option>
-				</select><br><span class="SkPoolLabel">Major Template</span>
+				</select><br><span class="SkPoolLabel"><button type="roll" class="btnTxtRoll btnTemplateSelect" name="roll_cfg_maj_template" value="" title="Apply Major Template">Apply Major Template</button></span>
 			</label>
 		</div>
 		<div class="minTemplate">
 			<label class="smlabel">
-				<select class="cfg-select" name="attr_cfg-minTemplate" title="Select sub-rules for your character sheet to use.">
+				<select class="cfg-select-template" name="attr_cfg-minTemplate" title="Select sub-rules for your character sheet to use.">
 					<option class="opt-default"        value="0">• Select One</option>
 					<option class="opt-none"           value="">None</option>
 					<option class="opt-hide-ghoul"     value="0">Ghoul</option>
@@ -36,7 +36,7 @@
 					<option class="opt-hide-mummy"     value="0">Mummy (Can be taken by Werewolves)</option>
 					<option class="opt-hide-possessed" value="0">Possessed</option>
 					<option class="opt-hide-sorcerer"  value="0">Sorcerer</option>
-				</select><br><span class="SkPoolLabel">Minor Template</span>
+				</select><br><span class="SkPoolLabel"><button type="roll" class="btnTxtRoll btnTemplateSelect" name="roll_cfg_min_template" value="" title="Apply Minor Template">Apply Minor Template</button></span>
 			</label>
 		</div>
 	 </div>
@@ -288,7 +288,7 @@
 					<label class="smlabel"><input type="number" class="" name="attr_dex_magic" value="0" /><br><span>Magic</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_dex_merfl" value="0" /><br><span>Merit/Flaw</span></label>
 					<label class="smlabel"><input type="number" class="" name="attr_dex_forms" value="0" /><br><span>Form</span></label>
-					<label class="smlabel"><input type="number" class="" name="attr_dex_total" value="[[ @{dexterity} + @{dex_magic} + @{dex_merfl} + @{dex_forms} ]]" disabled /><br><span>Total</span></label><br>
+					<label class="smlabel"><input type="number" class="" name="attr_dex_total" value="[[ @{dexterity} + @{dex_magic} + @{dex_merfl} + @{dex_forms} + @{dex_armor_pen} ]]" disabled /><br><span>Total</span></label><br>
 				</div>
 				<div class="grid">
 					<div class="gRollLabel">Stamina <input class="race-type-shen" type="checkbox" name="attr_shen2ed-show" hidden /><span class="race-shen"> (Water, Yin)</span></div>
@@ -5169,6 +5169,12 @@
 							<span class="healthbox aggravateddot"></span>
 					</label>
 				</div>
+				<input type="hidden" name="attr_collapse-flag-advantage-health" value="1">
+				<div class="abilBuffs collapse-details"><!-- Healty Level ~ Incapacitated -->
+					<label style="width: 23vw; line-height:1em;padding-top:0.3em;">Wound Penalty</label>
+					<label style="text-align: right; line-height:1em;padding-top:0.3em;"><input type="number" class="sheet-textbox" name="attr_injury" value="0"/></label>
+					<label class="health-box" style="max-width: 2em; text-align: right;">&nbsp;</label>
+				</div>
 <!-- ~~~~~~~~~~~~ Mummy Health ~~~~~~~~~~~~~~~~~ -->
 <input type="checkbox" name="attr_mummy20-show" class="race-type-mummy" hidden /><!-- Hide DEALTH LEVELS button if not a MUMMY -->
 				<div class="race-mummy-block">
@@ -5231,7 +5237,7 @@
 				<input type="hidden" name="attr_collapse-flag-combat-initiative" value="1">
 				<div class="border collapse-details grid-2" style="grid-gap: 0px;"><!-- Initiative -->
 					<div class="span-row-2">
-						<button type="roll" name="attr_initiative-noQuery" value="&{template:GenericRolls} {{displayname=@{character_name}}} {{header= Initiative}} {{initiative=[[ [[@{selected|initiative_total}]]d10 &{tracker} ]] }} {{total_pool= }} {{dicepool1= }} {{dicepool2= }} {{threshold= }} {{diff= }} {{specialty= }} {{result= }}"></button>
+						<button type="roll" name="attr_initiative-noQuery" value="&{template:GenericRolls} {{displayname=@{character_name}}} {{header= Initiative}} {{initiative=[[ 1d10+[[@{initiative_total}]] &{tracker} ]] }} {{total_pool= }} {{dicepool1= }} {{dicepool2= }} {{threshold= }} {{diff= }} {{specialty= }} {{result= }}"></button>
 						<select class="attr-select" name="attr_initiative_attribute-1" title="Primary Initiative Attribute (@{initiative_attribute-1})">
 							<option value="0">• Select One</option>
 							<option value="@{str_total}">STR</option>
@@ -5278,12 +5284,16 @@
 				</div> <!-- END Movement -->
 		<button type="action" class="collapse-button" name="act_collapse-combat-armor">Armor</button>
 			<input type="hidden" name="attr_collapse-flag-combat-armor" value="1">
-				<div class="border collapse-details grid-2"><!-- Movement -->
-						<div class="ghumanity center">
+				<div class="border collapse-details"><!-- Armor -->
+						<div class="abilBuffs">
 							<ul><li class="aretepool"><input type="text" class="sheet-dottedline w100p h100p" name="attr_armor_type" placeholder="Armor Type"></li></ul>
 						</div>
-						<div class="ghumanity center">Rating <input type="number" class="2dig" name="attr_armor_rating"  value="0" /> Dex Pen: <input type="number" class="2dig" name="attr_armor_dex_pen"  value="0" /></div>
+						<div class="abilBuffs">
+							<label class="smlabel"><input type="number" class="2dig" name="attr_armor_rating" value="0" /><br><span>Rating</span></label>
+							<label class="smlabel"><input type="number" class="2dig" name="attr_dex_armor_pen" value="0" /><br><span>Dex Pen</span></label>
+						</div>
 				</div>
+				
 			</div>
 			<div class="columns">
 			<button type="action" class="collapse-button" name="act_collapse-combat-soak">Soak</button>
@@ -5692,6 +5702,15 @@
 <!-- &{template:AreteRolls} {{displayname=}} {{header= }} {{correspondence=}} {{entropy=}} {{forces=}} {{life=}} {{matter=}} {{mind=}} {{prime=}} {{spirit=}} {{time=}} {{total_pool=}} {{threshold=}} {{diff=}} {{attack=}} {{target_name=}} {{target_difficulty=}} {{mage_foci=}} {{isVulgar=}} {{isWitnessed=}} {{paradoxGained=}} {{result=}} {{notes=}} -->
 <!-- ================================== SHEET WORKERS ==================================== -->
 <script type="text/worker">
+/* I have no idea how this is supposed to work, but it works on another sheet and doesnt work on this one.... */
+on("change:healthbox_1 change:healthbox_2 change:healthbox_3 change:healthbox_4 change:healthbox_5 change:healthbox_6 change:healthbox_7 change:healthbox_8 sheet:opened", function() {
+    getAttrs(['healthbox_1', 'healthbox_2', 'healthbox_3', 'healthbox_4', 'healthbox_5', 'healthbox_6', 'healthbox_7', 'healthbox_8'], function(values) {
+        setAttrs({ 
+            injury: ((Math.floor(Math.max.apply(null, Object.values(values)))) * -1) 
+        });
+    });
+});
+
 	const navbuttons = ["core","combat","abilities", "advantages", "details","biography","config"];
 	 navbuttons.forEach(button => {
 	  on(`clicked:${button}`, function() {

@@ -316,6 +316,8 @@ label.sheet-ability-optGroup2 {
 .sheet-tn-Logo { grid-area: Logo; justify-self: stretch; align-self: center;}
 
 .sheet-tn-splat-selector {
+	width: 12em;
+	height: 7em;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr 1fr;
@@ -363,7 +365,7 @@ label.sheet-ability-optGroup2 {
 	align-self: center;
 	border: solid 1px red;
 }
-.sheet-cfg-select, .sheet-cfg-select-long {
+.sheet-cfg-select, .sheet-cfg-select-long, .sheet-cfg-select-template {
 	width: 10em;
 	height: 2.7em;
 	
@@ -374,9 +376,9 @@ label.sheet-ability-optGroup2 {
 	border-radius: 6px;
 	margin-bottom: -1px;
 }
-.sheet-cfg-select-long {
-	width: 20em;
-}
+.sheet-cfg-select-long {width: 20em;}
+.sheet-cfg-select-template {width: 95%;}
+
 /* Section Level Elements */
 div.sheet-sectionHeader {
   /* Uses H1 style by default, making h1 tag unnessisary */
@@ -588,10 +590,12 @@ h3.sheet-subHeader {
 	border: solid 1px black;
 	border-radius: 5px;
 }
-button[type=roll].sheet-btnHeader::before, button[type=roll].sheet-btnTxtRoll::before {
+button[type=roll].sheet-btnHeader::before, button[type=roll].sheet-btnTxtRoll::before, button[type=roll].sheet-btnTemplateSelect::before {
     content: ' ' !important;
 }
 .sheet-btnSoakRoll {width: 5em;}
+.sheet-btnTemplateSelect {width: 90%}
+
 /* Layout Elements */
 label.sheet-smlabel {
   text-align: center;
